@@ -8,8 +8,8 @@
           <BookOpen size="24" stroke-width="1.5" />
         </div>
         <div class="flex flex-col">
-          <span class="text-sm font-bold text-maintext tracking-wide">المنصة التعليمية</span>
-          <span class="text-xs font-semibold text-primary/80 mt-0.5">الأولى بكالوريا • الدرس الأول</span>
+          <span class="text-sm font-bold text-maintext tracking-wide">{{ courseTitle }}</span>
+          <span class="text-xs font-semibold text-primary/80 mt-0.5">{{ lessonTitle }}</span>
         </div>
       </div>
       
@@ -45,10 +45,12 @@ import { BookOpen, PenTool, Users, MonitorPlay, Maximize } from 'lucide-vue-next
 import { useWhiteboard } from '~/composables/useWhiteboard'
 import { useTeacherMode } from '~/composables/useTeacherMode'
 import { usePresentation } from '~/composables/usePresentation'
+import { useLesson } from '~/composables/useLesson'
 
 const { toggleWhiteboard } = useWhiteboard()
 const { toggleTeacherMode } = useTeacherMode()
 const { toggleProjectorMode, toggleFullscreen } = usePresentation()
+const { courseTitle, lessonTitle } = useLesson()
 
 const isScrolled = ref(false)
 
