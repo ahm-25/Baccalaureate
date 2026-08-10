@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Color System: WARM OFF-WHITE + SOFT LAVENDER + MUTED PEACH */
+    /* Stored as space-separated RGB channels so Tailwind opacity
+       modifiers (bg-surface/80, border-border/50) work. */
+    --color-background: 248 247 244;   /* #F8F7F4 */
+    --color-surface: 255 255 255;      /* #FFFFFF */
+    --color-primary: 124 106 230;      /* #7C6AE6 */
+    --color-secondary: 168 156 242;    /* #A89CF2 */
+    --color-accent: 232 168 124;       /* #E8A87C */
+    --color-maintext: 41 38 56;        /* #292638 */
+    --color-mutedtext: 119 115 131;    /* #777383 */
+    --color-border: 232 229 224;       /* #E8E5E0 */
+    --color-softhighlight: 240 237 255; /* #F0EDFF */
+  }
+
+  html, body {
+    @apply bg-background text-maintext font-arabic antialiased selection:bg-primary selection:text-white;
+    direction: rtl;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface/80 backdrop-blur-md border border-border/50 shadow-sm rounded-3xl;
+  }
+  
+  .premium-shadow {
+    box-shadow: 0 20px 40px -10px rgba(41, 38, 56, 0.05);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
