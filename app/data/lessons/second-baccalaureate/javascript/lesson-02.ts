@@ -1,0 +1,43 @@
+export const lessonData = {
+  courseTitle: 'الثانية بكالوريا',
+  lessonTitle: 'الدرس الثاني | المتغيرات وأنواع البيانات',
+  sections: [
+    { id: 'hero', title: 'البداية' },
+    { id: 'opening', title: 'سؤال البداية' },
+    { id: 'variable', title: 'يعني إيه Variable؟' },
+    { id: 'real-life', title: 'في حياتنا' },
+    { id: 'creating-variables', title: 'إزاي أعمل Variable؟' },
+    { id: 'let', title: 'let' },
+    { id: 'const', title: 'const' },
+    { id: 'let-vs-const', title: 'let vs const' },
+    { id: 'naming', title: 'أسمي إزاي؟' },
+    { id: 'data-types', title: 'أنواع البيانات' },
+    { id: 'type-string', title: 'String' },
+    { id: 'type-number', title: 'Number' },
+    { id: 'type-boolean', title: 'Boolean' },
+    { id: 'sorting-game', title: 'لعبة التصنيف' },
+    { id: 'console-log', title: 'console.log' },
+    { id: 'playground', title: 'Playground' },
+    { id: 'change-value', title: 'غيّر القيمة' },
+    { id: 'challenges', title: 'تحديات صغيرة' },
+    { id: 'quiz', title: 'Quiz' },
+    { id: 'common-mistakes', title: 'أخطاء شائعة' },
+    { id: 'real-world', title: 'في التطبيقات الحقيقية' },
+    { id: 'final-challenge', title: 'التحدي الكبير' },
+    { id: 'summary', title: 'ملخص' },
+    { id: 'homework', title: 'الواجب' },
+    { id: 'next', title: 'الدرس القادم' }
+  ],
+  quiz: [
+    { text: "يعني إيه Variable؟", options: ["رقم ثابت", "مكان بنخزن فيه قيمة", "لون في الموقع"], correct: 1, explanation: "المتغير هو مساحة في الذاكرة بنحفظ فيها البيانات." },
+    { text: "أيه الكلمة اللي بنستخدمها لو القيمة ممكن تتغير بعدين؟", options: ["let", "const", "var"], correct: 0, explanation: "كلمة let بتسمح لنا نغير القيمة بعد ما نعرف المتغير." },
+    { text: "أيه الكلمة اللي بنستخدمها لو القيمة المفروض ماتتغيرش؟", options: ["let", "const", "var"], correct: 1, explanation: "كلمة const بتستخدم للثوابت اللي قيمتها مش هتتغير." },
+    { text: "إيه قيمة المتغير في الكود ده: let age = 17;", options: ["age", "17", "let"], correct: 1, explanation: "17 هي القيمة، و age هو اسم المتغير." },
+    { text: "إيه هو نوع البيانات للقيمة 'Ahmed'؟", options: ["String", "Number", "Boolean"], correct: 0, explanation: "أي نص بين علامتين تنصيص بيكون نوعه String." },
+    { text: "إيه هو نوع البيانات للقيمة 25؟", options: ["String", "Number", "Boolean"], correct: 1, explanation: "الأرقام بدون علامات تنصيص بتكون نوعها Number." },
+    { text: "إيه هو نوع البيانات للقيمة true؟", options: ["String", "Number", "Boolean"], correct: 2, explanation: "القيم true و false بتكون نوعها Boolean." },
+    { text: "إيه اللي هيحصل في الكود ده؟ let age = 17; age = 18;", options: ["هيحصل Error", "القيمة هتفضل 17", "القيمة هتتغير لـ 18"], correct: 2, explanation: "بما إننا استخدمنا let، نقدر نغير القيمة عادي." },
+    { text: "هل اسم المتغير ده صحيح؟ let studentName = 'Ahmed';", options: ["نعم، صحيح", "لا، خطأ"], correct: 0, explanation: "الاسم صحيح وبيتبع قواعد التسمية." },
+    { text: "إيه اللي هيطبع في الـ Console؟ let x = 10; let y = 20; console.log(x + y);", options: ["1020", "30", "Error"], correct: 1, explanation: "هيقوم بجمع الرقمين 10 و 20 وتطبع 30." }
+  ]
+}
