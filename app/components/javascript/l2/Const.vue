@@ -37,7 +37,7 @@
         </div>
 
         <!-- Code Block -->
-        <div class="bg-gray-900 rounded-3xl p-8 shadow-xl text-left font-mono text-xl relative" dir="ltr">
+        <div class="bg-gray-900 rounded-3xl p-8 shadow-xl text-left font-mono text-xl relative text-gray-300" dir="ltr">
           <div class="text-gray-500 text-sm mb-4 border-b border-gray-700 pb-2 uppercase tracking-widest">script.js</div>
           
           <div>

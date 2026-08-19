@@ -1,42 +1,97 @@
 <template>
-  <section id="summary" class="min-h-screen py-24 px-6 relative flex flex-col items-center justify-center bg-background">
-    <div class="max-w-4xl mx-auto w-full">
+  <section id="summary" class="py-24 bg-background relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 w-full z-10 relative">
+      
       <div class="text-center mb-16">
-        <h2 class="text-5xl font-black text-maintext mb-6">لو هتفتكر 6 حاجات من الدرس...</h2>
-        <p class="text-2xl text-mutedtext">الخلاصة اللي محتاج تطلع بيها من الدرس الأول.</p>
+        <div class="inline-flex items-center justify-center gap-3 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <span class="text-2xl">📝</span>
+          <span class="text-lg font-bold text-primary">المراجعة النهائية</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-maintext mb-6">ملخص الدرس</h2>
+        <p class="text-2xl text-mutedtext font-medium">
+          أهم 8 نقط لازم تفتكرهم من درس النهارده:
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div class="bg-surface p-6 rounded-2xl border border-border shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
-          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center shrink-0">1</div>
-          <p class="text-xl font-bold text-maintext mt-1">JavaScript لغة برمجة.</p>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div class="bg-surface p-6 rounded-2xl border border-border shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
-          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center shrink-0">2</div>
-          <p class="text-xl font-bold text-maintext mt-1">تُضيف التفاعل والسلوك للمواقع.</p>
+        <!-- Summary Point 1 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-blue-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">🤖</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            <span class="text-primary font-black">البرمجة</span> = كتابة تعليمات للكمبيوتر.
+          </p>
         </div>
-        
-        <div class="bg-orange-50 p-6 rounded-2xl border border-orange-200 shadow-sm flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-500 font-bold flex items-center justify-center shrink-0">3</div>
-          <p class="text-xl font-bold text-orange-900 mt-1">HTML = Structure (الهيكل)</p>
+
+        <!-- Summary Point 2 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-green-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">⬇️</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            الكمبيوتر ينفذ التعليمات <span class="text-green-600 font-black">بالترتيب</span>.
+          </p>
         </div>
-        
-        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-200 shadow-sm flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-500 font-bold flex items-center justify-center shrink-0">4</div>
-          <p class="text-xl font-bold text-blue-900 mt-1">CSS = Style (الشكل)</p>
+
+        <!-- Summary Point 3 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-yellow-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">⚡</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            <span class="text-[#D4B800] font-black" dir="ltr">JavaScript</span> هي لغة برمجة.
+          </p>
         </div>
-        
-        <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 shadow-sm flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 font-bold flex items-center justify-center shrink-0">5</div>
-          <p class="text-xl font-bold text-yellow-900 mt-1">JavaScript = Behavior (السلوك)</p>
+
+        <!-- Summary Point 4 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-purple-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">📺</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10" dir="rtl">
+            <span class="text-purple-600 font-black font-mono text-sm px-1 bg-purple-50 rounded" dir="ltr">console.log()</span> تستخدم لعرض قيمة أو رسالة.
+          </p>
         </div>
-        
-        <div class="bg-surface p-6 rounded-2xl border border-border shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
-          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center shrink-0">6</div>
-          <p class="text-xl font-bold text-maintext mt-1"><code class="text-primary bg-primary/10 px-2 rounded">console.log()</code> تعرض النتائج.</p>
+
+        <!-- Summary Point 5 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-orange-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">📊</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            البرامج تتعامل مع <span class="text-orange-600 font-black">البيانات</span>.
+          </p>
         </div>
+
+        <!-- Summary Point 6 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-red-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">🔠</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            <span class="text-red-600 font-black">النصوص</span> تختلف عن <span class="text-blue-600 font-black">الأرقام</span>.
+          </p>
+        </div>
+
+        <!-- Summary Point 7 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-indigo-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">🧮</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            JavaScript تستطيع تنفيذ <span class="text-indigo-600 font-black">العمليات الحسابية</span>.
+          </p>
+        </div>
+
+        <!-- Summary Point 8 -->
+        <div class="bg-surface rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-pink-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+          <div class="text-4xl mb-4 relative z-10">🧠</div>
+          <p class="text-lg font-bold text-maintext leading-relaxed relative z-10">
+            <span class="text-pink-600 font-black">التفكير في المشكلة</span> يأتي قبل كتابة الكود.
+          </p>
+        </div>
+
       </div>
+
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+</script>

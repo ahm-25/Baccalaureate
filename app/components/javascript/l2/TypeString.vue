@@ -12,15 +12,15 @@
       <div class="bg-surface border border-border rounded-3xl p-10 shadow-xl max-w-3xl mx-auto">
         
         <div class="space-y-6 text-left font-mono text-2xl" dir="ltr">
-          <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+          <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors text-gray-300">
             <span class="text-purple-400">let</span> <span class="text-blue-300">name</span> <span class="text-white">=</span> <span class="text-green-300">"Ahmed"</span>;
           </div>
           
-          <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+          <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors text-gray-300">
             <span class="text-purple-400">let</span> <span class="text-blue-300">city</span> <span class="text-white">=</span> <span class="text-green-300">'Mansoura'</span>;
           </div>
           
-          <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+          <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors text-gray-300">
             <span class="text-purple-400">let</span> <span class="text-blue-300">message</span> <span class="text-white">=</span> <span class="text-green-300">"Hello, World!"</span>;
           </div>
         </div>

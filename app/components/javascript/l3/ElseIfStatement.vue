@@ -68,14 +68,14 @@
               <div class="w-3 h-3 rounded-full bg-green-400"></div>
             </div>
             <div class="p-6 font-mono text-sm leading-loose overflow-x-auto text-left" dir="ltr">
-              <span class="text-purple-400">let</span> <span class="text-maintext">score</span> = <span class="text-orange-400">85</span>;<br>
+              <span class="text-purple-600">let</span> <span class="text-maintext">score</span> = <span class="text-orange-600">85</span>;<br>
               <br>
-              <span class="text-primary font-bold">if</span> (<span class="text-maintext">score</span> >= <span class="text-orange-400">90</span>) {<br>
-              &nbsp;&nbsp;<span class="text-blue-400">console</span>.<span class="text-yellow-200">log</span>(<span class="text-green-400">"Excellent"</span>);<br>
-              } <span class="text-blue-500 font-bold">else if</span> (<span class="text-maintext">score</span> >= <span class="text-orange-400">70</span>) {<br>
-              &nbsp;&nbsp;<span class="text-blue-400">console</span>.<span class="text-yellow-200">log</span>(<span class="text-green-400">"Good"</span>);<br>
+              <span class="text-primary font-bold">if</span> (<span class="text-maintext">score</span> >= <span class="text-orange-600">90</span>) {<br>
+              &nbsp;&nbsp;<span class="text-blue-600">console</span>.<span class="text-amber-600">log</span>(<span class="text-green-600">"Excellent"</span>);<br>
+              } <span class="text-blue-500 font-bold">else if</span> (<span class="text-maintext">score</span> >= <span class="text-orange-600">70</span>) {<br>
+              &nbsp;&nbsp;<span class="text-blue-600">console</span>.<span class="text-amber-600">log</span>(<span class="text-green-600">"Good"</span>);<br>
               } <span class="text-accent font-bold">else</span> {<br>
-              &nbsp;&nbsp;<span class="text-blue-400">console</span>.<span class="text-yellow-200">log</span>(<span class="text-green-400">"Needs improvement"</span>);<br>
+              &nbsp;&nbsp;<span class="text-blue-600">console</span>.<span class="text-amber-600">log</span>(<span class="text-green-600">"Needs improvement"</span>);<br>
               }
             </div>
           </div>

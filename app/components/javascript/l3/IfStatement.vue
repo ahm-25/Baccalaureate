@@ -60,10 +60,10 @@
               <div class="ml-4 text-sm font-mono text-mutedtext flex-1 text-center">app.js</div>
             </div>
             <div class="p-6 font-mono text-sm md:text-base leading-loose overflow-x-auto text-left" dir="ltr">
-              <span class="text-purple-400">let</span> <span class="text-maintext">age</span> = <span class="text-orange-400">18</span>;<br>
+              <span class="text-purple-600">let</span> <span class="text-maintext">age</span> = <span class="text-orange-600">18</span>;<br>
               <br>
-              <span class="text-primary font-bold">if</span> (<span class="text-maintext">age</span> >= <span class="text-orange-400">18</span>) {<br>
-              &nbsp;&nbsp;<span class="text-blue-400">console</span>.<span class="text-yellow-200">log</span>(<span class="text-green-400">"You can enter"</span>);<br>
+              <span class="text-primary font-bold">if</span> (<span class="text-maintext">age</span> >= <span class="text-orange-600">18</span>) {<br>
+              &nbsp;&nbsp;<span class="text-blue-600">console</span>.<span class="text-amber-600">log</span>(<span class="text-green-600">"You can enter"</span>);<br>
               }
             </div>
           </div>

@@ -47,12 +47,27 @@
         <Redo2 size="20" />
       </button>
       
-      <!-- Background Menu toggle -->
-      <button @click="$emit('toggle-bg-menu')" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-gray-100 text-gray-600 transition-colors relative" title="الخلفية">
+      <!-- Background Menu toggle (full board only) -->
+      <button v-if="mode === 'board'" @click="$emit('toggle-bg-menu')" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-gray-100 text-gray-600 transition-colors relative" title="الخلفية">
         <Grid size="20" />
       </button>
+
+      <!-- Pass-through toggle (page annotation only) -->
+      <button v-if="mode === 'annotate'" @click="togglePassThrough"
+              class="w-10 h-10 rounded-xl flex items-center justify-center transition-colors"
+              :class="isPassThrough ? 'bg-accent text-white shadow-md' : 'hover:bg-gray-100 text-gray-600'"
+              title="تصفح الصفحة (إيقاف الرسم مؤقتاً)">
+        <Hand size="20" />
+      </button>
+
+      <!-- Switch between writing on the page and the full board -->
+      <button @click="setMode(mode === 'annotate' ? 'board' : 'annotate')"
+              class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-gray-100 text-gray-600 transition-colors"
+              :title="mode === 'annotate' ? 'فتح السبورة الكاملة' : 'الكتابة على الصفحة'">
+        <component :is="mode === 'annotate' ? Maximize2 : Layers" size="20" />
+      </button>
       
-      <button @click="confirmClear" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-red-50 text-red-400 hover:text-red-600 transition-colors" title="مسح السبورة">
+      <button @click="confirmClear" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-red-50 text-red-400 hover:text-red-600 transition-colors" :title="mode === 'annotate' ? 'مسح الكتابة' : 'مسح السبورة'">
         <Trash2 size="20" />
       </button>
 
@@ -62,7 +77,7 @@
 
       <div class="w-[1px] h-8 bg-gray-200 mx-1"></div>
 
-      <button @click="toggleWhiteboard" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-gray-100 text-gray-600 transition-colors font-bold" title="إغلاق (W)">
+      <button @click="closeWhiteboard" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-gray-100 text-gray-600 transition-colors font-bold" title="إغلاق (W)">
         <X size="20" />
       </button>
     </div>
@@ -74,12 +89,16 @@ import { useWhiteboard } from '~/composables/useWhiteboard'
 import type { WhiteboardTool } from '~/app/types/whiteboard'
 import { 
   Pen, Highlighter, Eraser, Type, Minus, MoveUpRight, Square, Circle, 
-  MousePointer2, MousePointerClick, Undo2, Redo2, Trash2, Download, X, Grid 
+  MousePointer2, MousePointerClick, Undo2, Redo2, Trash2, Download, X, Grid,
+  Hand, Layers, Maximize2
 } from 'lucide-vue-next'
 
 defineEmits(['toggle-bg-menu', 'export'])
 
-const { currentTool, currentColor, currentWidth, setTool, setColor, setWidth, toggleWhiteboard, engine } = useWhiteboard()
+const { 
+  mode, isPassThrough, currentTool, currentColor, currentWidth, 
+  setTool, setColor, setWidth, setMode, togglePassThrough, closeWhiteboard, engine 
+} = useWhiteboard()
 
 const tools: { id: WhiteboardTool, icon: any, label: string }[] = [
   { id: 'select', icon: MousePointerClick, label: 'تحديد (V)' },
@@ -99,7 +118,10 @@ const colors = ['#000000', '#292638', '#EF4444', '#3B82F6', '#10B981', '#8B5CF6'
 const widths = [2, 4, 6, 10, 16]
 
 const confirmClear = () => {
-  if (confirm('هل تريد مسح كل ما على السبورة؟')) {
+  const message = mode.value === 'annotate' 
+    ? 'هل تريد مسح كل الكتابة فوق الصفحة؟' 
+    : 'هل تريد مسح كل ما على السبورة؟'
+  if (confirm(message)) {
     engine.value?.clear()
   }
 }

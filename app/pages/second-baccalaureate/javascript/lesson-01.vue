@@ -2,23 +2,20 @@
   <div class="relative">
     <JavascriptHero />
     <JavascriptOpening />
-    <JavascriptWhatIsProgramming />
-    <JavascriptWhatIsJS />
-    <JavascriptWhyJS />
-    <JavascriptHtmlCssJs />
     <JavascriptHowItWorks />
+    <JavascriptWhatIsJS />
     <JavascriptFirstCode />
-    <JavascriptConsoleLog />
-    
-    <!-- Using id 'playground' mapped to the section real-world to match our section data, or wait, playground was not a separate full section but a component. Let's make sure the IDs match the lesson-01.ts definitions -->
-    <section id="playground" class="hidden"></section> <!-- Placeholder to satisfy the scrollspy if playground is just a component inside others -->
-    
+    <JavascriptUnderstandInstruction />
+    <JavascriptDataIntro />
+    <JavascriptTextAndNumbers />
+    <JavascriptImportantExample />
     <JavascriptRealWorld />
+    <JavascriptThinkLikeProgrammer />
+    <JavascriptCommonMistakes />
     <JavascriptChallenges />
     <QuizLessonQuiz />
-    <JavascriptSummary />
     <JavascriptFinalChallenge />
-    <JavascriptHomework />
+    <JavascriptSummary />
     <JavascriptNextLesson />
   </div>
 </template>
@@ -62,3 +59,4 @@ onUnmounted(() => {
   if (observer) observer.disconnect()
 })
 </script>
+

@@ -14,6 +14,9 @@ export type WhiteboardTool =
 
 export type BackgroundType = 'plain' | 'grid' | 'lines' | 'dots'
 
+// 'board' = full whiteboard overlay, 'annotate' = write directly on the page
+export type WhiteboardMode = 'board' | 'annotate'
+
 export type StrokeStyle = {
   color: string
   width: number

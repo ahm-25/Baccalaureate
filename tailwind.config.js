@@ -22,7 +22,7 @@ export default {
         softhighlight: 'rgb(var(--color-softhighlight) / <alpha-value>)',
       },
       fontFamily: {
-        arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+        arabic: ['"Cairo"', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

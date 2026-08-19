@@ -1,5 +1,6 @@
 <template>
-  <div class="relative w-full h-full pointer-events-auto overflow-hidden">
+  <div class="relative w-full h-full overflow-hidden"
+       :class="interactive ? 'pointer-events-auto' : 'pointer-events-none'">
     <!-- Canvas Element -->
     <canvas 
       ref="canvasRef" 
@@ -35,10 +36,20 @@ import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import { WhiteboardEngine } from '~/composables/whiteboard/Engine'
 import { useWhiteboard } from '~/composables/useWhiteboard'
 import { useWhiteboardStorage } from '~/composables/useWhiteboardStorage'
+import type { WhiteboardMode } from '~/app/types/whiteboard'
+
+const props = withDefaults(defineProps<{
+  mode?: WhiteboardMode
+  interactive?: boolean
+}>(), {
+  mode: 'board',
+  interactive: true
+})
 
 const emit = defineEmits(['engine-ready'])
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 let engineInstance: WhiteboardEngine | null = null
+let autoSaveTimer: ReturnType<typeof setInterval> | null = null
 
 const { registerEngine, unregisterEngine, currentTool, currentColor } = useWhiteboard()
 const storage = useWhiteboardStorage()
@@ -62,6 +73,7 @@ const cursorClass = computed(() => {
 onMounted(async () => {
   if (canvasRef.value) {
     engineInstance = new WhiteboardEngine(canvasRef.value)
+    engineInstance.setTransparent(props.mode === 'annotate')
     registerEngine(engineInstance)
     engineInstance.start()
     
@@ -75,6 +87,10 @@ onMounted(async () => {
     }
 
     emit('engine-ready', engineInstance)
+
+    // Annotations on top of the page are a live layer: nothing is restored
+    // or persisted, so the saved board is never overwritten by them.
+    if (props.mode === 'annotate') return
     
     // Auto-load last board logic
     try {
@@ -93,7 +109,7 @@ onMounted(async () => {
     }
 
     // Auto-save interval
-    setInterval(() => {
+    autoSaveTimer = setInterval(() => {
       if (engineInstance) {
         storage.saveBoard({
           id: 'default-board',
@@ -109,6 +125,10 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
+  if (autoSaveTimer) {
+    clearInterval(autoSaveTimer)
+    autoSaveTimer = null
+  }
   if (engineInstance) {
     engineInstance.stop()
   }

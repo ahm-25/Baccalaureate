@@ -13,6 +13,10 @@ export class WhiteboardEngine {
   
   private view = { x: 0, y: 0, scale: 1 }
   private background: BackgroundType = 'plain'
+
+  // Overlay mode: canvas is drawn directly on top of the page
+  private transparent = false
+  private scrollOffset = 0
   
   // Tool state
   private activeTool: WhiteboardTool = 'pen'
@@ -27,9 +31,9 @@ export class WhiteboardEngine {
   
   private lastPointer: Point = { x: 0, y: 0 }
   
-  // Laser
+  // Laser pointer. Kept in screen space (not world space) so the dot always
+  // sits under the cursor, even while the page scrolls underneath it.
   private laserPointer: Point | null = null
-  private laserTrail: Point[] = []
   
   // Selection
   private selectedElementId: string | null = null
@@ -43,7 +47,7 @@ export class WhiteboardEngine {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
-    const ctx = canvas.getContext('2d', { alpha: false })
+    const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) throw new Error('Could not get 2d context')
     this.ctx = ctx
     
@@ -62,7 +66,26 @@ export class WhiteboardEngine {
   public stop() {
     cancelAnimationFrame(this.animationFrameId)
     window.removeEventListener('resize', this.resize)
+    window.removeEventListener('scroll', this.onScroll)
     this.removeEvents()
+  }
+
+  private onScroll = () => {
+    this.scrollOffset = window.scrollY
+  }
+
+  // Overlay (annotate) mode: no paper behind the ink, and drawings stay
+  // anchored to the page content while it scrolls.
+  public setTransparent(value: boolean) {
+    if (this.transparent === value) return
+    this.transparent = value
+    if (value) {
+      this.scrollOffset = window.scrollY
+      window.addEventListener('scroll', this.onScroll, { passive: true })
+    } else {
+      this.scrollOffset = 0
+      window.removeEventListener('scroll', this.onScroll)
+    }
   }
 
   private resize() {
@@ -78,7 +101,12 @@ export class WhiteboardEngine {
   public setTool(tool: WhiteboardTool) {
     this.activeTool = tool
     this.selectedElementId = null
+    if (tool !== 'laser') this.clearLaser()
     if (this.onSelectionChange) this.onSelectionChange(null)
+  }
+
+  private clearLaser() {
+    this.laserPointer = null
   }
 
   public setColor(color: string) {
@@ -128,7 +156,7 @@ export class WhiteboardEngine {
     
     // Convert screen coordinates to world coordinates
     const worldX = (x - this.view.x) / this.view.scale
-    const worldY = (y - this.view.y) / this.view.scale
+    const worldY = (y - this.view.y + this.scrollOffset) / this.view.scale
 
     const textEl: TextElement = {
       id: crypto.randomUUID(),
@@ -174,6 +202,8 @@ export class WhiteboardEngine {
     this.canvas.addEventListener('pointerup', this.onPointerUp)
     this.canvas.addEventListener('pointerleave', this.onPointerLeave)
     this.canvas.addEventListener('wheel', this.onWheel, { passive: false })
+    window.addEventListener('pointermove', this.onLaserMove)
+    document.addEventListener('pointerleave', this.onLaserOut)
   }
 
   private removeEvents() {
@@ -182,6 +212,29 @@ export class WhiteboardEngine {
     this.canvas.removeEventListener('pointerup', this.onPointerUp)
     this.canvas.removeEventListener('pointerleave', this.onPointerLeave)
     this.canvas.removeEventListener('wheel', this.onWheel)
+    window.removeEventListener('pointermove', this.onLaserMove)
+    document.removeEventListener('pointerleave', this.onLaserOut)
+  }
+
+  // The laser tracks the pointer at the window level: it needs no button held
+  // down, and it keeps working while the canvas is in pass-through mode.
+  private onLaserMove = (e: PointerEvent) => {
+    if (this.activeTool !== 'laser') return
+
+    const rect = this.canvas.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+      this.laserPointer = null
+      return
+    }
+
+    this.laserPointer = { x, y }
+  }
+
+  private onLaserOut = () => {
+    this.clearLaser()
   }
 
   private getWorldPoint(e: PointerEvent): Point {
@@ -190,7 +243,7 @@ export class WhiteboardEngine {
     const screenY = e.clientY - rect.top
     return {
       x: (screenX - this.view.x) / this.view.scale,
-      y: (screenY - this.view.y) / this.view.scale
+      y: (screenY - this.view.y + this.scrollOffset) / this.view.scale
     }
   }
 
@@ -216,17 +269,14 @@ export class WhiteboardEngine {
 
     if (this.activeTool === 'text') {
       if (this.onTextRequest) {
-        this.onTextRequest(e.clientX, e.clientY)
+        const rect = this.canvas.getBoundingClientRect()
+        this.onTextRequest(e.clientX - rect.left, e.clientY - rect.top)
       }
       return
     }
 
-    if (this.activeTool === 'laser') {
-      this.laserPointer = worldPt
-      this.laserTrail = [worldPt]
-      this.isDrawing = true
-      return
-    }
+    // The laser is pure pointing: it never draws and never takes the pointer.
+    if (this.activeTool === 'laser') return
 
     if (this.activeTool === 'select') {
       this.handleSelectStart(worldPt)
@@ -285,13 +335,6 @@ export class WhiteboardEngine {
 
     const worldPt = this.getWorldPoint(e)
 
-    if (this.activeTool === 'laser' && this.isDrawing) {
-      this.laserPointer = worldPt
-      this.laserTrail.push(worldPt)
-      if (this.laserTrail.length > 20) this.laserTrail.shift()
-      return
-    }
-
     if (this.activeTool === 'eraser' && this.isDrawing) {
       this.eraseAt(worldPt)
       return
@@ -318,11 +361,6 @@ export class WhiteboardEngine {
     this.currentPath = null
     this.currentShape = null
     
-    if (this.activeTool === 'laser') {
-       this.laserPointer = null
-       this.laserTrail = []
-    }
-
     if (e.pointerType === 'touch') {
       this.canvas.releasePointerCapture(e.pointerId)
     }
@@ -333,6 +371,8 @@ export class WhiteboardEngine {
   }
 
   private onWheel = (e: WheelEvent) => {
+    // In overlay mode the wheel belongs to the page underneath
+    if (this.transparent) return
     e.preventDefault()
     if (e.ctrlKey) {
       // Pinch to zoom
@@ -439,13 +479,16 @@ export class WhiteboardEngine {
   // --- Rendering ---
 
   private render() {
-    this.ctx.fillStyle = '#FCFBF8' // Or based on theme
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
-
-    this.renderBackground()
+    if (this.transparent) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    } else {
+      this.ctx.fillStyle = '#FCFBF8' // Or based on theme
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+      this.renderBackground()
+    }
 
     this.ctx.save()
-    this.ctx.translate(this.view.x, this.view.y)
+    this.ctx.translate(this.view.x, this.view.y - this.scrollOffset)
     this.ctx.scale(this.view.scale, this.view.scale)
 
     // Separate highlighter strokes (behind) and normal strokes (front)
@@ -458,32 +501,41 @@ export class WhiteboardEngine {
     this.ctx.globalCompositeOperation = 'source-over'
     for (const el of others) this.renderElement(el)
 
-    // Render Laser
-    if (this.laserPointer && this.laserTrail.length > 0) {
-      this.ctx.beginPath()
-      this.ctx.moveTo(this.laserTrail[0].x, this.laserTrail[0].y)
-      for (let i = 1; i < this.laserTrail.length; i++) {
-        this.ctx.lineTo(this.laserTrail[i].x, this.laserTrail[i].y)
-      }
-      this.ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)'
-      this.ctx.lineWidth = 4 / this.view.scale
-      this.ctx.lineCap = 'round'
-      this.ctx.lineJoin = 'round'
-      this.ctx.stroke()
-
-      this.ctx.beginPath()
-      this.ctx.arc(this.laserPointer.x, this.laserPointer.y, 6 / this.view.scale, 0, Math.PI * 2)
-      this.ctx.fillStyle = 'red'
-      this.ctx.fill()
-      this.ctx.shadowColor = 'red'
-      this.ctx.shadowBlur = 10
-      this.ctx.fill()
-      this.ctx.shadowBlur = 0
-    }
-
     this.ctx.restore()
 
+    // The laser sits on top of everything, in screen space.
+    this.renderLaser()
+
     this.animationFrameId = requestAnimationFrame(this.render)
+  }
+
+  private renderLaser() {
+    if (this.activeTool !== 'laser' || !this.laserPointer) return
+
+    const { x, y } = this.laserPointer
+    this.ctx.save()
+
+    // Soft halo, so the dot carries across a projector without a hard edge.
+    const glow = this.ctx.createRadialGradient(x, y, 0, x, y, 18)
+    glow.addColorStop(0, 'rgba(239, 68, 68, 0.45)')
+    glow.addColorStop(0.5, 'rgba(239, 68, 68, 0.14)')
+    glow.addColorStop(1, 'rgba(239, 68, 68, 0)')
+    this.ctx.fillStyle = glow
+    this.ctx.beginPath()
+    this.ctx.arc(x, y, 18, 0, Math.PI * 2)
+    this.ctx.fill()
+
+    this.ctx.beginPath()
+    this.ctx.arc(x, y, 6, 0, Math.PI * 2)
+    this.ctx.fillStyle = '#EF4444'
+    this.ctx.fill()
+
+    // A hairline rim keeps the dot legible on a dark code block too.
+    this.ctx.lineWidth = 1.5
+    this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)'
+    this.ctx.stroke()
+
+    this.ctx.restore()
   }
 
   private renderBackground() {

@@ -1,79 +1,154 @@
 <template>
-  <section id="real-world" class="min-h-screen py-24 px-6 relative flex flex-col items-center justify-center bg-background">
-    <div class="max-w-6xl mx-auto w-full text-center">
-      <h2 class="text-5xl font-black text-maintext mb-12">JavaScript موجودة فين؟</h2>
+  <section id="real-world" class="py-24 bg-surface relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 w-full z-10 relative">
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black text-maintext mb-6">نشوف JavaScript في أمثلة حقيقية</h2>
+        <p class="text-2xl text-mutedtext max-w-2xl mx-auto leading-relaxed">
+          إزاي البرمجة ممكن تحل مشاكل أو تنفذ مهام مختلفة؟
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <!-- Example 1: Like Button -->
-        <div class="bg-surface p-8 rounded-3xl border border-border shadow-md flex flex-col items-center group">
-          <h3 class="text-xl font-bold text-maintext mb-6">زر الإعجاب (Like)</h3>
-          <button @click="likeCount++" class="flex flex-col items-center gap-2 mb-4 group-hover:scale-105 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" :fill="likeCount > 0 ? '#ef4444' : 'none'" :stroke="likeCount > 0 ? '#ef4444' : 'currentColor'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-colors"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            <span class="text-2xl font-black text-maintext">{{ likeCount }}</span>
-          </button>
-          <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded">onclick ➔ update count</div>
+        <!-- Example 1 -->
+        <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl transition-all group-hover:bg-blue-500/10"></div>
+          <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <span class="text-3xl">👤</span>
+            <h3 class="text-xl font-black text-maintext">بيانات طالب</h3>
+          </div>
+          <div class="mb-4">
+            <span class="text-sm font-bold text-mutedtext bg-surface px-3 py-1 rounded-full mb-3 inline-block">المشكلة / الهدف:</span>
+            <p class="text-lg font-bold text-maintext">عايزين نعرض اسم الطالب، عمره، ودرجته.</p>
+          </div>
+          <div class="bg-gray-900 rounded-2xl p-5 mb-4 text-left" dir="ltr">
+            <pre class="font-mono text-sm leading-loose"><code class="text-white"><span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"Ahmed"</span><span class="text-gray-300">);</span>
+<span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">18</span><span class="text-gray-300">);</span>
+<span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">90</span><span class="text-gray-300">);</span></code></pre>
+          </div>
+          <div class="bg-black border border-gray-700 rounded-xl p-4 mb-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold">Ahmed
+18
+90</pre>
+          </div>
+          <div class="bg-blue-50 text-blue-800 p-4 rounded-xl border border-blue-100 font-bold text-center">
+            البرنامج يعرض بيانات الطالب.
+          </div>
         </div>
 
-        <!-- Example 2: Cart -->
-        <div class="bg-surface p-8 rounded-3xl border border-border shadow-md flex flex-col items-center group">
-          <h3 class="text-xl font-bold text-maintext mb-6">عربة التسوق (Cart)</h3>
-          <div class="relative mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-            <span v-if="cartItems > 0" class="absolute -top-2 -right-2 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm">{{ cartItems }}</span>
+        <!-- Example 2 -->
+        <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl transition-all group-hover:bg-green-500/10"></div>
+          <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <span class="text-3xl">💯</span>
+            <h3 class="text-xl font-black text-maintext">مجموع الدرجات</h3>
           </div>
-          <button @click="cartItems++" class="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-primary/90 transition-colors mb-4">أضف للسلة</button>
-          <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded">onclick ➔ update cart</div>
+          <div class="mb-4">
+            <span class="text-sm font-bold text-mutedtext bg-surface px-3 py-1 rounded-full mb-3 inline-block">المشكلة / الهدف:</span>
+            <p class="text-lg font-bold text-maintext">طالب جاب 40 في مادة و 35 في مادة، عايزين نعرف المجموع.</p>
+          </div>
+          <div class="bg-gray-900 rounded-2xl p-5 mb-4 text-left" dir="ltr">
+            <pre class="font-mono text-sm leading-loose"><code class="text-white"><span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">40</span> <span class="text-white">+</span> <span class="text-orange-400">35</span><span class="text-gray-300">);</span></code></pre>
+          </div>
+          <div class="bg-black border border-gray-700 rounded-xl p-4 mb-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold">75</pre>
+          </div>
+          <div class="bg-green-50 text-green-800 p-4 rounded-xl border border-green-100 font-bold text-center">
+            البرنامج يحسب مجموع درجتين.
+          </div>
         </div>
 
-        <!-- Example 3: Calculator -->
-        <div class="bg-surface p-8 rounded-3xl border border-border shadow-md flex flex-col items-center group">
-          <h3 class="text-xl font-bold text-maintext mb-6">الآلة الحاسبة</h3>
-          <div class="flex items-center gap-2 mb-6">
-            <input type="number" v-model.number="calcNum" class="w-16 bg-white border border-border rounded text-center text-xl font-bold py-1">
-            <span class="text-xl font-bold">× 2 = </span>
-            <span class="text-2xl font-black text-accent">{{ calcNum * 2 }}</span>
+        <!-- Example 3 -->
+        <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl transition-all group-hover:bg-yellow-500/10"></div>
+          <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <span class="text-3xl">🛒</span>
+            <h3 class="text-xl font-black text-maintext">حساب التسوق</h3>
           </div>
-          <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded">oninput ➔ calculate</div>
+          <div class="mb-4">
+            <span class="text-sm font-bold text-mutedtext bg-surface px-3 py-1 rounded-full mb-3 inline-block">المشكلة / الهدف:</span>
+            <p class="text-lg font-bold text-maintext">اشتريت منتجين: الأول بـ 50 والثاني بـ 30. الإجمالي كام؟</p>
+          </div>
+          <div class="bg-gray-900 rounded-2xl p-5 mb-4 text-left" dir="ltr">
+            <pre class="font-mono text-sm leading-loose"><code class="text-white"><span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">50</span> <span class="text-white">+</span> <span class="text-orange-400">30</span><span class="text-gray-300">);</span></code></pre>
+          </div>
+          <div class="bg-black border border-gray-700 rounded-xl p-4 mb-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold">80</pre>
+          </div>
+          <div class="bg-yellow-50 text-yellow-800 p-4 rounded-xl border border-yellow-100 font-bold text-center">
+            البرنامج حسب إجمالي السعر.
+          </div>
         </div>
 
-        <!-- Example 4: Validation -->
-        <div class="bg-surface p-8 rounded-3xl border border-border shadow-md flex flex-col items-center group">
-          <h3 class="text-xl font-bold text-maintext mb-6">التحقق من البيانات</h3>
-          <div class="w-full flex flex-col gap-2 mb-4">
-            <input type="password" v-model="password" placeholder="كلمة المرور" class="w-full bg-white border border-border rounded px-3 py-2 text-center" :class="password.length >= 8 ? 'border-green-500' : 'border-red-500'">
-            <span class="text-sm font-bold" :class="password.length >= 8 ? 'text-green-500' : 'text-red-500'">
-              {{ password.length >= 8 ? 'كلمة مرور قوية' : 'يجب أن تكون 8 حروف' }}
-            </span>
+        <!-- Example 4 -->
+        <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl transition-all group-hover:bg-purple-500/10"></div>
+          <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <span class="text-3xl">🧮</span>
+            <h3 class="text-xl font-black text-maintext">آلة حاسبة</h3>
           </div>
-          <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded">oninput ➔ validate</div>
+          <div class="mb-4">
+            <span class="text-sm font-bold text-mutedtext bg-surface px-3 py-1 rounded-full mb-3 inline-block">المشكلة / الهدف:</span>
+            <p class="text-lg font-bold text-maintext">عايزين نعمل طرح، ضرب، وقسمة.</p>
+          </div>
+          <div class="bg-gray-900 rounded-2xl p-5 mb-4 text-left" dir="ltr">
+            <pre class="font-mono text-sm leading-loose"><code class="text-white"><span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">100</span> <span class="text-white">-</span> <span class="text-orange-400">25</span><span class="text-gray-300">);</span>
+<span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">10</span> <span class="text-white">*</span> <span class="text-orange-400">5</span><span class="text-gray-300">);</span>
+<span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">100</span> <span class="text-white">/</span> <span class="text-orange-400">4</span><span class="text-gray-300">);</span></code></pre>
+          </div>
+          <div class="bg-black border border-gray-700 rounded-xl p-4 mb-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold">75
+50
+25</pre>
+          </div>
+          <div class="bg-purple-50 text-purple-800 p-4 rounded-xl border border-purple-100 font-bold text-center">
+            JavaScript تستطيع تنفيذ العمليات الحسابية (الجمع، الطرح، الضرب، القسمة).
+          </div>
         </div>
 
-        <!-- Example 5: Menu -->
-        <div class="bg-surface p-8 rounded-3xl border border-border shadow-md flex flex-col items-center group">
-          <h3 class="text-xl font-bold text-maintext mb-6">القوائم (Menu)</h3>
-          <div class="relative w-full flex flex-col items-center mb-10">
-            <button @click="menuOpen = !menuOpen" class="bg-gray-800 text-white px-4 py-2 rounded-lg font-bold">القائمة ☰</button>
-            <div v-if="menuOpen" class="absolute top-12 bg-white border border-border rounded-lg shadow-lg w-32 py-2 flex flex-col z-10">
-              <span class="hover:bg-gray-100 px-4 py-1 cursor-pointer">الصفحة 1</span>
-              <span class="hover:bg-gray-100 px-4 py-1 cursor-pointer">الصفحة 2</span>
-            </div>
+        <!-- Example 5 -->
+        <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl transition-all group-hover:bg-orange-500/10"></div>
+          <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <span class="text-3xl">🏅</span>
+            <h3 class="text-xl font-black text-maintext">نقاط في لعبة</h3>
           </div>
-          <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded">onclick ➔ toggle show</div>
+          <div class="mb-4">
+            <span class="text-sm font-bold text-mutedtext bg-surface px-3 py-1 rounded-full mb-3 inline-block">المشكلة / الهدف:</span>
+            <p class="text-lg font-bold text-maintext">لاعب جمع 80 نقطة، ثم 90 نقطة.</p>
+          </div>
+          <div class="bg-gray-900 rounded-2xl p-5 mb-4 text-left" dir="ltr">
+            <pre class="font-mono text-sm leading-loose"><code class="text-white"><span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">80</span> <span class="text-white">+</span> <span class="text-orange-400">90</span><span class="text-gray-300">);</span></code></pre>
+          </div>
+          <div class="bg-black border border-gray-700 rounded-xl p-4 mb-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold">170</pre>
+          </div>
+          <div class="bg-orange-50 text-orange-800 p-4 rounded-xl border border-orange-100 font-bold text-center">
+            ممكن نستخدم البرمجة في حساب مجموع النقاط.
+          </div>
         </div>
-        
-        <!-- Example 6: Interactive Quiz -->
-        <div class="bg-surface p-8 rounded-3xl border border-border shadow-md flex flex-col items-center group">
-          <h3 class="text-xl font-bold text-maintext mb-6">الاختبارات والتفاعل</h3>
-          <div class="flex gap-2 mb-4">
-            <button @click="quizAnswer = 'wrong'" class="bg-white border border-border px-4 py-2 rounded font-bold hover:bg-gray-50">1 + 1 = 3</button>
-            <button @click="quizAnswer = 'right'" class="bg-white border border-border px-4 py-2 rounded font-bold hover:bg-gray-50">1 + 1 = 2</button>
+
+        <!-- Example 6 -->
+        <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl transition-all group-hover:bg-pink-500/10"></div>
+          <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <span class="text-3xl">👋</span>
+            <h3 class="text-xl font-black text-maintext">رسالة ترحيب</h3>
           </div>
-          <div class="h-8 mb-4">
-            <span v-if="quizAnswer === 'right'" class="text-green-500 font-bold">إجابة صحيحة ✅</span>
-            <span v-if="quizAnswer === 'wrong'" class="text-red-500 font-bold">حاول مرة أخرى ❌</span>
+          <div class="mb-4">
+            <span class="text-sm font-bold text-mutedtext bg-surface px-3 py-1 rounded-full mb-3 inline-block">المشكلة / الهدف:</span>
+            <p class="text-lg font-bold text-maintext">عايزين نرحب بالمستخدم لما يفتح البرنامج.</p>
           </div>
-          <div class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded">onclick ➔ check answer</div>
+          <div class="bg-gray-900 rounded-2xl p-5 mb-4 text-left" dir="ltr">
+            <pre class="font-mono text-sm leading-loose"><code class="text-white"><span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"Welcome Ahmed!"</span><span class="text-gray-300">);</span></code></pre>
+          </div>
+          <div class="bg-black border border-gray-700 rounded-xl p-4 mb-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold">Welcome Ahmed!</pre>
+          </div>
+          <div class="bg-pink-50 text-pink-800 p-4 rounded-xl border border-pink-100 font-bold text-center">
+            البرنامج يعرض رسالة ترحيب.
+          </div>
         </div>
 
       </div>
@@ -82,12 +157,4 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const likeCount = ref(0)
-const cartItems = ref(0)
-const calcNum = ref(5)
-const password = ref('')
-const menuOpen = ref(false)
-const quizAnswer = ref('')
 </script>

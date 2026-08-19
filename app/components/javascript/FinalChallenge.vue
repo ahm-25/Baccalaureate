@@ -1,63 +1,59 @@
 <template>
-  <section id="final-challenge" class="min-h-screen py-24 px-6 relative flex flex-col items-center justify-center bg-background">
-    <div class="max-w-4xl mx-auto w-full text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 text-orange-600 font-bold mb-8 shadow-sm border border-orange-200">
-        <span class="animate-pulse">🔥</span> التحدي الأخير
-      </div>
+  <section id="final-challenge" class="py-24 bg-surface relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 w-full z-10 relative">
       
-      <h2 class="text-5xl font-black text-maintext mb-6">هل أنت جاهز؟</h2>
-      <p class="text-2xl text-mutedtext mb-12">
-        المطلوب: اكتب 3 أوامر <code class="text-primary">console.log()</code> تطبع فيها 3 أشياء مختلفة تحبها أو تعلمتها.
-      </p>
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-6 tracking-tight">تحدي الحصة 🚀</h2>
+        <p class="text-2xl text-mutedtext font-bold">
+          وصلنا لنهاية الدرس... ورينا شطارتك!
+        </p>
+      </div>
 
-      <div class="bg-surface p-8 rounded-[2.5rem] border border-border shadow-2xl relative overflow-hidden text-right">
+      <div class="bg-background rounded-[3rem] p-10 md:p-14 border-2 border-primary/20 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-32 -right-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+
+        <h3 class="text-3xl font-black text-maintext mb-8 border-b border-border pb-6">المطلوب:</h3>
         
-        <div v-if="success" class="absolute inset-0 bg-green-500/90 z-20 flex flex-col items-center justify-center text-white backdrop-blur-sm">
-          <div class="text-6xl mb-6 animate-bounce">🏆</div>
-          <h3 class="text-4xl font-black mb-4">ممتاز يا بطل!</h3>
-          <p class="text-2xl font-bold">أنت خلصت أول تحدي JavaScript بنجاح.</p>
+        <p class="text-xl text-maintext font-bold mb-8 leading-relaxed">
+          "اكتب برنامج يعرض بيانات طالب ويحسب مجموع درجتين."
+        </p>
+
+        <div class="bg-surface rounded-2xl p-6 border border-border mb-12">
+          <h4 class="text-lg font-bold text-mutedtext mb-4">لازم النتيجة (Output) تظهر بالشكل ده:</h4>
+          <div class="bg-black border border-gray-700 rounded-xl p-6 text-left" dir="ltr">
+            <pre class="font-mono text-green-400 font-bold text-lg leading-loose">Name: Ahmed
+Age: 18
+Grade 1: 40
+Grade 2: 35
+Total: 75</pre>
+          </div>
         </div>
 
-        <JavascriptPlayground v-model="code" @run="checkFinalChallenge" class="h-80" />
-        
-        <div class="mt-6 flex flex-col gap-2">
-          <div class="flex items-center gap-2" :class="hasThreeLogs ? 'text-green-500' : 'text-gray-400'">
-            <span class="font-bold text-xl">{{ hasThreeLogs ? '✓' : '○' }}</span>
-            <span class="font-bold">استخدام console.log() 3 مرات.</span>
-          </div>
-          <div class="flex items-center gap-2" :class="executedSuccessfully ? 'text-green-500' : 'text-gray-400'">
-            <span class="font-bold text-xl">{{ executedSuccessfully ? '✓' : '○' }}</span>
-            <span class="font-bold">الكود يشتغل بدون أخطاء.</span>
-          </div>
+        <div class="text-center mb-8">
+          <p class="text-2xl font-black text-primary animate-pulse">حاول تحلها بنفسك الأول! 🧐</p>
         </div>
+
+        <details class="group">
+          <summary class="bg-primary hover:bg-primary/90 text-white font-black text-xl px-10 py-5 rounded-2xl cursor-pointer list-none text-center shadow-xl transition-all hover:-translate-y-1 block max-w-sm mx-auto">
+            إظهار الحل
+          </summary>
+          <div class="mt-8 bg-gray-900 rounded-3xl p-8 text-left shadow-inner border border-gray-800" dir="ltr">
+            <h4 class="text-gray-400 font-bold mb-4 text-center">الحل الصحيح:</h4>
+            <code class="text-xl font-mono text-white leading-loose block">
+              <span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"Name: Ahmed"</span><span class="text-gray-300">);</span><br>
+              <span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"Age: 18"</span><span class="text-gray-300">);</span><br>
+              <span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"Grade 1: 40"</span><span class="text-gray-300">);</span><br>
+              <span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"Grade 2: 35"</span><span class="text-gray-300">);</span><br>
+              <span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-orange-400">40</span> <span class="text-white">+</span> <span class="text-orange-400">35</span><span class="text-gray-300">);</span>
+            </code>
+          </div>
+        </details>
+
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const code = ref('console.log("My name is Ahmed");\nconsole.log("I am learning JavaScript");\n')
-const success = ref(false)
-const hasThreeLogs = ref(false)
-const executedSuccessfully = ref(false)
-
-const checkFinalChallenge = (result: { code: string, logs: any[] }) => {
-  // Count console logs in the code
-  const matches = result.code.match(/console\.log/g)
-  hasThreeLogs.value = matches !== null && matches.length >= 3
-
-  // Check if executed successfully (at least 3 outputs and no errors)
-  const noErrors = !result.logs.some(l => l.type === 'error')
-  const hasOutputs = result.logs.length >= 3
-  
-  executedSuccessfully.value = noErrors && hasOutputs
-
-  if (hasThreeLogs.value && executedSuccessfully.value) {
-    setTimeout(() => {
-      success.value = true
-    }, 500)
-  }
-}
 </script>

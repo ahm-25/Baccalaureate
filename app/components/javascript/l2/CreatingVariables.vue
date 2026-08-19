@@ -18,13 +18,13 @@
           <div class="flex flex-wrap items-center justify-center gap-4 cursor-pointer" @click="animateStep">
             <!-- Keyword -->
             <div class="flex flex-col items-center gap-4 transition-all duration-500" :class="step >= 1 ? 'opacity-100 scale-100' : 'opacity-20 scale-90'">
-              <span class="text-purple-400">let</span>
+              <span class="text-purple-600">let</span>
               <div v-if="step >= 1" class="text-sm font-sans text-mutedtext text-center border-t-2 border-purple-400/50 pt-2 animate-fade-in">Create<br>variable</div>
             </div>
             
             <!-- Name -->
             <div class="flex flex-col items-center gap-4 transition-all duration-500 delay-100" :class="step >= 2 ? 'opacity-100 scale-100' : 'opacity-20 scale-90'">
-              <span class="text-blue-400">age</span>
+              <span class="text-blue-600">age</span>
               <div v-if="step >= 2" class="text-sm font-sans text-mutedtext text-center border-t-2 border-blue-400/50 pt-2 animate-fade-in">Variable<br>name</div>
             </div>
             
@@ -35,7 +35,7 @@
             
             <!-- Value -->
             <div class="flex flex-col items-center gap-4 transition-all duration-500 delay-300" :class="step >= 4 ? 'opacity-100 scale-100' : 'opacity-20 scale-90'">
-              <span class="text-orange-400">17</span>
+              <span class="text-orange-600">17</span>
               <div v-if="step >= 4" class="text-sm font-sans text-mutedtext text-center border-t-2 border-orange-400/50 pt-2 animate-fade-in">Value</div>
             </div>
             

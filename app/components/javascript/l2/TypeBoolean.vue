@@ -35,7 +35,7 @@
         </div>
 
         <!-- Code View -->
-        <div class="bg-gray-900 rounded-2xl p-8 text-left font-mono text-2xl relative overflow-hidden" dir="ltr">
+        <div class="bg-gray-900 rounded-2xl p-8 text-left font-mono text-2xl relative overflow-hidden text-gray-300" dir="ltr">
           <div class="absolute inset-0 bg-gradient-to-r transition-opacity duration-300" :class="isLoggedIn ? 'from-green-500/5 opacity-100' : 'from-red-500/5 opacity-100'"></div>
           
           <div class="relative z-10">

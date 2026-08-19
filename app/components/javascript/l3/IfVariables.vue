@@ -46,10 +46,10 @@
           <div class="w-3 h-3 rounded-full bg-green-400"></div>
         </div>
         <div class="p-6 font-mono text-sm md:text-base leading-loose">
-          <span class="text-purple-400">let</span> <span class="text-maintext">score</span> = <span class="text-orange-400">95</span>;<br>
+          <span class="text-purple-600">let</span> <span class="text-maintext">score</span> = <span class="text-orange-600">95</span>;<br>
           <br>
-          <span class="text-primary font-bold">if</span> (<span class="text-maintext">score</span> >= <span class="text-orange-400">90</span>) {<br>
-          &nbsp;&nbsp;<span class="text-blue-400">console</span>.<span class="text-yellow-200">log</span>(<span class="text-green-400">"Excellent"</span>);<br>
+          <span class="text-primary font-bold">if</span> (<span class="text-maintext">score</span> >= <span class="text-orange-600">90</span>) {<br>
+          &nbsp;&nbsp;<span class="text-blue-600">console</span>.<span class="text-amber-600">log</span>(<span class="text-green-600">"Excellent"</span>);<br>
           }
         </div>
       </div>

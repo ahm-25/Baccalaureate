@@ -40,16 +40,16 @@
         <div class="bg-surface border border-border rounded-3xl p-10 shadow-xl flex flex-col justify-center h-full text-left" dir="ltr">
           <div class="font-mono text-2xl leading-loose">
             <div class="opacity-50 mb-4 transition-opacity duration-500" :class="{ 'opacity-100': isBoxFilled }">
-              <span class="text-purple-400">let</span> <span class="text-blue-300">age</span> <span class="text-maintext">=</span> <span class="text-orange-400">17</span>;
+              <span class="text-purple-600">let</span> <span class="text-blue-600">age</span> <span class="text-maintext">=</span> <span class="text-orange-600">17</span>;
             </div>
             
             <div class="opacity-50 transition-opacity duration-500" :class="{ 'opacity-100': isBoxFilled }">
-              <span class="text-yellow-300">console</span>.<span class="text-blue-300">log</span>(age);
+              <span class="text-amber-600">console</span>.<span class="text-blue-600">log</span>(age);
             </div>
             
             <div class="mt-8 pt-4 border-t border-border flex items-center gap-4 transition-opacity duration-500" :class="{ 'opacity-100': isBoxFilled, 'opacity-0': !isBoxFilled }">
               <span class="text-gray-500">></span>
-              <span class="text-green-400 font-bold">17</span>
+              <span class="text-green-600 font-bold">17</span>
             </div>
           </div>
         </div>

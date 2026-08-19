@@ -1,77 +1,118 @@
 <template>
-  <section id="how-it-works" class="min-h-screen py-24 px-6 relative flex flex-col items-center justify-center bg-background">
-    <div class="max-w-6xl mx-auto w-full">
+  <section id="how-it-works" class="py-24 bg-background relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 w-full z-10 relative">
+      
       <div class="text-center mb-16">
-        <h2 class="text-5xl font-black text-maintext mb-6">إيه اللي بيحصل لما أكتب JavaScript؟</h2>
-        <p class="text-2xl text-mutedtext">رحلة الكود من لحظة كتابته لحد ما يتنفذ وتشوف نتيجته.</p>
+        <h2 class="text-4xl md:text-5xl font-black text-maintext mb-6">الكمبيوتر بيفهم إزاي؟</h2>
+        <p class="text-2xl text-mutedtext max-w-2xl mx-auto leading-relaxed font-medium">
+          الكمبيوتر <span class="text-red-500 font-bold">لا يفكر</span> مثل الإنسان. <br>
+          هو فقط <span class="text-primary font-bold">ينفذ التعليمات</span> التي نعطيها له بدقة.
+        </p>
       </div>
 
-      <div class="bg-surface p-12 rounded-[3rem] border border-border shadow-2xl relative overflow-hidden">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-          
-          <!-- Step 1: Code -->
-          <div class="flex-1 w-full bg-gray-900 rounded-2xl p-6 shadow-lg border border-gray-700 relative group">
-            <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-md border-4 border-surface z-20">1</div>
-            <h3 class="text-gray-400 text-sm font-bold mb-4 font-sans uppercase tracking-widest">Code</h3>
-            <div class="font-mono text-green-400 text-lg" dir="ltr">
-              <span class="text-blue-400">console</span>.<span class="text-yellow-300">log</span>(<span class="text-green-300">"Hello"</span>);
-            </div>
-            <div class="absolute inset-0 bg-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-          </div>
+      <!-- Visual Diagram -->
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-20">
+        <div class="bg-surface border-2 border-border px-8 py-6 rounded-3xl text-center shadow-sm w-full md:w-auto">
+          <div class="text-4xl mb-3">📝</div>
+          <div class="text-xl font-black text-maintext">Instruction</div>
+          <div class="text-sm text-mutedtext font-bold mt-1">(تعليمات)</div>
+        </div>
+        
+        <span class="text-3xl text-gray-400 rotate-90 md:rotate-180 md:rotate-0">←</span>
+        
+        <div class="bg-primary text-white px-8 py-6 rounded-3xl text-center shadow-lg shadow-primary/20 w-full md:w-auto transform hover:scale-105 transition-transform">
+          <div class="text-4xl mb-3">💻</div>
+          <div class="text-xl font-black">Computer</div>
+          <div class="text-sm text-white/80 font-bold mt-1">(الكمبيوتر)</div>
+        </div>
+        
+        <span class="text-3xl text-gray-400 rotate-90 md:rotate-180 md:rotate-0">←</span>
 
-          <!-- Arrow -->
-          <div class="flex-shrink-0 text-4xl text-primary/40 lg:rotate-0 rotate-90">➔</div>
-
-          <!-- Step 2: Engine -->
-          <div class="flex-1 w-full bg-white rounded-2xl p-6 shadow-lg border border-border relative group">
-            <div class="absolute -top-4 -right-4 w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold text-xl shadow-md border-4 border-surface z-20">2</div>
-            <h3 class="text-accent text-sm font-bold mb-4 font-sans uppercase tracking-widest">JavaScript Engine</h3>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent animate-spin-slow">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-              </div>
-              <p class="text-maintext font-bold leading-tight">المتصفح بيقرأ الكود<br>ويفهم المطلوب</p>
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <div class="flex-shrink-0 text-4xl text-primary/40 lg:rotate-0 rotate-90">➔</div>
-
-          <!-- Step 3: Result -->
-          <div class="flex-1 w-full bg-gray-900 rounded-2xl p-6 shadow-lg border border-gray-700 relative group">
-            <div class="absolute -top-4 -right-4 w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-md border-4 border-surface z-20">3</div>
-            <h3 class="text-gray-400 text-sm font-bold mb-4 font-sans uppercase tracking-widest flex justify-between">
-              <span>Console</span>
-              <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            </h3>
-            <div class="font-mono text-gray-100 text-lg" dir="ltr">
-              Hello
-            </div>
-          </div>
+        <div class="bg-surface border-2 border-border px-8 py-6 rounded-3xl text-center shadow-sm w-full md:w-auto">
+          <div class="text-4xl mb-3">⚙️</div>
+          <div class="text-xl font-black text-maintext">Execution</div>
+          <div class="text-sm text-mutedtext font-bold mt-1">(تنفيذ)</div>
         </div>
 
-        <div class="mt-16 bg-primary/10 border border-primary/20 rounded-2xl p-6 flex items-start gap-4">
-          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mt-1">
-            <span class="font-bold text-xl">!</span>
+        <span class="text-3xl text-gray-400 rotate-90 md:rotate-180 md:rotate-0">←</span>
+
+        <div class="bg-green-50 border-2 border-green-200 px-8 py-6 rounded-3xl text-center shadow-sm w-full md:w-auto">
+          <div class="text-4xl mb-3">✅</div>
+          <div class="text-xl font-black text-green-700">Result</div>
+          <div class="text-sm text-green-600/80 font-bold mt-1">(نتيجة)</div>
+        </div>
+      </div>
+
+      <!-- Examples -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+        
+        <div class="bg-surface rounded-3xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-6">
+            <span class="text-sm font-bold text-mutedtext uppercase tracking-wider mb-2 block">Instruction</span>
+            <div class="bg-gray-100 text-gray-800 font-bold text-lg px-4 py-3 rounded-xl border border-gray-200">
+              "اعرض اسم الطالب"
+            </div>
+          </div>
+          <div class="flex justify-center my-4">
+            <span class="text-2xl text-gray-300">↓</span>
           </div>
           <div>
-            <h4 class="text-xl font-bold text-primary mb-2">للمعلومة فقط:</h4>
-            <p class="text-maintext/80 leading-relaxed text-lg">
-              عشان الكود يشتغل، المتصفح (زي Chrome أو Safari) جواه حاجة اسمها <strong>مُحرك (Engine)</strong> وظيفته إنه يترجم أوامرك للغة يفهمها الكمبيوتر وينفذها فوراً.
-            </p>
+            <span class="text-sm font-bold text-mutedtext uppercase tracking-wider mb-2 block">Result</span>
+            <div class="bg-green-50 text-green-700 font-black text-2xl px-4 py-3 rounded-xl border border-green-100 text-center">
+              Ahmed
+            </div>
           </div>
         </div>
+
+        <div class="bg-surface rounded-3xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-6">
+            <span class="text-sm font-bold text-mutedtext uppercase tracking-wider mb-2 block">Instruction</span>
+            <div class="bg-gray-100 text-gray-800 font-bold text-lg px-4 py-3 rounded-xl border border-gray-200">
+              "اجمع 40 + 35"
+            </div>
+          </div>
+          <div class="flex justify-center my-4">
+            <span class="text-2xl text-gray-300">↓</span>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-mutedtext uppercase tracking-wider mb-2 block">Result</span>
+            <div class="bg-green-50 text-green-700 font-black text-2xl px-4 py-3 rounded-xl border border-green-100 text-center">
+              75
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface rounded-3xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-6">
+            <span class="text-sm font-bold text-mutedtext uppercase tracking-wider mb-2 block">Instruction</span>
+            <div class="bg-gray-100 text-gray-800 font-bold text-lg px-4 py-3 rounded-xl border border-gray-200">
+              "اعرض النتيجة"
+            </div>
+          </div>
+          <div class="flex justify-center my-4">
+            <span class="text-2xl text-gray-300">↓</span>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-mutedtext uppercase tracking-wider mb-2 block">Result</span>
+            <div class="bg-green-50 text-green-700 font-black text-2xl px-4 py-3 rounded-xl border border-green-100 text-center">
+              75
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <div class="text-center">
+        <div class="inline-block bg-primary/10 px-8 py-4 rounded-2xl border border-primary/20">
+          <p class="text-2xl font-black text-primary">
+            "الكمبيوتر ينفذ التعليمات التي نكتبها له."
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
 
-<style scoped>
-.animate-spin-slow {
-  animation: spin 4s linear infinite;
-}
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-</style>
+<script setup lang="ts">
+</script>

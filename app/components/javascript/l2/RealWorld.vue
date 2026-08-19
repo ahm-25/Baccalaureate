@@ -13,11 +13,11 @@
           <div class="space-y-4 font-mono text-sm" dir="ltr">
             <div class="bg-surface p-3 rounded-lg flex justify-between">
               <span class="text-mutedtext">Product Price</span>
-              <span class="text-blue-400">productPrice = <span class="text-orange-400">500</span></span>
+              <span class="text-blue-600">productPrice = <span class="text-orange-600">500</span></span>
             </div>
             <div class="bg-surface p-3 rounded-lg flex justify-between">
               <span class="text-mutedtext">Cart Count</span>
-              <span class="text-blue-400">cartCount = <span class="text-orange-400">3</span></span>
+              <span class="text-blue-600">cartCount = <span class="text-orange-600">3</span></span>
             </div>
           </div>
         </div>
@@ -29,11 +29,11 @@
           <div class="space-y-4 font-mono text-sm" dir="ltr">
             <div class="bg-surface p-3 rounded-lg flex justify-between">
               <span class="text-mutedtext">User Name</span>
-              <span class="text-blue-400">userName = <span class="text-green-300">"Ahmed"</span></span>
+              <span class="text-blue-600">userName = <span class="text-green-600">"Ahmed"</span></span>
             </div>
             <div class="bg-surface p-3 rounded-lg flex justify-between">
               <span class="text-mutedtext">Online Status</span>
-              <span class="text-blue-400">isOnline = <span class="text-purple-400">true</span></span>
+              <span class="text-blue-600">isOnline = <span class="text-purple-600">true</span></span>
             </div>
           </div>
         </div>
@@ -45,11 +45,11 @@
           <div class="space-y-4 font-mono text-sm" dir="ltr">
             <div class="bg-surface p-3 rounded-lg flex justify-between">
               <span class="text-mutedtext">Player Health</span>
-              <span class="text-blue-400">health = <span class="text-orange-400">100</span></span>
+              <span class="text-blue-600">health = <span class="text-orange-600">100</span></span>
             </div>
             <div class="bg-surface p-3 rounded-lg flex justify-between">
               <span class="text-mutedtext">High Score</span>
-              <span class="text-blue-400">highScore = <span class="text-orange-400">9999</span></span>
+              <span class="text-blue-600">highScore = <span class="text-orange-600">9999</span></span>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@
       </div>
       
       <p class="text-2xl text-mutedtext mb-12 max-w-2xl mx-auto leading-relaxed">
-        <span class="font-mono text-orange-400 font-bold">Number</span> يعني <span class="font-bold text-maintext">رقم</span>. بنكتب الأرقام عادي من غير علامات تنصيص. نقدر نعمل عليها كل العمليات الحسابية (جمع، طرح، ضرب، قسمة).
+        <span class="font-mono text-orange-600 font-bold">Number</span> يعني <span class="font-bold text-maintext">رقم</span>. بنكتب الأرقام عادي من غير علامات تنصيص. نقدر نعمل عليها كل العمليات الحسابية (جمع، طرح، ضرب، قسمة).
       </p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -14,13 +14,13 @@
         <!-- Examples -->
         <div class="bg-background border border-border rounded-3xl p-8 shadow-xl text-left font-mono text-2xl space-y-6 flex flex-col justify-center" dir="ltr">
           <div class="bg-surface border border-border rounded-2xl p-6">
-            <span class="text-purple-400">let</span> <span class="text-blue-300">age</span> <span class="text-white">=</span> <span class="text-orange-400">17</span>;
+            <span class="text-purple-600">let</span> <span class="text-blue-600">age</span> <span class="text-maintext">=</span> <span class="text-orange-600">17</span>;
           </div>
           <div class="bg-surface border border-border rounded-2xl p-6">
-            <span class="text-purple-400">let</span> <span class="text-blue-300">score</span> <span class="text-white">=</span> <span class="text-orange-400">95</span>;
+            <span class="text-purple-600">let</span> <span class="text-blue-600">score</span> <span class="text-maintext">=</span> <span class="text-orange-600">95</span>;
           </div>
           <div class="bg-surface border border-border rounded-2xl p-6">
-            <span class="text-purple-400">let</span> <span class="text-blue-300">price</span> <span class="text-white">=</span> <span class="text-orange-400">150.5</span>;
+            <span class="text-purple-600">let</span> <span class="text-blue-600">price</span> <span class="text-maintext">=</span> <span class="text-orange-600">150.5</span>;
           </div>
         </div>
 
@@ -42,7 +42,7 @@
             </div>
           </div>
           
-          <div class="w-full bg-gray-900 rounded-xl p-6 text-left font-mono text-xl mb-6" dir="ltr">
+          <div class="w-full bg-gray-900 rounded-xl p-6 text-left font-mono text-xl mb-6 text-gray-300" dir="ltr">
             <div class="mb-2"><span class="text-purple-400">let</span> <span class="text-blue-300">x</span> <span class="text-white">=</span> <span class="text-orange-400">{{ x }}</span>;</div>
             <div class="mb-4"><span class="text-purple-400">let</span> <span class="text-blue-300">y</span> <span class="text-white">=</span> <span class="text-orange-400">{{ y }}</span>;</div>
             <div><span class="text-yellow-300">console</span>.<span class="text-blue-300">log</span>(x + y);</div>

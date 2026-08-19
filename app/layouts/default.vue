@@ -1,15 +1,34 @@
 <template>
   <div class="min-h-screen relative font-arabic transition-all duration-500 bg-background text-maintext"
-       :class="{ 'text-lg': isProjectorMode, 'cursor-none': isProjectorMode && currentTool === 'laser' }">
+       :class="{ 'text-lg': isProjectorMode, 'cursor-none': isWhiteboardOpen && currentTool === 'laser' }">
     <UiFloatingNavigation />
     <UiLessonProgress />
     
-    <!-- Floating Whiteboard Button -->
-    <button v-if="!isWhiteboardOpen" @click="toggleWhiteboard"
-            class="fixed bottom-6 right-6 z-40 bg-white glass-panel text-maintext px-6 py-3 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2 hover:bg-gray-50 transition-colors font-bold text-lg group">
-      <span class="text-xl">✏</span>
-      <span class="group-hover:text-primary transition-colors">السبورة</span>
-    </button>
+    <!-- Floating Whiteboard Buttons -->
+    <div v-if="!isWhiteboardOpen" class="fixed bottom-6 right-6 z-40 flex items-center gap-2">
+      <!-- Point at anything on the page without drawing on it -->
+      <button @click="toggleLaser"
+              class="bg-white glass-panel text-maintext px-5 py-3 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2 hover:bg-gray-50 transition-colors font-bold text-lg group"
+              title="مؤشر ليزر (L)">
+        <span class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_#ef4444]"></span>
+        <span class="group-hover:text-primary transition-colors">ليزر</span>
+      </button>
+
+      <!-- Write directly on top of the current page -->
+      <button @click="toggleAnnotate"
+              class="bg-white glass-panel text-maintext px-5 py-3 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2 hover:bg-gray-50 transition-colors font-bold text-lg group"
+              title="الكتابة فوق الصفحة (A)">
+        <span class="text-xl">🖊</span>
+        <span class="group-hover:text-primary transition-colors">اكتب على الصفحة</span>
+      </button>
+
+      <button @click="toggleWhiteboard"
+              class="bg-white glass-panel text-maintext px-6 py-3 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2 hover:bg-gray-50 transition-colors font-bold text-lg group"
+              title="السبورة الكاملة (W)">
+        <span class="text-xl">✏</span>
+        <span class="group-hover:text-primary transition-colors">السبورة</span>
+      </button>
+    </div>
 
     <WhiteboardDigitalWhiteboard v-if="isWhiteboardOpen" />
     <TeacherModeTeacherPanel v-if="isTeacherMode" />
@@ -24,7 +43,21 @@ import { useTeacherMode } from '~/composables/useTeacherMode'
 import { onMounted, onUnmounted } from 'vue'
 
 const { isProjectorMode, toggleProjectorMode, toggleFullscreen } = usePresentation()
-const { isOpen: isWhiteboardOpen, toggleWhiteboard, currentTool } = useWhiteboard()
+const {
+  isOpen: isWhiteboardOpen, toggleWhiteboard, toggleAnnotate,
+  openWhiteboard, closeWhiteboard, currentTool, setTool
+} = useWhiteboard()
+
+// The laser is the annotate layer with the laser tool: it points at the page
+// without drawing on it, so clicks and scrolling still reach the lesson.
+const toggleLaser = () => {
+  if (isWhiteboardOpen.value && currentTool.value === 'laser') {
+    closeWhiteboard()
+    return
+  }
+  openWhiteboard('annotate')
+  setTool('laser')
+}
 const { isTeacherMode, toggleTeacherMode } = useTeacherMode()
 
 const handleKeydown = (e: KeyboardEvent) => {
@@ -38,6 +71,12 @@ const handleKeydown = (e: KeyboardEvent) => {
   } else if (e.key.toLowerCase() === 'w' || e.key.toLowerCase() === 'b') {
     e.preventDefault()
     toggleWhiteboard()
+  } else if (e.key.toLowerCase() === 'a' && !e.ctrlKey) {
+    e.preventDefault()
+    toggleAnnotate()
+  } else if (e.key.toLowerCase() === 'l' && !e.ctrlKey && !isWhiteboardOpen.value) {
+    e.preventDefault()
+    toggleLaser()
   } else if (e.key.toLowerCase() === 'p' && e.ctrlKey) {
     e.preventDefault()
     toggleProjectorMode()
