@@ -24,17 +24,17 @@
       </p>
 
       <div class="flex flex-wrap justify-center gap-4 mb-16">
-        <div class="bg-surface border border-border px-6 py-3 rounded-2xl flex items-center gap-2 shadow-sm">
-          <Leaf class="w-6 h-6 text-green-500" />
-          <span class="font-bold text-maintext">Beginner Friendly</span>
+        <div class="bg-surface border-2 border-border px-8 py-4 rounded-3xl flex items-center gap-3 shadow-md hover:shadow-lg transition-shadow">
+          <Leaf class="w-7 h-7 text-green-500" />
+          <span class="font-black text-maintext text-xl">مناسب للمبتدئين</span>
         </div>
-        <div class="bg-surface border border-border px-6 py-3 rounded-2xl flex items-center gap-2 shadow-sm">
-          <Puzzle class="w-6 h-6 text-blue-500" />
-          <span class="font-bold text-maintext">Programming Fundamentals</span>
+        <div class="bg-surface border-2 border-border px-8 py-4 rounded-3xl flex items-center gap-3 shadow-md hover:shadow-lg transition-shadow">
+          <Puzzle class="w-7 h-7 text-blue-500" />
+          <span class="font-black text-maintext text-xl">أساسيات البرمجة</span>
         </div>
-        <div class="bg-surface border border-border px-6 py-3 rounded-2xl flex items-center gap-2 shadow-sm">
-          <Lightbulb class="w-6 h-6 text-purple-500" />
-          <span class="font-bold text-maintext">Practical Examples</span>
+        <div class="bg-surface border-2 border-border px-8 py-4 rounded-3xl flex items-center gap-3 shadow-md hover:shadow-lg transition-shadow">
+          <Lightbulb class="w-7 h-7 text-purple-500" />
+          <span class="font-black text-maintext text-xl">أمثلة عملية</span>
         </div>
       </div>
       
