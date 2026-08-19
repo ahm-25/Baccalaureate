@@ -13,9 +13,9 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md">
           <div class="flex flex-col md:flex-row gap-8">
             <div class="flex-1 bg-red-50 border border-red-200 rounded-2xl p-6 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 text-6xl opacity-20">❌</div>
+              <XCircle class="absolute -right-4 -top-4 w-20 h-20 opacity-20 text-red-500" />
               <h3 class="text-xl font-black text-red-700 mb-4 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-sm">❌</span>
+                <span class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center"><XCircle class="w-5 h-5 text-red-600" /></span>
                 خطأ
               </h3>
               <div class="bg-gray-900 rounded-xl p-4 text-left" dir="ltr">
@@ -26,9 +26,9 @@
             </div>
             
             <div class="flex-1 bg-green-50 border border-green-200 rounded-2xl p-6 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 text-6xl opacity-20">✅</div>
+              <CheckCircle class="absolute -right-4 -top-4 w-20 h-20 opacity-20 text-green-500" />
               <h3 class="text-xl font-black text-green-700 mb-4 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-sm">✅</span>
+                <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center"><CheckCircle class="w-5 h-5 text-green-600" /></span>
                 صح
               </h3>
               <div class="bg-gray-900 rounded-xl p-4 text-left" dir="ltr">
@@ -49,9 +49,9 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md">
           <div class="flex flex-col md:flex-row gap-8">
             <div class="flex-1 bg-red-50 border border-red-200 rounded-2xl p-6 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 text-6xl opacity-20">❌</div>
+              <XCircle class="absolute -right-4 -top-4 w-20 h-20 opacity-20 text-red-500" />
               <h3 class="text-xl font-black text-red-700 mb-4 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-sm">❌</span>
+                <span class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center"><XCircle class="w-5 h-5 text-red-600" /></span>
                 خطأ
               </h3>
               <div class="bg-gray-900 rounded-xl p-4 text-left" dir="ltr">
@@ -62,9 +62,9 @@
             </div>
             
             <div class="flex-1 bg-green-50 border border-green-200 rounded-2xl p-6 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 text-6xl opacity-20">✅</div>
+              <CheckCircle class="absolute -right-4 -top-4 w-20 h-20 opacity-20 text-green-500" />
               <h3 class="text-xl font-black text-green-700 mb-4 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-sm">✅</span>
+                <span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center"><CheckCircle class="w-5 h-5 text-green-600" /></span>
                 صح
               </h3>
               <div class="bg-gray-900 rounded-xl p-4 text-left" dir="ltr">
@@ -85,9 +85,9 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md">
           <div class="flex flex-col md:flex-row gap-8">
             <div class="flex-1 bg-gray-50 border border-gray-200 rounded-2xl p-6 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 text-6xl opacity-20">🤔</div>
+              <HelpCircle class="absolute -right-4 -top-4 w-20 h-20 opacity-20 text-gray-500" />
               <h3 class="text-xl font-black text-gray-700 mb-4 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm">🤔</span>
+                <span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center"><HelpCircle class="w-5 h-5 text-gray-600" /></span>
                 الطالب متوقع
               </h3>
               <div class="bg-gray-900 rounded-xl p-4 text-left mb-4" dir="ltr">
@@ -101,9 +101,9 @@
             </div>
             
             <div class="flex-1 bg-yellow-50 border border-yellow-200 rounded-2xl p-6 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 text-6xl opacity-20">😲</div>
+              <AlertCircle class="absolute -right-4 -top-4 w-20 h-20 opacity-20 text-yellow-500" />
               <h3 class="text-xl font-black text-yellow-700 mb-4 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-sm">😲</span>
+                <span class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center"><AlertCircle class="w-5 h-5 text-yellow-600" /></span>
                 النتيجة الحقيقية
               </h3>
               <div class="bg-gray-900 rounded-xl p-4 text-left mb-4" dir="ltr">
@@ -121,7 +121,7 @@
               "لأن القيمتين نصوص، وليس أرقامًا."
             </p>
             <p class="text-primary font-bold mt-2">
-              (هنتعمق أكتر في أنواع البيانات بعدين 🚀)
+              (هنتعمق أكتر في أنواع البيانات بعدين <Rocket class="inline w-5 h-5" />)
             </p>
           </div>
         </div>
@@ -132,4 +132,5 @@
 </template>
 
 <script setup lang="ts">
+import { XCircle, CheckCircle, HelpCircle, AlertCircle, Rocket } from 'lucide-vue-next'
 </script>

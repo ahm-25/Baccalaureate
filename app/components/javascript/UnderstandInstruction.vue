@@ -21,25 +21,25 @@
           
           <div class="bg-surface border border-border p-6 rounded-2xl text-center shadow-sm relative group hover:-translate-y-2 transition-transform">
             <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4 absolute -top-5 left-1/2 transform -translate-x-1/2 shadow-md">1</div>
-            <div class="text-4xl mb-3 mt-4">👀</div>
+            <Eye class="w-10 h-10 text-gray-500 mx-auto mb-3 mt-4" />
             <p class="font-bold text-maintext text-lg">البرنامج قرأ الأمر.</p>
           </div>
           
           <div class="bg-surface border border-border p-6 rounded-2xl text-center shadow-sm relative group hover:-translate-y-2 transition-transform">
             <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4 absolute -top-5 left-1/2 transform -translate-x-1/2 shadow-md">2</div>
-            <div class="text-4xl mb-3 mt-4">🧠</div>
+            <Brain class="w-10 h-10 text-gray-500 mx-auto mb-3 mt-4" />
             <p class="font-bold text-maintext text-lg">عرف إننا عايزين نعرض كلمة Ahmed.</p>
           </div>
           
           <div class="bg-surface border border-border p-6 rounded-2xl text-center shadow-sm relative group hover:-translate-y-2 transition-transform">
             <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4 absolute -top-5 left-1/2 transform -translate-x-1/2 shadow-md">3</div>
-            <div class="text-4xl mb-3 mt-4">⚙️</div>
+            <Settings class="w-10 h-10 text-gray-500 mx-auto mb-3 mt-4" />
             <p class="font-bold text-maintext text-lg">نفذ الأمر.</p>
           </div>
           
           <div class="bg-green-50 border border-green-200 p-6 rounded-2xl text-center shadow-sm relative group hover:-translate-y-2 transition-transform">
             <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4 absolute -top-5 left-1/2 transform -translate-x-1/2 shadow-md">4</div>
-            <div class="text-4xl mb-3 mt-4">🎉</div>
+            <PartyPopper class="w-10 h-10 text-green-500 mx-auto mb-3 mt-4" />
             <p class="font-bold text-green-700 text-lg">ظهرت النتيجة.</p>
           </div>
         </div>
@@ -58,7 +58,7 @@
 <span class="text-blue-400">console</span><span class="text-gray-300">.</span><span class="text-yellow-200">log</span><span class="text-gray-300">(</span><span class="text-green-400">"JavaScript"</span><span class="text-gray-300">);</span></code></pre>
           </div>
           
-          <div class="text-4xl text-primary animate-pulse rotate-90 md:rotate-0">→</div>
+          <ArrowLeft class="w-10 h-10 text-primary animate-pulse rotate-90 md:rotate-0" />
           
           <!-- Output -->
           <div class="bg-black border-2 border-gray-700 rounded-2xl p-6 text-left shadow-inner w-full md:w-auto min-w-[200px]" dir="ltr">
@@ -84,4 +84,5 @@ JavaScript</pre>
 </template>
 
 <script setup lang="ts">
+import { Eye, Brain, Settings, PartyPopper, ArrowLeft } from 'lucide-vue-next'
 </script>

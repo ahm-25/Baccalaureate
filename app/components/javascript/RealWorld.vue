@@ -15,7 +15,7 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl transition-all group-hover:bg-blue-500/10"></div>
           <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <span class="text-3xl">👤</span>
+            <User class="w-8 h-8 text-blue-500" />
             <h3 class="text-xl font-black text-maintext">بيانات طالب</h3>
           </div>
           <div class="mb-4">
@@ -41,7 +41,7 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl transition-all group-hover:bg-green-500/10"></div>
           <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <span class="text-3xl">💯</span>
+            <Award class="w-8 h-8 text-green-500" />
             <h3 class="text-xl font-black text-maintext">مجموع الدرجات</h3>
           </div>
           <div class="mb-4">
@@ -63,7 +63,7 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl transition-all group-hover:bg-yellow-500/10"></div>
           <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <span class="text-3xl">🛒</span>
+            <ShoppingCart class="w-8 h-8 text-yellow-500" />
             <h3 class="text-xl font-black text-maintext">حساب التسوق</h3>
           </div>
           <div class="mb-4">
@@ -85,7 +85,7 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl transition-all group-hover:bg-purple-500/10"></div>
           <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <span class="text-3xl">🧮</span>
+            <Calculator class="w-8 h-8 text-purple-500" />
             <h3 class="text-xl font-black text-maintext">آلة حاسبة</h3>
           </div>
           <div class="mb-4">
@@ -111,7 +111,7 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl transition-all group-hover:bg-orange-500/10"></div>
           <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <span class="text-3xl">🏅</span>
+            <Medal class="w-8 h-8 text-orange-500" />
             <h3 class="text-xl font-black text-maintext">نقاط في لعبة</h3>
           </div>
           <div class="mb-4">
@@ -133,7 +133,7 @@
         <div class="bg-background rounded-3xl p-8 border border-border shadow-md hover:shadow-xl transition-all group relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl transition-all group-hover:bg-pink-500/10"></div>
           <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <span class="text-3xl">👋</span>
+            <Hand class="w-8 h-8 text-pink-500" />
             <h3 class="text-xl font-black text-maintext">رسالة ترحيب</h3>
           </div>
           <div class="mb-4">
@@ -157,4 +157,5 @@
 </template>
 
 <script setup lang="ts">
+import { User, Award, ShoppingCart, Calculator, Medal, Hand } from 'lucide-vue-next'
 </script>

@@ -3,7 +3,7 @@
     <div class="max-w-4xl mx-auto px-6 w-full z-10 relative">
       
       <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-6 tracking-tight">تحدي الحصة 🚀</h2>
+        <h2 class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-6 tracking-tight flex items-center justify-center gap-4">تحدي الحصة <Rocket class="w-12 h-12 text-primary" /></h2>
         <p class="text-2xl text-mutedtext font-bold">
           وصلنا لنهاية الدرس... ورينا شطارتك!
         </p>
@@ -31,7 +31,7 @@ Total: 75</pre>
         </div>
 
         <div class="text-center mb-8">
-          <p class="text-2xl font-black text-primary animate-pulse">حاول تحلها بنفسك الأول! 🧐</p>
+          <p class="text-2xl font-black text-primary animate-pulse flex items-center justify-center gap-2">حاول تحلها بنفسك الأول! <Search class="w-8 h-8" /></p>
         </div>
 
         <details class="group">
@@ -56,4 +56,5 @@ Total: 75</pre>
 </template>
 
 <script setup lang="ts">
+import { Rocket, Search } from 'lucide-vue-next'
 </script>

@@ -11,30 +11,30 @@
       <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
         
         <div class="bg-background border-2 border-border px-8 py-6 rounded-3xl shadow-sm relative w-48 group hover:-translate-y-2 transition-transform">
-          <div class="text-4xl mb-2">📦</div>
+          <Package class="w-10 h-10 mx-auto mb-2 text-gray-500" />
           <p class="font-bold text-maintext text-xl">Data</p>
         </div>
 
-        <span class="text-3xl text-gray-400 rotate-90 md:rotate-0">→</span>
+        <ArrowLeft class="w-8 h-8 text-gray-400 rotate-90 md:rotate-0" />
 
         <div class="bg-primary px-8 py-6 rounded-3xl shadow-lg relative w-48 group hover:-translate-y-2 transition-transform">
-          <div class="text-4xl mb-2 text-white">🏷️</div>
+          <Tag class="w-10 h-10 mx-auto mb-2 text-white" />
           <p class="font-bold text-white text-xl">Variable</p>
         </div>
 
-        <span class="text-3xl text-gray-400 rotate-90 md:rotate-0">→</span>
+        <ArrowLeft class="w-8 h-8 text-gray-400 rotate-90 md:rotate-0" />
 
         <div class="bg-green-50 border-2 border-green-200 px-8 py-6 rounded-3xl shadow-sm relative w-48 group hover:-translate-y-2 transition-transform">
-          <div class="text-4xl mb-2">🚀</div>
+          <Rocket class="w-10 h-10 mx-auto mb-2 text-green-500" />
           <p class="font-bold text-green-700 text-xl">Use the Data</p>
         </div>
 
       </div>
 
       <div class="mt-8">
-        <p class="text-4xl font-black text-maintext mb-8 animate-bounce">مستعد؟ 🚀</p>
+        <p class="text-4xl font-black text-maintext mb-8 flex items-center justify-center gap-4">مستعد؟ <Rocket class="w-10 h-10 text-primary animate-bounce" /></p>
         <button class="bg-maintext hover:bg-black text-white px-12 py-5 rounded-2xl font-bold text-2xl shadow-xl transition-all hover:-translate-y-1">
-          الدرس القادم ←
+          <span class="flex items-center justify-center gap-2">الدرس القادم <ArrowLeft class="w-6 h-6" /></span>
         </button>
       </div>
 
@@ -43,4 +43,5 @@
 </template>
 
 <script setup lang="ts">
+import { Package, ArrowLeft, Tag, Rocket } from 'lucide-vue-next'
 </script>

@@ -70,7 +70,7 @@
 
       <!-- Strong Visual Comparison -->
       <div class="bg-background rounded-[3rem] p-12 border border-border shadow-2xl relative overflow-hidden text-center max-w-4xl mx-auto">
-        <h3 class="text-3xl font-black text-maintext mb-10">ركز في الفرق ده 👇</h3>
+        <h3 class="text-3xl font-black text-maintext mb-10 flex items-center justify-center gap-2">ركز في الفرق ده <ArrowDown class="w-8 h-8 text-primary animate-bounce" /></h3>
         
         <div class="flex items-center justify-center gap-6 md:gap-16">
           <div class="text-center">
@@ -100,4 +100,5 @@
 </template>
 
 <script setup lang="ts">
+import { ArrowDown } from 'lucide-vue-next'
 </script>

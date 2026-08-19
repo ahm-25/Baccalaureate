@@ -22,11 +22,11 @@
             <h3 class="text-2xl font-black text-maintext mb-6">لدينا طالب حصل على:</h3>
             <ul class="space-y-4">
               <li class="flex items-center gap-4 text-xl font-bold text-mutedtext">
-                <span class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shadow-sm">💻</span>
+                <span class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shadow-sm"><Monitor class="w-6 h-6" /></span>
                 درجة البرمجة = <span class="text-maintext text-2xl font-black bg-blue-50 px-3 py-1 rounded-lg">40</span>
               </li>
               <li class="flex items-center gap-4 text-xl font-bold text-mutedtext">
-                <span class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl shadow-sm">🤖</span>
+                <span class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shadow-sm"><Bot class="w-6 h-6" /></span>
                 درجة الذكاء الاصطناعي = <span class="text-maintext text-2xl font-black bg-purple-50 px-3 py-1 rounded-lg">35</span>
               </li>
             </ul>
@@ -62,18 +62,18 @@
         <!-- Visual Flow -->
         <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-12">
           <div class="bg-gray-100 px-6 py-4 rounded-2xl text-xl font-black text-gray-700 shadow-sm text-center">البيانات</div>
-          <span class="text-3xl text-gray-400">←</span>
+          <ArrowLeft class="w-8 h-8 text-gray-400" />
           <div class="bg-gray-100 px-6 py-4 rounded-2xl text-xl font-black text-gray-700 shadow-sm text-center">الخطوات</div>
-          <span class="text-3xl text-gray-400">←</span>
+          <ArrowLeft class="w-8 h-8 text-gray-400" />
           <div class="bg-gray-100 px-6 py-4 rounded-2xl text-xl font-black text-gray-700 shadow-sm text-center">التنفيذ</div>
-          <span class="text-3xl text-gray-400">←</span>
+          <ArrowLeft class="w-8 h-8 text-gray-400" />
           <div class="bg-primary text-white px-6 py-4 rounded-2xl text-xl font-black shadow-lg text-center shadow-primary/30">النتيجة</div>
         </div>
 
         <!-- Result Showcase -->
         <div class="flex justify-center items-center gap-8 mb-16">
           <div class="text-4xl font-black text-mutedtext tracking-widest bg-surface px-8 py-4 rounded-2xl border border-border">40 + 35</div>
-          <span class="text-4xl text-primary font-black">←</span>
+          <ArrowLeft class="w-10 h-10 text-primary" />
           <div class="text-5xl font-black text-green-600 bg-green-50 px-10 py-5 rounded-3xl border-2 border-green-200 shadow-lg">75</div>
         </div>
 
@@ -96,4 +96,5 @@
 </template>
 
 <script setup lang="ts">
+import { Monitor, Bot, ArrowLeft } from 'lucide-vue-next'
 </script>

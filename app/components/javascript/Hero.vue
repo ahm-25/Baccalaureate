@@ -25,27 +25,29 @@
 
       <div class="flex flex-wrap justify-center gap-4 mb-16">
         <div class="bg-surface border border-border px-6 py-3 rounded-2xl flex items-center gap-2 shadow-sm">
-          <span class="text-green-500 text-xl">🌱</span>
+          <Leaf class="w-6 h-6 text-green-500" />
           <span class="font-bold text-maintext">Beginner Friendly</span>
         </div>
         <div class="bg-surface border border-border px-6 py-3 rounded-2xl flex items-center gap-2 shadow-sm">
-          <span class="text-blue-500 text-xl">🧩</span>
+          <Puzzle class="w-6 h-6 text-blue-500" />
           <span class="font-bold text-maintext">Programming Fundamentals</span>
         </div>
         <div class="bg-surface border border-border px-6 py-3 rounded-2xl flex items-center gap-2 shadow-sm">
-          <span class="text-purple-500 text-xl">💡</span>
+          <Lightbulb class="w-6 h-6 text-purple-500" />
           <span class="font-bold text-maintext">Practical Examples</span>
         </div>
       </div>
       
       <button @click="startLesson" class="bg-primary hover:bg-primary/90 text-white px-12 py-5 rounded-2xl font-bold text-2xl shadow-xl shadow-primary/30 hover:-translate-y-1 transition-all flex items-center gap-4">
-        ابدأ الدرس <span>↓</span>
+        ابدأ الدرس <ArrowDown class="w-6 h-6" />
       </button>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { Leaf, Puzzle, Lightbulb, ArrowDown } from 'lucide-vue-next'
+
 const startLesson = () => {
   const el = document.getElementById('opening')
   if (el) {

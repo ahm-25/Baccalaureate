@@ -14,37 +14,37 @@
         
         <div class="bg-surface border border-border p-4 rounded-2xl text-center relative hover:-translate-y-2 transition-transform shadow-sm">
           <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-black absolute -top-3 -right-3">1</div>
-          <div class="text-3xl mb-2">🤔</div>
+          <Brain class="w-8 h-8 mx-auto mb-2 text-blue-500" />
           <h4 class="font-bold text-maintext text-sm">افهم المشكلة</h4>
         </div>
         
         <div class="bg-surface border border-border p-4 rounded-2xl text-center relative hover:-translate-y-2 transition-transform shadow-sm">
           <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-black absolute -top-3 -right-3">2</div>
-          <div class="text-3xl mb-2">📊</div>
+          <BarChart class="w-8 h-8 mx-auto mb-2 text-purple-500" />
           <h4 class="font-bold text-maintext text-sm">حدد البيانات</h4>
         </div>
         
         <div class="bg-surface border border-border p-4 rounded-2xl text-center relative hover:-translate-y-2 transition-transform shadow-sm">
           <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-black absolute -top-3 -right-3">3</div>
-          <div class="text-3xl mb-2">🎯</div>
+          <Target class="w-8 h-8 mx-auto mb-2 text-red-500" />
           <h4 class="font-bold text-maintext text-sm">حدد المطلوب</h4>
         </div>
         
         <div class="bg-surface border border-border p-4 rounded-2xl text-center relative hover:-translate-y-2 transition-transform shadow-sm">
           <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-black absolute -top-3 -right-3">4</div>
-          <div class="text-3xl mb-2">📝</div>
+          <FileText class="w-8 h-8 mx-auto mb-2 text-orange-500" />
           <h4 class="font-bold text-maintext text-sm">حدد الخطوات</h4>
         </div>
         
         <div class="bg-surface border border-border p-4 rounded-2xl text-center relative hover:-translate-y-2 transition-transform shadow-sm">
           <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-black absolute -top-3 -right-3">5</div>
-          <div class="text-3xl mb-2">💻</div>
+          <Monitor class="w-8 h-8 mx-auto mb-2 text-indigo-500" />
           <h4 class="font-bold text-maintext text-sm">اكتب الكود</h4>
         </div>
         
         <div class="bg-surface border border-border p-4 rounded-2xl text-center relative hover:-translate-y-2 transition-transform shadow-sm">
           <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-black absolute -top-3 -right-3">6</div>
-          <div class="text-3xl mb-2">✅</div>
+          <CheckCircle class="w-8 h-8 mx-auto mb-2 text-green-500" />
           <h4 class="font-bold text-maintext text-sm">اختبر النتيجة</h4>
         </div>
         
@@ -59,7 +59,7 @@
           <!-- Thinking Process -->
           <div class="flex-1 w-full space-y-6">
             <div class="flex items-start gap-4">
-              <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">🤔</span>
+              <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><Brain class="w-6 h-6" /></span>
               <div>
                 <h4 class="text-sm font-bold text-mutedtext">المشكلة</h4>
                 <p class="text-xl font-black text-maintext">"عايز أحسب مجموع درجتين."</p>
@@ -67,7 +67,7 @@
             </div>
             
             <div class="flex items-start gap-4">
-              <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0">📊</span>
+              <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0"><BarChart class="w-6 h-6" /></span>
               <div>
                 <h4 class="text-sm font-bold text-mutedtext">البيانات (Data)</h4>
                 <div class="flex gap-2 mt-1">
@@ -78,7 +78,7 @@
             </div>
             
             <div class="flex items-start gap-4">
-              <span class="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl shrink-0">🎯</span>
+              <span class="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center shrink-0"><Target class="w-6 h-6" /></span>
               <div>
                 <h4 class="text-sm font-bold text-mutedtext">المطلوب</h4>
                 <p class="text-lg font-bold text-maintext">حساب وعرض المجموع.</p>
@@ -86,7 +86,7 @@
             </div>
             
             <div class="flex items-start gap-4">
-              <span class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0">📝</span>
+              <span class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0"><FileText class="w-6 h-6" /></span>
               <div>
                 <h4 class="text-sm font-bold text-mutedtext">العملية (Operation)</h4>
                 <p class="text-xl font-black text-maintext" dir="ltr">70 + 80</p>
@@ -125,4 +125,5 @@
 </template>
 
 <script setup lang="ts">
+import { Brain, BarChart, Target, FileText, Monitor, CheckCircle } from 'lucide-vue-next'
 </script>

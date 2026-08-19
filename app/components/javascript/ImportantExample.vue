@@ -4,9 +4,9 @@
       
       <div class="text-center mb-16">
         <div class="inline-flex items-center justify-center gap-3 bg-red-100 text-red-600 px-6 py-2 rounded-full font-black text-xl mb-6 shadow-sm">
-          <span class="text-2xl animate-pulse">⚠️</span> ركز هنا
+          <AlertTriangle class="w-6 h-6 animate-pulse" /> ركز هنا
         </div>
-        <h2 class="text-4xl md:text-5xl font-black text-red-900 mb-6">خلي بالك من الفرق 👀</h2>
+        <h2 class="text-4xl md:text-5xl font-black text-red-900 mb-6 flex items-center justify-center gap-4">خلي بالك من الفرق <Eye class="w-10 h-10" /></h2>
         <p class="text-2xl text-red-800/80 font-bold max-w-2xl mx-auto">
           "الفرق بين النص والرقم مهم جدًا في البرمجة."
         </p>
@@ -27,7 +27,7 @@
             </div>
           </div>
           
-          <div class="text-4xl text-gray-300 rotate-90 md:rotate-0 font-black">→</div>
+          <ArrowLeft class="w-12 h-12 text-gray-300 rotate-90 md:rotate-0" />
           
           <div class="flex-1 w-full flex flex-col items-center">
             <div class="bg-green-100 text-green-700 font-mono font-black text-5xl px-12 py-6 rounded-3xl border-4 border-green-200 shadow-inner mb-4" dir="ltr">
@@ -71,4 +71,5 @@
 </template>
 
 <script setup lang="ts">
+import { AlertTriangle, Eye, ArrowLeft } from 'lucide-vue-next'
 </script>

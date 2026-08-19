@@ -3,7 +3,7 @@
     <div class="max-w-5xl mx-auto px-6 w-full z-10 relative">
       
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-black text-maintext mb-6">أول كود ليك في JavaScript 🚀</h2>
+        <h2 class="text-4xl md:text-5xl font-black text-maintext mb-6 flex items-center justify-center gap-4">أول كود ليك في JavaScript <Rocket class="w-10 h-10 text-primary" /></h2>
         <div class="bg-surface border-2 border-border p-6 rounded-3xl max-w-3xl mx-auto inline-block">
           <p class="text-2xl text-mutedtext font-bold">
             هنتعرف على أمر اسمه <code class="text-primary font-black bg-primary/10 px-3 py-1 rounded-lg" dir="ltr">console.log()</code>
@@ -25,7 +25,7 @@
               </code>
             </div>
           </div>
-          <div class="text-3xl text-gray-400 rotate-90 md:rotate-0">→</div>
+          <ArrowLeft class="w-10 h-10 text-gray-400 rotate-90 md:rotate-0" />
           <div class="flex-1 w-full">
             <h3 class="text-xl font-bold text-mutedtext mb-4">النتيجة:</h3>
             <div class="bg-black border-2 border-gray-700 rounded-2xl p-6 text-left shadow-inner h-full min-h-[5rem] flex items-center" dir="ltr">
@@ -44,7 +44,7 @@
               </code>
             </div>
           </div>
-          <div class="text-3xl text-gray-400 rotate-90 md:rotate-0">→</div>
+          <ArrowLeft class="w-10 h-10 text-gray-400 rotate-90 md:rotate-0" />
           <div class="flex-1 w-full">
             <h3 class="text-xl font-bold text-mutedtext mb-4">النتيجة:</h3>
             <div class="bg-black border-2 border-gray-700 rounded-2xl p-6 text-left shadow-inner h-full min-h-[5rem] flex items-center" dir="ltr">
@@ -63,7 +63,7 @@
               </code>
             </div>
           </div>
-          <div class="text-3xl text-gray-400 rotate-90 md:rotate-0">→</div>
+          <ArrowLeft class="w-10 h-10 text-gray-400 rotate-90 md:rotate-0" />
           <div class="flex-1 w-full">
             <h3 class="text-xl font-bold text-mutedtext mb-4">النتيجة:</h3>
             <div class="bg-black border-2 border-gray-700 rounded-2xl p-6 text-left shadow-inner h-full min-h-[5rem] flex items-center" dir="ltr">
@@ -78,4 +78,5 @@
 </template>
 
 <script setup lang="ts">
+import { Rocket, ArrowLeft } from 'lucide-vue-next'
 </script>
