@@ -26,7 +26,7 @@
           <!-- Y-axis label -->
           <div class="absolute -right-2 top-0 text-sm font-bold text-mutedtext -rotate-90 origin-right">عدد الترانزستورات ←</div>
           
-          <div v-for="(bar, i) in bars" :key="i" class="flex flex-col items-center flex-1">
+          <div v-for="(bar, i) in bars" :key="i" class="flex flex-col items-center justify-end flex-1 h-full">
             <div class="w-full rounded-t-xl transition-all duration-1000 ease-out relative group cursor-pointer"
                  :class="bar.color"
                  :style="{ height: isVisible ? bar.height : '4px' }">
@@ -74,7 +74,7 @@ const isVisible = ref(false)
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) isVisible.value = true
-  }, { threshold: 0.3 })
+  }, { threshold: 0.1 })
   
   const el = document.getElementById('moores-law')
   if (el) observer.observe(el)
