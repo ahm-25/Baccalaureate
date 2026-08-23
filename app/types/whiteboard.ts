@@ -1,5 +1,9 @@
 export type Point = { x: number; y: number }
 
+// A captured pen sample. `p` is 0..1 pressure (stylus) or a velocity-derived
+// approximation for mouse/touch, and drives the stroke taper.
+export type StrokePoint = Point & { p?: number }
+
 export type WhiteboardTool =
   | 'pen'
   | 'highlighter'
@@ -13,6 +17,9 @@ export type WhiteboardTool =
   | 'select'
 
 export type BackgroundType = 'plain' | 'grid' | 'lines' | 'dots'
+
+// 'light' = warm paper, 'dark' = classroom blackboard (easier on a projector)
+export type BoardTheme = 'light' | 'dark'
 
 // 'board' = full whiteboard overlay, 'annotate' = write directly on the page
 export type WhiteboardMode = 'board' | 'annotate'
@@ -30,7 +37,7 @@ export type BaseElement = {
 
 export type PathElement = BaseElement & {
   type: 'path'
-  points: Point[]
+  points: StrokePoint[]
   style: StrokeStyle
   isHighlighter?: boolean
 }
@@ -60,12 +67,15 @@ export type TextElement = BaseElement & {
 
 export type WhiteboardElement = PathElement | ShapeElement | TextElement
 
+export type Bounds = { x: number; y: number; w: number; h: number }
+
 export type BoardData = {
   id: string
   name: string
   sectionId?: string // Link board to a specific lesson section
   elements: WhiteboardElement[]
   background: BackgroundType
+  theme?: BoardTheme
   createdAt: number
   updatedAt: number
 }

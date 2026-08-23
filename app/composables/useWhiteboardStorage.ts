@@ -1,4 +1,4 @@
-import type { BoardData } from '~/app/types/whiteboard'
+import type { BoardData } from '~/types/whiteboard'
 
 const DB_NAME = 'whiteboard_db'
 const STORE_NAME = 'boards'

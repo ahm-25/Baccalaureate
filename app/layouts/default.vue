@@ -45,7 +45,8 @@ import { onMounted, onUnmounted } from 'vue'
 const { isProjectorMode, toggleProjectorMode, toggleFullscreen } = usePresentation()
 const {
   isOpen: isWhiteboardOpen, toggleWhiteboard, toggleAnnotate,
-  openWhiteboard, closeWhiteboard, currentTool, setTool
+  openWhiteboard, closeWhiteboard, currentTool, setTool, stepWidth,
+  zoomIn, zoomOut, resetZoom, fitToContent, engine
 } = useWhiteboard()
 
 // The laser is the annotate layer with the laser tool: it points at the page
@@ -60,49 +61,87 @@ const toggleLaser = () => {
 }
 const { isTeacherMode, toggleTeacherMode } = useTeacherMode()
 
+// Shortcuts key off `e.code` (the physical key) rather than `e.key`, so they
+// keep working when the keyboard is on the Arabic layout and `e.key` is 'ص'.
 const handleKeydown = (e: KeyboardEvent) => {
-  // Ignore if typing in input
-  if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+  const target = e.target as HTMLElement | null
+  if (
+    target instanceof HTMLInputElement ||
+    target instanceof HTMLTextAreaElement ||
+    target?.isContentEditable
+  ) return
 
-  // Prevent defaults for shortcuts
-  if (e.key.toLowerCase() === 'f') {
-    e.preventDefault()
-    toggleFullscreen()
-  } else if (e.key.toLowerCase() === 'w' || e.key.toLowerCase() === 'b') {
-    e.preventDefault()
-    toggleWhiteboard()
-  } else if (e.key.toLowerCase() === 'a' && !e.ctrlKey) {
-    e.preventDefault()
-    toggleAnnotate()
-  } else if (e.key.toLowerCase() === 'l' && !e.ctrlKey && !isWhiteboardOpen.value) {
-    e.preventDefault()
-    toggleLaser()
-  } else if (e.key.toLowerCase() === 'p' && e.ctrlKey) {
-    e.preventDefault()
-    toggleProjectorMode()
-  } else if (e.key.toLowerCase() === 't' && e.ctrlKey) {
-    e.preventDefault()
-    toggleTeacherMode()
+  const ctrl = e.ctrlKey || e.metaKey
+
+  if (ctrl) {
+    switch (e.code) {
+      case 'KeyZ':
+        if (!isWhiteboardOpen.value) return
+        e.preventDefault()
+        if (e.shiftKey) engine.value?.redo()
+        else engine.value?.undo()
+        return
+      case 'KeyY':
+        if (!isWhiteboardOpen.value) return
+        e.preventDefault()
+        engine.value?.redo()
+        return
+      case 'KeyP':
+        e.preventDefault()
+        toggleProjectorMode()
+        return
+      case 'KeyT':
+        e.preventDefault()
+        toggleTeacherMode()
+        return
+    }
+    return
   }
 
-  // Whiteboard specific shortcuts
+  // Tool and view shortcuts, only while the board is up.
   if (isWhiteboardOpen.value) {
-    const { setTool, engine } = useWhiteboard()
-    switch (e.key.toLowerCase()) {
-      case 'p': if(!e.ctrlKey) setTool('pen'); break;
-      case 'h': setTool('highlighter'); break;
-      case 'e': setTool('eraser'); break;
-      case 't': if(!e.ctrlKey) setTool('text'); break;
-      case 'l': setTool('laser'); break;
-      case 'v': setTool('select'); break;
-      case 'z': 
-        if (e.ctrlKey && e.shiftKey) engine.value?.redo();
-        else if (e.ctrlKey) engine.value?.undo();
-        break;
-      case 'y':
-        if (e.ctrlKey) engine.value?.redo();
-        break;
+    switch (e.code) {
+      case 'Escape': e.preventDefault(); closeWhiteboard(); return
+      case 'Delete':
+      case 'Backspace': e.preventDefault(); engine.value?.deleteSelected(); return
+      case 'KeyP': setTool('pen'); return
+      case 'KeyH': setTool('highlighter'); return
+      case 'KeyE': setTool('eraser'); return
+      case 'KeyT': setTool('text'); return
+      case 'KeyL': setTool('laser'); return
+      case 'KeyV': setTool('select'); return
+      case 'KeyR': setTool('rect'); return
+      case 'KeyO': setTool('circle'); return
+      case 'KeyG': setTool('arrow'); return
+      case 'BracketLeft': stepWidth(-1); return
+      case 'BracketRight': stepWidth(1); return
+      case 'Equal': e.preventDefault(); zoomIn(); return
+      case 'Minus': e.preventDefault(); zoomOut(); return
+      case 'Digit0': e.preventDefault(); resetZoom(); return
+      case 'Digit1': e.preventDefault(); fitToContent(); return
+      case 'ArrowUp':
+      case 'ArrowDown':
+      case 'ArrowLeft':
+      case 'ArrowRight': {
+        // Nudge whatever is selected; without a selection the page keeps its
+        // normal arrow-key scrolling.
+        if (!engine.value?.getSelectedId()) return
+        e.preventDefault()
+        const step = e.shiftKey ? 10 : 1
+        const dx = e.code === 'ArrowRight' ? step : e.code === 'ArrowLeft' ? -step : 0
+        const dy = e.code === 'ArrowDown' ? step : e.code === 'ArrowUp' ? -step : 0
+        engine.value.nudgeSelected(dx, dy)
+        return
+      }
     }
+  }
+
+  switch (e.code) {
+    case 'KeyF': e.preventDefault(); toggleFullscreen(); break
+    case 'KeyW':
+    case 'KeyB': e.preventDefault(); toggleWhiteboard(); break
+    case 'KeyA': e.preventDefault(); toggleAnnotate(); break
+    case 'KeyL': e.preventDefault(); toggleLaser(); break
   }
 }
 
