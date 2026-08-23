@@ -11,14 +11,14 @@
         @dragover.prevent="onDragOver($event, index)"
         @drop.prevent="onDrop($event, index)"
         @dragend="onDragEnd"
-        class="p-4 md:p-5 rounded-xl border-2 transition-all flex items-center gap-4 bg-surface shadow-sm relative text-maintext"
+        class="p-4 md:p-5 rounded-xl border-border border-2 bg-surface shadow-sm relative text-maintext transition-all font-bold flex items-center gap-4"
         :class="[
-          isAnswered ? (isCorrect ? 'border-emerald-500' : 'border-rose-500') : 
+          isAnswered ? (isCorrect ? 'border-emerald-500 border-b-[6px]' : 'border-rose-500 border-b-[6px]') : 
           draggedIndex === index ? 'opacity-50 border-primary border-dashed' : 
-          dragOverIndex === index ? 'border-primary border-t-8' : 'border-border hover:border-primary/50 cursor-grab active:cursor-grabbing'
+          dragOverIndex === index ? 'border-primary border-t-8' : 'border-b-[6px] hover:border-primary/50 cursor-grab active:cursor-grabbing active:translate-y-1 active:border-b-2'
         ]"
       >
-        <div class="w-8 h-8 rounded-full bg-background text-mutedtext flex items-center justify-center font-bold text-sm shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-background text-mutedtext flex items-center justify-center font-black text-lg shrink-0 shadow-inner">
           {{ index + 1 }}
         </div>
         <div class="flex-1 font-medium text-lg">

@@ -41,7 +41,7 @@
             :key="'drag-'+index"
             draggable="true"
             @dragstart="onDragStart($event, item.originalIndex)"
-            class="p-4 rounded-xl border-2 border-border bg-surface shadow-sm cursor-grab active:cursor-grabbing hover:border-primary/50 text-maintext transition-colors text-center font-medium"
+            class="p-4 rounded-xl border-border border-2 border-b-[6px] bg-surface shadow-sm cursor-grab active:cursor-grabbing hover:border-primary/50 text-maintext transition-all text-center font-bold active:translate-y-1 active:border-b-2"
             :class="{ 'opacity-0 pointer-events-none': isItemMatched(item.originalIndex) }"
           >
             {{ item.text }}
