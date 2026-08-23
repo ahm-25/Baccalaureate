@@ -57,13 +57,19 @@
               </div>
 
               <!-- Think -->
-              <div class="bg-accent/10 border-2 border-accent/30 rounded-2xl p-6 flex items-start gap-4">
+              <div class="bg-accent/10 border-2 border-accent/30 rounded-2xl p-6 flex items-start gap-4 mb-10">
                 <span class="text-3xl">🤔</span>
                 <div>
                   <h4 class="font-black text-maintext mb-1">فكّر</h4>
                   <p class="text-lg font-bold text-maintext">لماذا يكون من الضروري معالجة البيانات فورًا على المركبة نفسها؟</p>
                 </div>
               </div>
+              
+              <QuizQuestionArena 
+                :questions="autonomousEdgeQuestions" 
+                section-title="القيادة الذاتية والحوسبة الطرفية" 
+                section-id="autonomous" 
+              />
             </div>
           </div>
 
@@ -101,12 +107,18 @@
                 </div>
               </div>
 
-              <div class="bg-surface border border-border rounded-2xl p-6 text-center">
+              <div class="bg-surface border border-border rounded-2xl p-6 text-center mb-10">
                 <p class="text-lg font-bold text-maintext">
                   <span class="text-blue-600">AR</span> = العالم الحقيقي + طبقة رقمية &nbsp;|&nbsp;
                   <span class="text-purple-600">VR</span> = عالم افتراضي بالكامل
                 </p>
               </div>
+
+              <QuizQuestionArena 
+                :questions="arVrQuestions" 
+                section-title="الواقع المعزز والواقع الافتراضي" 
+                section-id="ar-vr" 
+              />
             </div>
           </div>
 
@@ -142,11 +154,17 @@
                 </div>
               </div>
 
-              <div class="bg-accent/10 border border-accent/30 rounded-2xl p-6 text-center">
+              <div class="bg-accent/10 border border-accent/30 rounded-2xl p-6 text-center mb-10">
                 <p class="text-lg font-bold text-maintext">
                   ⚠️ الحوسبة الكمومية لا تزال في مراحل مبكرة وتناسب مسائل محددة وليس كل أنواع الحسابات.
                 </p>
               </div>
+
+              <QuizQuestionArena 
+                :questions="quantumQuestions" 
+                section-title="الحوسبة الكمومية" 
+                section-id="quantum" 
+              />
             </div>
           </div>
 
@@ -159,6 +177,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ArrowLeft, Eye, Layers, Glasses } from 'lucide-vue-next'
+import { autonomousEdgeQuestions, arVrQuestions, quantumQuestions } from '~/data/lessons/second-baccalaureate/it/lesson-04-questions'
 
 const activeTab = ref(0)
 

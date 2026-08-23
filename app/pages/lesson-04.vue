@@ -3,15 +3,58 @@
     <ItLesson04Hero />
     <ItLesson04Objectives />
     <ItLesson04DailyLife />
+    <QuizQuestionArena 
+      :questions="dailyLifeQuestions" 
+      section-title="تكنولوجيا المعلومات حولك" 
+      section-id="daily-life" 
+    />
     <ItLesson04BigIdea />
     <ItLesson04EvolutionTimeline />
+    <QuizQuestionArena 
+      :questions="timelineQuestions" 
+      section-title="تاريخ تكنولوجيا المعلومات" 
+      section-id="timeline" 
+    />
     <ItLesson04MooresLaw />
+    <QuizQuestionArena 
+      :questions="mooresLawQuestions" 
+      section-title="قانون مور" 
+      section-id="moores-law" 
+    />
     <ItLesson04SocietyImpact />
+    <QuizQuestionArena 
+      :questions="socialChangesQuestions" 
+      section-title="التغيرات الاجتماعية الناتجة عن تكنولوجيا المعلومات" 
+      section-id="social-changes" 
+    />
     <ItLesson04SocialVisual />
+    <QuizQuestionArena 
+      :questions="socialVisualQuestions" 
+      section-title="كيف تغيّرت حياتنا؟" 
+      section-id="social-visual-quiz" 
+    />
     <ItLesson04EmergingTech />
-    <ItLesson04KeyTerms />
+    <QuizQuestionArena 
+      :questions="emergingTechQuestions" 
+      section-title="التقنيات الناشئة - مراجعة شاملة" 
+      section-id="emerging-tech-summary" 
+    />
+    <QuizQuestionArena 
+      :questions="keyTermsQuestions" 
+      section-title="مصطلحات أساسية" 
+      section-id="key-terms" 
+    />
     <ItLesson04SolvedExample />
-    <QuizLessonQuiz />
+    <QuizQuestionArena 
+      :questions="solvedExampleQuestions" 
+      section-title="أسئلة تطبيقية" 
+      section-id="solved-example-quiz" 
+    />
+    <QuizQuestionArena 
+      :questions="finalReviewQuiz" 
+      section-title="اختبر معلوماتك" 
+      section-id="final-review" 
+    />
     <ItLesson04InteractiveActivity />
     <ItLesson04ApplyLearned />
     <ItLesson04ThinkEngineer />
@@ -24,6 +67,17 @@
 import { useLesson } from '~/composables/useLesson'
 import { useQuiz } from '~/composables/useQuiz'
 import { lessonData } from '~/data/lessons/second-baccalaureate/it/lesson-04'
+import { 
+  dailyLifeQuestions, 
+  timelineQuestions,
+  mooresLawQuestions,
+  socialChangesQuestions,
+  socialVisualQuestions,
+  emergingTechQuestions,
+  keyTermsQuestions,
+  solvedExampleQuestions,
+  finalReviewQuiz
+} from '~/data/lessons/second-baccalaureate/it/lesson-04-questions'
 import { onMounted, onUnmounted } from 'vue'
 
 const { setSections, setLessonInfo, setCurrentSection, sections } = useLesson()
