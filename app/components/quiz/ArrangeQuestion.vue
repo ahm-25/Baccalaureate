@@ -37,6 +37,23 @@
     >
       تحقق من الترتيب
     </button>
+
+    <!-- Correct Answer Feedback (Shown only if wrong) -->
+    <div v-if="isAnswered && !isCorrect" class="mt-6 p-6 rounded-2xl bg-rose-500/5 border-2 border-rose-500/20 animate-fade-in shadow-sm">
+      <h4 class="font-bold text-rose-600 mb-6 flex items-center gap-2 text-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        الترتيب الصحيح هو:
+      </h4>
+      <div class="flex flex-col gap-3 relative">
+        <!-- Connecting Line -->
+        <div class="absolute right-[19px] top-4 bottom-4 w-[2px] bg-rose-500/20 z-0"></div>
+        
+        <div v-for="(item, index) in question.items" :key="'correct-' + index" class="flex items-center gap-4 text-maintext font-bold relative z-10">
+          <span class="w-10 h-10 rounded-xl bg-background border-2 border-rose-500/20 text-rose-600 flex items-center justify-center text-lg font-black shrink-0 shadow-sm">{{ index + 1 }}</span>
+          <span class="bg-background border-2 border-rose-500/10 rounded-xl px-5 py-3 flex-1 shadow-sm">{{ item }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

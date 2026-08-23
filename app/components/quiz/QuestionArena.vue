@@ -24,16 +24,19 @@
       
       <!-- Question Card Wrapper -->
       <div class="relative z-10 min-h-[400px]">
-        <!-- Difficulty Badge -->
-        <div class="absolute -top-4 -left-4 md:-left-6 py-1.5 px-4 rounded-full font-bold text-sm shadow-sm flex items-center gap-1.5 border"
-             :class="difficultyBadgeClass">
-          <span>{{ difficultyIcon }}</span>
-          <span>{{ difficultyText }}</span>
+        <!-- Header area for Question and Badge -->
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-8 mt-2">
+          <h4 class="text-2xl md:text-3xl font-bold text-maintext leading-tight flex-1">
+            {{ currentQuestion.text }}
+          </h4>
+          
+          <!-- Difficulty Badge -->
+          <div class="inline-flex py-1.5 px-4 rounded-full font-bold text-sm shadow-sm items-center gap-2 border shrink-0 self-start sm:self-auto"
+               :class="difficultyBadgeClass">
+            <span class="text-xs">{{ difficultyIcon }}</span>
+            <span>{{ difficultyText }}</span>
+          </div>
         </div>
-
-        <h4 class="text-2xl md:text-3xl font-bold text-maintext leading-tight mb-8 mt-4">
-          {{ currentQuestion.text }}
-        </h4>
 
         <!-- Dynamic Question Component -->
         <component 
@@ -100,10 +103,10 @@ const questionComponent = computed(() => {
 })
 
 const difficultyMap = {
-  easy: { text: 'سهل', icon: '🟢', class: 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30' },
-  medium: { text: 'متوسط', icon: '🟡', class: 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30' },
-  hard: { text: 'صعب', icon: '🟠', class: 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/30' },
-  challenge: { text: 'تحدي', icon: '🔴', class: 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30' }
+  easy: { text: 'سهل', icon: '🟢', class: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20' },
+  medium: { text: 'متوسط', icon: '🟡', class: 'bg-amber-500/10 text-amber-600 border-amber-500/20' },
+  hard: { text: 'صعب', icon: '🟠', class: 'bg-orange-500/10 text-orange-600 border-orange-500/20' },
+  challenge: { text: 'تحدي', icon: '🔴', class: 'bg-rose-500/10 text-rose-600 border-rose-500/20' }
 }
 
 const difficultyText = computed(() => difficultyMap[currentQuestion.value.difficulty]?.text || 'سهل')
