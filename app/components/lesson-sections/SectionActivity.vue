@@ -149,7 +149,12 @@ const nextScenario = () => {
 }
 
 const scrollToNext = () => {
-  document.getElementById('summary')?.scrollIntoView({ behavior: 'smooth' })
+  const currentSection = document.getElementById('activity')
+  if (currentSection && currentSection.nextElementSibling) {
+    currentSection.nextElementSibling.scrollIntoView({ behavior: 'smooth' })
+  } else {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
+  }
 }
 
 onMounted(() => {

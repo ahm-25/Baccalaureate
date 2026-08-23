@@ -10,7 +10,7 @@
       
       <div class="text-center mb-20 opacity-0 translate-y-8" ref="headerRef">
         <h2 class="text-5xl md:text-6xl font-black text-maintext mb-6 tracking-tight">{{ data.mediaTypes.title }}</h2>
-        <p class="text-xl text-mutedtext max-w-2xl mx-auto font-medium">تعرف على الوسائط المختلفة وكيف نستخدمها في حياتنا اليومية. مرر الماوس لاكتشاف المزيد.</p>
+        <p class="text-xl text-mutedtext max-w-2xl mx-auto font-medium">{{ data.mediaTypes.description }}</p>
       </div>
       
       <!-- Interactive Media Explorer -->

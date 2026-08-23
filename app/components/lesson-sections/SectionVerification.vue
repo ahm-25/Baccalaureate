@@ -14,7 +14,7 @@
           <ShieldAlert size="40" stroke-width="1.5" />
         </div>
         <h2 class="text-5xl md:text-6xl font-black text-maintext mb-6 tracking-tight">{{ data.verification.title }}</h2>
-        <p class="text-xl text-mutedtext max-w-2xl mx-auto font-medium leading-relaxed">لا تصدق كل ما تقرأه... اتبع هذه الخطوات الخمس للتحقق من أي معلومة والتأكد من صحتها.</p>
+        <p class="text-xl text-mutedtext max-w-2xl mx-auto font-medium leading-relaxed">{{ data.verification.description }}</p>
       </div>
       
       <!-- The Journey / Pipeline -->
