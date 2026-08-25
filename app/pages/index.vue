@@ -2,30 +2,24 @@
   <div class="relative">
     <LessonSectionsSectionHero />
     <LessonSectionsSectionOpeningQuestion />
-    
     <!-- Section 1: DIK -->
     <LessonSectionsDikSectionDIK />
     <LessonSectionsSectionDataTransformation />
     <LessonSectionsSectionActivity />
     <QuizSystemQuizSection sectionId="dik" />
-
     <!-- Section 2: Properties of Information -->
     <LessonSectionsSectionInformationProperties />
     <QuizSystemQuizSection sectionId="properties" />
-
     <!-- Section 3 & 4: Primary/Secondary & Cross-checking -->
     <LessonSectionsSectionInfoComparison />
     <LessonSectionsSectionVerification />
     <QuizSystemQuizSection sectionId="primary-secondary-cross" />
-
     <!-- Section 5: Media -->
     <LessonSectionsSectionMediaExplorer />
     <QuizSystemQuizSection sectionId="media" />
-
     <!-- Section 6: Media Literacy -->
     <LessonSectionsSectionMediaLiteracy />
     <QuizSystemQuizSection sectionId="media-literacy" />
-
     <!-- Section 7: Final Review -->
     <LessonSectionsSectionFinalReview />
     <QuizSystemQuizSection sectionId="final-review" />
