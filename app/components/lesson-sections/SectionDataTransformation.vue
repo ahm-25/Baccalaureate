@@ -67,7 +67,48 @@
             </div>
           </div>
         </div>
+        </div>
         
+      </div>
+
+      <!-- Additional Short Examples -->
+      <div class="mt-20 border-t border-border/60 pt-16">
+        <h3 class="text-3xl font-extrabold text-center text-maintext mb-12">أمثلة إضافية لتوضيح الفارق</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div v-for="ex in data.dataToKnowledge.shortExamples" :key="ex.id"
+               class="bg-white/70 backdrop-blur-md border border-border/80 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+            <h4 class="text-xl font-bold text-primary mb-6 flex items-center gap-2 border-b border-border/50 pb-4">
+              <span>📌</span>
+              <span>مثال: {{ ex.title }}</span>
+            </h4>
+            
+            <div class="space-y-4">
+              <div class="flex flex-col gap-1">
+                <span class="text-xs font-bold text-mutedtext">البيانات (Data)</span>
+                <span class="text-base font-mono font-black text-blue-600 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100/50 self-start">{{ ex.data }}</span>
+              </div>
+              
+              <div class="flex items-center justify-center py-1">
+                <span class="text-mutedtext/40 text-lg">↓</span>
+              </div>
+              
+              <div class="flex flex-col gap-1">
+                <span class="text-xs font-bold text-mutedtext">المعلومات (Information)</span>
+                <span class="text-base font-bold text-primary bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10 self-start">{{ ex.info }}</span>
+              </div>
+              
+              <div class="flex items-center justify-center py-1">
+                <span class="text-mutedtext/40 text-lg">↓</span>
+              </div>
+              
+              <div class="flex flex-col gap-1">
+                <span class="text-xs font-bold text-mutedtext">المعرفة (Knowledge)</span>
+                <span class="text-base font-semibold text-accent bg-accent/5 px-3 py-2 rounded-xl border border-accent/10">{{ ex.knowledge }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

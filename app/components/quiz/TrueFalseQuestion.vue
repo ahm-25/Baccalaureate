@@ -1,15 +1,16 @@
 <template>
-  <div class="flex flex-col gap-4 mt-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
     <QuizQuestionOption 
       v-for="(option, index) in question.options"
       :key="option.id"
       :text="option.text"
-      :label="String.fromCharCode(65 + index)"
+      :label="index === 0 ? '✓' : '✗'"
       :is-selected="selectedOptionId === option.id"
       :is-correct="option.id === question.correctOptionId"
       :is-answered="isAnswered"
       :disabled="isAnswered"
       @select="selectOption(option.id)"
+      class="sm:py-6"
     />
   </div>
 </template>
@@ -29,7 +30,6 @@ const emit = defineEmits<{
 
 const selectedOptionId = ref<string | null>(null)
 
-// Reset selection when the question ID changes
 watch(() => props.question.id, () => {
   selectedOptionId.value = null
 })

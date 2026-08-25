@@ -1,4 +1,10 @@
-export type QuestionType = 'multiple-choice' | 'true-false' | 'matching' | 'scenario';
+export type QuestionType = 
+  | 'multiple-choice' 
+  | 'true-false' 
+  | 'matching' 
+  | 'classification' 
+  | 'ordering' 
+  | 'scenario';
 
 export interface QuizOption {
   id: string;
@@ -6,14 +12,19 @@ export interface QuizOption {
 }
 
 export interface MatchingPair {
-  id: string;
-  item: string; // The item to match
-  matchId: string; // The ID of the category it belongs to
+  left: string;  // Dragged item (example)
+  right: string; // Target category (concept)
 }
 
-export interface MatchingCategory {
+export interface ClassificationCategory {
   id: string;
   title: string;
+}
+
+export interface ClassificationItem {
+  id: string;
+  text: string;
+  categoryId: string; // The correct category this item belongs to
 }
 
 export interface BaseQuestion {
@@ -32,11 +43,25 @@ export interface MultipleChoiceQuestion extends BaseQuestion {
 
 export interface MatchingQuestion extends BaseQuestion {
   type: 'matching';
-  items: MatchingPair[];
-  categories: MatchingCategory[];
+  pairs: MatchingPair[];
 }
 
-export type QuizQuestion = MultipleChoiceQuestion | MatchingQuestion;
+export interface ClassificationQuestion extends BaseQuestion {
+  type: 'classification';
+  categories: ClassificationCategory[];
+  items: ClassificationItem[];
+}
+
+export interface OrderingQuestion extends BaseQuestion {
+  type: 'ordering';
+  items: string[]; // Correct ordered items
+}
+
+export type QuizQuestion = 
+  | MultipleChoiceQuestion 
+  | MatchingQuestion 
+  | ClassificationQuestion 
+  | OrderingQuestion;
 
 export interface QuizSectionData {
   id: string;

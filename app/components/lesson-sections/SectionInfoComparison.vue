@@ -71,9 +71,13 @@
               <h3 class="text-3xl md:text-4xl font-bold leading-tight">{{ data.infoComparison.secondary.title }}</h3>
             </div>
             
-            <p class="text-xl md:text-2xl text-mutedtext leading-relaxed mb-12 font-medium">
+            <p class="text-xl md:text-2xl text-mutedtext leading-relaxed mb-8 font-medium">
               {{ data.infoComparison.secondary.description }}
             </p>
+
+            <div v-if="data.infoComparison.secondary.note" class="bg-amber-500/5 border-r-4 border-amber-500 p-5 rounded-2xl mb-8 text-base text-amber-800 leading-relaxed font-semibold">
+              ⚠️ {{ data.infoComparison.secondary.note }}
+            </div>
             
             <div class="mt-auto">
               <div class="flex items-center gap-3 mb-6">

@@ -13,48 +13,21 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        <!-- Persistence -->
-        <div class="bg-surface p-10 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2">
-          <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-            <History size="32" stroke-width="2" />
+        <div v-for="item in data.characteristics.items" :key="item.id"
+             class="bg-surface p-10 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 flex flex-col">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" :class="getColorClass(item.id)">
+            <component :is="getIcon(item.id)" size="32" stroke-width="2" />
           </div>
-          <h3 class="text-2xl font-bold text-maintext mb-4">الاستمرارية<br><span class="text-sm text-mutedtext block mt-1">Persistence</span></h3>
-          <p class="text-lg text-slate-700 leading-relaxed mb-6">
-            بمجرد إنشاء المعلومات، لا يمكن محوها بالكامل بسهولة.
+          <h3 class="text-2xl font-bold text-maintext mb-4">
+            {{ item.title }}
+            <span class="text-sm text-mutedtext block mt-1">{{ item.sub }}</span>
+          </h3>
+          <p class="text-lg text-slate-700 leading-relaxed mb-6 flex-1">
+            {{ item.description }}
           </p>
           <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <strong class="text-primary block mb-2">مثال:</strong>
-            الشائعات أو المعلومات التي تم نشرها على الإنترنت قد تستمر وتنتشر حتى بعد حذف المنشور الأصلي.
-          </div>
-        </div>
-
-        <!-- Reproducibility -->
-        <div class="bg-surface p-10 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2">
-          <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-6">
-            <Copy size="32" stroke-width="2" />
-          </div>
-          <h3 class="text-2xl font-bold text-maintext mb-4">قابلية التكرار<br><span class="text-sm text-mutedtext block mt-1">Reproducibility</span></h3>
-          <p class="text-lg text-slate-700 leading-relaxed mb-6">
-            إمكانية نسخ المعلومات بسهولة وبكميات كبيرة دون أن تفقد جودتها.
-          </p>
-          <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <strong class="text-primary block mb-2">مثال:</strong>
-            يمكن نسخ ملف موسيقى أو فيديو أو مستند مرات كثيرة جداً دون أي فقدان في الجودة.
-          </div>
-        </div>
-
-        <!-- Propagation -->
-        <div class="bg-surface p-10 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2">
-          <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6">
-            <Share2 size="32" stroke-width="2" />
-          </div>
-          <h3 class="text-2xl font-bold text-maintext mb-4">الانتشار<br><span class="text-sm text-mutedtext block mt-1">Propagation</span></h3>
-          <p class="text-lg text-slate-700 leading-relaxed mb-6">
-            من السهل توصيل المعلومات ونشرها عبر مسافات بعيدة.
-          </p>
-          <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <strong class="text-primary block mb-2">مثال:</strong>
-            رسالة أو خبر يمكن أن ينتشر عبر الإنترنت ويصل لملايين الأشخاص في ثوانٍ معدودة.
+            <strong class="text-primary block mb-2">توضيح:</strong>
+            {{ item.example }}
           </div>
         </div>
       </div>
@@ -65,4 +38,19 @@
 
 <script setup lang="ts">
 import { History, Copy, Share2 } from 'lucide-vue-next'
+import { lessonData } from '~/data/lessons/first-baccalaureate/lesson-01'
+
+const data = lessonData
+
+const getIcon = (id: string) => {
+  if (id === 'persistence') return History
+  if (id === 'reproducibility') return Copy
+  return Share2
+}
+
+const getColorClass = (id: string) => {
+  if (id === 'persistence') return 'bg-blue-100 text-blue-600'
+  if (id === 'reproducibility') return 'bg-purple-100 text-purple-600'
+  return 'bg-green-100 text-green-600'
+}
 </script>
