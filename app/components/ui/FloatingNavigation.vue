@@ -39,6 +39,19 @@
           <span class="absolute -bottom-12 bg-gray-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">تكبير (F)</span>
         </button>
       </div>
+
+      <!-- Personal Branding -->
+      <div class="hidden xl:block w-px h-8 bg-gray-200"></div>
+      
+      <div class="hidden xl:flex items-center gap-3 bg-surface/50 p-1.5 pr-4 rounded-full border border-border hover:bg-surface hover:shadow-sm transition-all duration-300">
+        <div class="flex flex-col text-left">
+          <span class="text-[13px] font-extrabold text-maintext leading-tight tracking-wide">المهندس أحمد عبد الناصر</span>
+          <a href="tel:01017865860" class="text-[12px] font-bold text-primary hover:text-primary/80 transition-colors mt-0.5" dir="ltr">010 1786 5860</a>
+        </div>
+        <div class="w-9 h-9 rounded-full border-[2px] border-primary/20 overflow-hidden shadow-sm bg-background">
+           <img src="/my-photo.jpg" class="w-full h-full object-cover" alt="المهندس أحمد عبد الناصر" />
+        </div>
+      </div>
       
     </div>
   </nav>
