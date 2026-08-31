@@ -5,11 +5,11 @@
     </div>
     
     <h2 class="text-3xl md:text-4xl font-black mb-4 text-maintext">
-      {{ percentage === 100 ? 'أداء مثالي! أحسنت' : percentage >= 75 ? 'عمل رائع!' : 'نهاية القسم' }}
+      {{ percentage >= 90 ? 'ممتاز جدًا 🔥' : percentage >= 75 ? 'ممتاز' : percentage >= 60 ? 'جيد' : 'راجع الدرس مرة أخرى' }}
     </h2>
     
     <p class="text-xl text-mutedtext mb-8">
-      لقد أنهيت أسئلة هذا القسم.
+      {{ percentage >= 90 ? 'أداء استثنائي! لقد استوعبت المفاهيم بشكل كامل.' : percentage >= 75 ? 'عمل رائع! أداؤك مبهر.' : percentage >= 60 ? 'جهد جيد، ولكن هناك مجال للتحسن.' : 'لا تقلق، يمكنك إعادة قراءة القسم والمحاولة مرة أخرى.' }}
     </p>
     
     <div class="flex flex-col md:flex-row justify-center gap-6 mb-10">
