@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Textbook source PDF - kept locally, too large for the repo
+ICT_Ar_Sec1_T1_26.pdf
