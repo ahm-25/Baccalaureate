@@ -189,9 +189,16 @@
         <div
           class="bg-white/80 backdrop-blur-md border border-teal-100 rounded-3xl p-8 shadow-xl"
         >
-          <h3 class="text-xl font-bold text-teal-900 mb-8 text-center">
-            الشبكات العصبية الاصطناعية (Artificial Neural Networks)
+          <h3 class="text-xl font-bold text-teal-900 mb-6 text-center">
+            الشبكات العصبية الاصطناعية (Artificial Neural Network - ANN)
           </h3>
+
+          <div class="bg-gradient-to-r from-teal-50 to-teal-100/50 border-r-4 border-teal-500 rounded-xl p-6 mb-10 max-w-3xl mx-auto shadow-sm">
+            <p class="text-teal-900 text-lg leading-relaxed text-center font-medium flex items-center justify-center gap-3">
+              <span class="text-2xl">🧠</span>
+              <span>نموذج حاسوبي مستوحى بصورة مبسطة من فكرة ترابط العصبونات، ويتكون من وحدات مترابطة تتغير أوزانها أثناء التدريب لتتعلم أنماطاً من البيانات.</span>
+            </p>
+          </div>
 
           <AiLesson05AnnDiagram />
 
@@ -207,9 +214,8 @@
             explanation="البيانات لا تنتقل مباشرة، بل يتم تحليلها وتمريرها عبر الطبقات المخفية (Hidden Layers) التي تكتشف الأنماط تدريجيًا حتى تصل إلى المخرجات."
           />
 
-          <p class="text-gray-600 text-center mb-8 mt-12 text-sm max-w-2xl mx-auto">
-            هي نموذج حاسوبي مستوحى بصورة مبسطة من فكرة ترابط العصبونات في الدماغ
-            البشري. اضغط على الطبقات لمعرفة دورها:
+          <p class="text-gray-600 text-center mb-8 mt-12 text-sm max-w-2xl mx-auto animate-pulse font-medium">
+            👇 اضغط على الطبقات لمعرفة دورها:
           </p>
 
           <!-- Interactive Neural Network -->
