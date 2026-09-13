@@ -145,17 +145,120 @@
         </div>
 
       </div>
+
+      <!-- Interactive Industry Explorer -->
+      <div class="mt-20 max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+          <h3 class="text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+            <span class="text-3xl">🌍</span> استكشف استخدام الذكاء الاصطناعي في الصناعات
+          </h3>
+          <p class="text-gray-600">اختر إحدى الصناعات لتعرف كيف غيّرها الذكاء الاصطناعي وما هي التحديات.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button v-for="(ind, key) in industriesData" :key="key" 
+                  @click="selectedIndustry = key as string"
+                  :class="selectedIndustry === key ? 'bg-blue-600 text-white shadow-lg scale-105' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'"
+                  class="px-6 py-3 rounded-xl font-bold transition-all duration-300 flex items-center gap-2">
+            <span class="text-2xl">{{ ind.icon }}</span> {{ ind.name }}
+          </button>
+        </div>
+
+        <transition name="fade-slide" mode="out-in">
+          <div :key="selectedIndustry" class="bg-white rounded-3xl p-8 border border-gray-200 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2" :class="industriesData[selectedIndustry].color"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-6">
+                <div>
+                  <h4 class="text-lg font-bold text-gray-500 mb-2">المشكلة</h4>
+                  <p class="text-gray-900 font-semibold bg-gray-50 p-4 rounded-xl">{{ industriesData[selectedIndustry].problem }}</p>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-blue-600 mb-2">كيف يستخدم AI؟</h4>
+                  <p class="text-gray-900 font-semibold bg-blue-50 p-4 rounded-xl">{{ industriesData[selectedIndustry].how }}</p>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-purple-600 mb-2">البيانات المستخدمة</h4>
+                  <p class="text-gray-900 font-semibold bg-purple-50 p-4 rounded-xl">{{ industriesData[selectedIndustry].data }}</p>
+                </div>
+              </div>
+              
+              <div class="space-y-6">
+                <div>
+                  <h4 class="text-lg font-bold text-green-600 mb-2 flex items-center gap-2"><span class="text-xl">✅</span> الفائدة</h4>
+                  <div class="bg-green-50 p-4 rounded-xl border border-green-100 h-full">
+                    <p class="text-green-900 font-semibold">{{ industriesData[selectedIndustry].benefit }}</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-red-600 mb-2 flex items-center gap-2"><span class="text-xl">⚠️</span> الخطر المحتمل</h4>
+                  <div class="bg-red-50 p-4 rounded-xl border border-red-100 h-full">
+                    <p class="text-red-900 font-semibold">{{ industriesData[selectedIndustry].risk }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
+
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
 const analyzeXray = ref(false);
 const plantState = ref<string | null>(null);
 const machineRunning = ref(false);
 const optimizeRoute = ref(false);
+
+const selectedIndustry = ref('healthcare');
+
+const industriesData = reactive<Record<string, any>>({
+  healthcare: {
+    name: 'الرعاية الصحية',
+    icon: '🏥',
+    color: 'bg-blue-500',
+    problem: 'صعوبة اكتشاف الأمراض الدقيقة في صور الأشعة والوقت الطويل الذي يستغرقه ذلك.',
+    how: 'يحلل الذكاء الاصطناعي صور الأشعة ويقارنها بملايين الصور لتحديد الأنماط الشاذة.',
+    data: 'صور أشعة سينية (X-Rays)، تصوير مقطعي (CT scans)، وتاريخ طبي سابق.',
+    benefit: 'سرعة التشخيص وتقليل نسبة الخطأ البشري، مما يساعد على إنقاذ الأرواح.',
+    risk: 'قد يخطئ في التشخيص (هلوسة) أو يعتمد على بيانات متحيزة، لذلك يجب مراجعة الطبيب.'
+  },
+  agriculture: {
+    name: 'الزراعة',
+    icon: '🌾',
+    color: 'bg-green-500',
+    problem: 'صعوبة التنبؤ بأوقات الحصاد واكتشاف الأمراض الزراعية مبكراً في المساحات الشاسعة.',
+    how: 'استخدام الطائرات بدون طيار (الدرونز) ومستشعرات التربة لتحليل صحة المحاصيل.',
+    data: 'صور من الأقمار الصناعية والدرونز، بيانات التربة، الرطوبة، والطقس.',
+    benefit: 'زيادة إنتاجية المحاصيل وتقليل استخدام المبيدات الكيميائية.',
+    risk: 'قد يؤدي الاعتماد المفرط عليه إلى خسائر كبيرة إذا تعطل النظام ولم يلاحظ المزارع المشكلة.'
+  },
+  manufacturing: {
+    name: 'التصنيع',
+    icon: '🏭',
+    color: 'bg-orange-500',
+    problem: 'أعطال الآلات المفاجئة التي توقف الإنتاج وعيوب التصنيع التي لا تُرى بالعين المجردة.',
+    how: 'الصيانة التنبؤية وكاميرات الفحص الآلي في خطوط الإنتاج.',
+    data: 'اهتزازات الآلات، أصوات التشغيل، درجات الحرارة، وصور المنتجات.',
+    benefit: 'تقليل التكاليف الناتجة عن توقف المصنع وتحسين جودة المنتجات بشكل كبير.',
+    risk: 'تسريح العمالة بسبب الأتمتة الكاملة ومخاطر الأمن السيبراني في المصانع المتصلة بالإنترنت.'
+  },
+  logistics: {
+    name: 'الخدمات اللوجستية',
+    icon: '🚚',
+    color: 'bg-teal-500',
+    problem: 'تأخير التوصيل، استهلاك الكثير من الوقود، وتحديد المسار الأفضل للشاحنات.',
+    how: 'حساب ملايين الاحتمالات لاختيار الطريق الأسرع والأكثر توفيراً للوقود في الوقت الفعلي.',
+    data: 'حالة المرور، حالة الطقس، خرائط الطرق، وأماكن التسليم.',
+    benefit: 'سرعة وصول الشحنات للعملاء وتقليل التلوث وانبعاثات الكربون.',
+    risk: 'قد يوجه السائقين إلى طرق خطرة أو غير مهيأة إذا لم يتم تحديث الخرائط بدقة.'
+  }
+});
 </script>
 
 <style scoped>

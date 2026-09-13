@@ -1,93 +1,28 @@
 <template>
   <section id="summary" class="py-20 bg-purple-50">
-    <div class="container mx-auto px-6 max-w-5xl">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-purple-900 mb-4 flex items-center justify-center gap-3">
-          <span class="text-4xl">⭐</span> خلاصة الدرس
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-purple-900 mb-6 flex items-center justify-center gap-3">
+          <span class="text-4xl">⭐</span> الخلاصة
         </h2>
-        <div class="w-24 h-1 bg-purple-500 mx-auto rounded-full"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <!-- 1 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🤖</span> نظام التوصية
-          </h3>
-          <p class="text-sm text-gray-600">يتنبأ بالتفضيلات من السلوك السابق.</p>
-        </div>
-        <!-- 2 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🎤</span> المساعد الصوتي
-          </h3>
-          <p class="text-sm text-gray-600">يتعرف على الصوت ويفهم الأوامر وينفذها.</p>
-        </div>
-        <!-- 3 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🌍</span> الترجمة الآلية
-          </h3>
-          <p class="text-sm text-gray-600">تترجم النصوص تلقائيًا بناءً على السياق.</p>
-        </div>
-        <!-- 4 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">📷</span> التعرف على الوجه
-          </h3>
-          <p class="text-sm text-gray-600">يكشف ويتعرف على الوجوه لمهام مثل الأمان.</p>
-        </div>
-        <!-- 5 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🏥</span> AI في الصحة
-          </h3>
-          <p class="text-sm text-gray-600">التشخيص بالصور ودعم اكتشاف الأدوية.</p>
-        </div>
-        <!-- 6 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🌾</span> AI في الزراعة
-          </h3>
-          <p class="text-sm text-gray-600">التنبؤ بالحصاد والكشف عن الآفات والأمراض.</p>
-        </div>
-        <!-- 7 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🏭</span> AI في التصنيع
-          </h3>
-          <p class="text-sm text-gray-600">فحص الجودة والصيانة التنبؤية للآلات.</p>
-        </div>
-        <!-- 8 -->
-        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-sm">
-          <h3 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="text-2xl">🚚</span> AI في اللوجستيات
-          </h3>
-          <p class="text-sm text-gray-600">تحسين مسارات التوصيل لتوفير الوقت والوقود.</p>
-        </div>
+      <div class="bg-white p-8 md:p-12 rounded-3xl border border-purple-200 shadow-lg text-center mb-12">
+        <p class="text-2xl font-bold text-gray-800 leading-relaxed">
+          "الذكاء الاصطناعي بارع في إيجاد الأنماط في البيانات، والتعرف، والتنبؤ، لكنه قد يخطئ أو ينتج نتائج متحيزة. لذلك <span class="text-purple-600">يجب التحقق من مخرجاته</span>، خصوصًا في الاستخدامات التي تؤثر في حياة الأشخاص وحقوقهم."
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-blue-50 p-8 rounded-3xl border border-blue-200">
-          <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
-            <span class="text-2xl">💪</span> نقاط القوة
-          </h3>
-          <ul class="space-y-3 text-blue-800">
-            <li>• إيجاد الأنماط في البيانات المعقدة</li>
-            <li>• التعرف على الصور والأصوات والنصوص</li>
-            <li>• التنبؤ والاستدلال الاحتمالي</li>
-          </ul>
-        </div>
-        
-        <div class="bg-red-50 p-8 rounded-3xl border border-red-200">
-          <h3 class="text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
-            <span class="text-2xl">⚠️</span> الحذر والإشراف البشري
-          </h3>
-          <ul class="space-y-3 text-red-800">
-            <li>• تجنب الأحكام الأخلاقية المتحيزة</li>
-            <li>• حماية الخصوصية للبيانات الحساسة</li>
-            <li>• <strong>قاعدة هامة:</strong> كلما زاد أثر القرار (مثل الطب والقضاء)، زادت أهمية التحقق والحكم البشري.</li>
-          </ul>
+      <div>
+        <h3 class="text-xl font-bold text-purple-900 mb-6 text-center">أهم المصطلحات التي تعلمناها:</h3>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="px-4 py-2 bg-purple-100 text-purple-800 font-bold rounded-full border border-purple-200 shadow-sm hover:scale-105 transition-transform cursor-default">نظام التوصية</span>
+          <span class="px-4 py-2 bg-purple-100 text-purple-800 font-bold rounded-full border border-purple-200 shadow-sm hover:scale-105 transition-transform cursor-default">المساعد الصوتي</span>
+          <span class="px-4 py-2 bg-purple-100 text-purple-800 font-bold rounded-full border border-purple-200 shadow-sm hover:scale-105 transition-transform cursor-default">الترجمة الآلية</span>
+          <span class="px-4 py-2 bg-purple-100 text-purple-800 font-bold rounded-full border border-purple-200 shadow-sm hover:scale-105 transition-transform cursor-default">التعرف على الوجه</span>
+          <span class="px-4 py-2 bg-purple-100 text-purple-800 font-bold rounded-full border border-purple-200 shadow-sm hover:scale-105 transition-transform cursor-default">الصيانة التنبؤية</span>
+          <span class="px-4 py-2 bg-red-100 text-red-800 font-bold rounded-full border border-red-200 shadow-sm hover:scale-105 transition-transform cursor-default">الهلوسة</span>
+          <span class="px-4 py-2 bg-gray-800 text-white font-bold rounded-full border border-gray-900 shadow-sm hover:scale-105 transition-transform cursor-default">الصندوق الأسود</span>
         </div>
       </div>
     </div>

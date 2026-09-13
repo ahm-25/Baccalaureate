@@ -132,6 +132,50 @@
         </div>
 
       </div>
+
+      <!-- Explore Activity -->
+      <div class="mt-16 max-w-4xl mx-auto bg-purple-50 rounded-3xl p-8 border border-purple-100 shadow-lg">
+        <h3 class="text-2xl font-bold text-purple-900 mb-4 flex items-center gap-2">
+          <span class="text-3xl">✎</span> استكشف
+        </h3>
+        <p class="text-gray-700 mb-6 font-semibold">
+          اذكر ثلاث خدمات استخدمتها هذا الأسبوع وتعتقد أنها استخدمت الذكاء الاصطناعي.
+        </p>
+
+        <div class="space-y-6">
+          <div v-for="(item, index) in exploreItems" :key="index" class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm relative">
+            <h4 class="absolute -top-3 -right-3 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">{{ index + 1 }}</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ما الخدمة؟</label>
+                <input v-model="item.service" type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none" placeholder="مثال: يوتيوب، نتفليكس، الخ..." />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ما المهمة التي قام بها؟</label>
+                <input v-model="item.task" type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none" placeholder="مثال: اقتراح مقاطع فيديو" />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ما البيانات التي احتاجها الذكاء الاصطناعي؟</label>
+                <input v-model="item.data" type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none" placeholder="مثال: الفيديوهات التي شاهدتها مسبقاً" />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ماذا يمكن أن يحدث إذا أخطأ؟</label>
+                <input v-model="item.errorRisk" type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none" placeholder="مثال: اقتراح محتوى غير مناسب" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <button @click="checkExploreActivity" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+            تحقق من إجابتي
+          </button>
+          
+          <div v-if="exploreChecked" class="mt-4 p-4 bg-green-100 text-green-800 rounded-xl font-bold animate-fade-in">
+            ✅ أحسنت! لقد تمكنت من تحليل كيفية عمل الذكاء الاصطناعي في هذه الخدمات. الذكاء الاصطناعي موجود حولنا في كل مكان!
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -144,6 +188,22 @@ const recommendationCorrect = ref(false);
 
 const translateActive = ref(false);
 const faceDetected = ref(false);
+
+const exploreItems = ref([
+  { service: '', data: '', task: '', errorRisk: '' },
+  { service: '', data: '', task: '', errorRisk: '' },
+  { service: '', data: '', task: '', errorRisk: '' }
+]);
+const exploreChecked = ref(false);
+
+const checkExploreActivity = () => {
+  const isFilled = exploreItems.value.some(item => item.service.trim() !== '');
+  if (isFilled) {
+    exploreChecked.value = true;
+  } else {
+    alert("يرجى ملء خدمة واحدة على الأقل!");
+  }
+};
 </script>
 
 <style scoped>

@@ -9,61 +9,49 @@
 
       <div class="bg-gray-50 rounded-3xl p-8 border border-gray-200 shadow-md">
         <p class="text-xl font-bold text-gray-800 mb-6 text-center">
-          طابق الخدمة مع التقنية المناسبة:
+          لكل مثال، طابق تقنية الذكاء الاصطناعي المناسبة:
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Services -->
-          <div class="space-y-4">
-            <div class="p-4 bg-white rounded-xl border border-gray-200 font-medium flex items-center gap-3">
-              <span class="bg-purple-100 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center shrink-0">1</span>
-              YouTube يوصي بمقاطع تناسب تفضيلات المستخدم
+        <div class="space-y-6 max-w-2xl mx-auto">
+          <div v-for="(q, index) in questions" :key="index" class="bg-white p-4 rounded-xl border border-gray-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="font-medium text-gray-800">
+              <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-bold ml-2">{{ index + 1 }}</span>
+              {{ q.text }}
             </div>
-            <div class="p-4 bg-white rounded-xl border border-gray-200 font-medium flex items-center gap-3">
-              <span class="bg-purple-100 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center shrink-0">2</span>
-              التحدث إلى هاتف ذكي للتحقق من الطقس
-            </div>
-            <div class="p-4 bg-white rounded-xl border border-gray-200 font-medium flex items-center gap-3">
-              <span class="bg-purple-100 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center shrink-0">3</span>
-              ترجمة موقع إلكتروني بلغة أجنبية
-            </div>
-            <div class="p-4 bg-white rounded-xl border border-gray-200 font-medium flex items-center gap-3">
-              <span class="bg-purple-100 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center shrink-0">4</span>
-              كاميرا الهاتف تكتشف وجه الشخص تلقائيًا
-            </div>
-          </div>
-
-          <!-- Technologies -->
-          <div class="space-y-4">
-            <div class="p-4 bg-blue-50 rounded-xl border border-blue-200 font-bold flex justify-between items-center cursor-pointer hover:bg-blue-100 transition-colors" @click="check('A')">
-              <span>A) نظام التوصية</span>
-              <span v-if="selected['A']" class="text-green-600 text-xl">✓ 1</span>
-            </div>
-            <div class="p-4 bg-blue-50 rounded-xl border border-blue-200 font-bold flex justify-between items-center cursor-pointer hover:bg-blue-100 transition-colors" @click="check('B')">
-              <span>B) المساعد الصوتي</span>
-              <span v-if="selected['B']" class="text-green-600 text-xl">✓ 2</span>
-            </div>
-            <div class="p-4 bg-blue-50 rounded-xl border border-blue-200 font-bold flex justify-between items-center cursor-pointer hover:bg-blue-100 transition-colors" @click="check('C')">
-              <span>C) الترجمة الآلية</span>
-              <span v-if="selected['C']" class="text-green-600 text-xl">✓ 3</span>
-            </div>
-            <div class="p-4 bg-blue-50 rounded-xl border border-blue-200 font-bold flex justify-between items-center cursor-pointer hover:bg-blue-100 transition-colors" @click="check('D')">
-              <span>D) التعرف على الوجه</span>
-              <span v-if="selected['D']" class="text-green-600 text-xl">✓ 4</span>
+            <div class="flex items-center gap-2 shrink-0">
+              <select v-model="q.selected" class="p-2 border border-gray-300 rounded-lg outline-none focus:border-purple-500 bg-gray-50 min-w-[160px]" :disabled="showResults">
+                <option value="">-- اختر التقنية --</option>
+                <option value="A">أ — نظام التوصية</option>
+                <option value="B">ب — المساعد الصوتي</option>
+                <option value="C">جـ — الترجمة الآلية</option>
+                <option value="D">د — التعرف على الوجه</option>
+              </select>
+              <span v-if="showResults" class="text-2xl font-bold">
+                {{ q.selected === q.correct ? '✅' : '❌' }}
+              </span>
             </div>
           </div>
         </div>
 
-        <div class="mt-8 text-center" v-if="allSelected">
-          <div class="bg-green-100 text-green-900 p-6 rounded-2xl inline-block text-right">
-            <h4 class="font-bold mb-2">تفسير الإجابات:</h4>
-            <ul class="space-y-2 text-sm">
-              <li><strong>1 ➔ A:</strong> يحلل YouTube بيانات مشاهداتك السابقة ليقترح فيديوهات جديدة (نظام توصية).</li>
-              <li><strong>2 ➔ B:</strong> الهاتف يستخدم التعرف على الصوت وفهم اللغة الطبيعية لتنفيذ الأمر (مساعد صوتي).</li>
-              <li><strong>3 ➔ C:</strong> فهم سياق الكلمات في لغة ونقلها للغة أخرى بأسلوب صحيح (ترجمة آلية).</li>
-              <li><strong>4 ➔ D:</strong> معالجة الصورة لاستخراج ملامح الوجه ومطابقتها (التعرف على الوجه).</li>
-            </ul>
-          </div>
+        <div class="mt-8 text-center space-y-4">
+          <button v-if="!showResults" @click="checkAnswers" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow transition-colors">
+            تحقق من الإجابات
+          </button>
+          <button v-else @click="reset" class="px-8 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-xl shadow transition-colors">
+            إعادة المحاولة
+          </button>
+
+          <transition name="fade">
+            <div v-if="showResults" class="bg-green-100 text-green-900 p-6 rounded-2xl text-right border border-green-200 mt-6">
+              <h4 class="font-bold mb-4 text-xl border-b border-green-200 pb-2">الحل والتفسير:</h4>
+              <ul class="space-y-4 text-sm leading-relaxed">
+                <li><strong class="text-purple-700">1 ➔ أ (نظام التوصية):</strong> يحلل YouTube بيانات مشاهداتك السابقة وسلوكك ليقترح مقاطع فيديو جديدة تناسب تفضيلاتك.</li>
+                <li><strong class="text-purple-700">2 ➔ ب (المساعد الصوتي):</strong> يستخدم الهاتف التعرف على الصوت وفهم اللغة الطبيعية لتلقي أمرك (الطقس) وتنفيذه.</li>
+                <li><strong class="text-purple-700">3 ➔ جـ (الترجمة الآلية):</strong> الذكاء الاصطناعي يفهم سياق النص باللغة الأجنبية وينقله إلى اللغة الأم بشكل صحيح.</li>
+                <li><strong class="text-purple-700">4 ➔ د (التعرف على الوجه):</strong> تقوم كاميرا الهاتف بمعالجة بيانات الصورة لاستخراج ملامح الوجه ومطابقتها أو تحديد موقعها.</li>
+              </ul>
+            </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -71,20 +59,40 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
-const selected = ref<Record<string, boolean>>({
-  'A': false,
-  'B': false,
-  'C': false,
-  'D': false,
-});
+const showResults = ref(false);
 
-const check = (option: string) => {
-  selected.value[option] = true;
+const questions = ref([
+  { text: 'YouTube يوصي بمقاطع فيديو تناسب تفضيلات المستخدم.', correct: 'A', selected: '' },
+  { text: 'التحدث إلى هاتف ذكي للتحقق من الطقس.', correct: 'B', selected: '' },
+  { text: 'ترجمة موقع إلكتروني بلغة أجنبية إلى اللغة الأم.', correct: 'C', selected: '' },
+  { text: 'كاميرا الهاتف الذكي تكتشف وجه الشخص تلقائيًا.', correct: 'D', selected: '' }
+]);
+
+const checkAnswers = () => {
+  const allAnswered = questions.value.every(q => q.selected !== '');
+  if (!allAnswered) {
+    alert("الرجاء الإجابة على جميع الأسئلة أولاً!");
+    return;
+  }
+  showResults.value = true;
 };
 
-const allSelected = computed(() => {
-  return selected.value['A'] && selected.value['B'] && selected.value['C'] && selected.value['D'];
-});
+const reset = () => {
+  showResults.value = false;
+  questions.value.forEach(q => q.selected = '');
+};
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

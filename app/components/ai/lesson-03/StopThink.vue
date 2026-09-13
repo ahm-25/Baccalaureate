@@ -7,55 +7,27 @@
         </h2>
       </div>
 
-      <div class="space-y-8">
-        <!-- Question 1 -->
+      <div class="max-w-3xl mx-auto">
         <div class="bg-white rounded-3xl p-8 border border-yellow-200 shadow-md">
-          <p class="text-xl text-gray-800 font-bold mb-6 leading-relaxed">
-            1. يفكر مستشفى في استخدام الذكاء الاصطناعي للتشخيص بالصور للكشف عن الأمراض. لماذا ينبغي أن يؤكد التشخيص النهائي طبيب بشري بدلًا من تركه للذكاء الاصطناعي وحده؟
-          </p>
-          <div class="text-center" v-if="!showQ1">
-            <button @click="showQ1 = true" class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold rounded-xl transition-colors">
-              عرض الإجابة النموذجية
+          <div class="flex items-start gap-4 mb-6">
+            <span class="text-4xl">🤔</span>
+            <p class="text-xl text-gray-800 font-bold leading-relaxed">
+              غالبًا ما تستخدم خدمات الذكاء الاصطناعي بياناتك الشخصية — ما تشاهده، تشتريه، أو تقوله. لماذا يثير هذا مخاوف بشأن الخصوصية، ومن ينبغي أن يقرر كيفية استخدام بياناتك؟
+            </p>
+          </div>
+          
+          <div class="text-center mt-8" v-if="!showIdea">
+            <button @click="showIdea = true" class="px-8 py-3 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold rounded-xl shadow transition-colors">
+              اعرض فكرة مقترحة
             </button>
           </div>
+          
           <transition name="slide-fade">
-            <div v-if="showQ1" class="bg-green-50 p-6 rounded-2xl border border-green-200 mt-4 text-green-900 text-lg">
-              لأن القرار الطبي له أثر مباشر وخطير على حياة الإنسان. الذكاء الاصطناعي قد يخطئ أو يهلوس في التشخيص نتيجة لبيانات تدريب غير دقيقة أو حالة نادرة. الطبيب البشري يمتلك الخبرة الشاملة ويتحمل المسؤولية الأخلاقية والقانونية للقرار النهائي.
-            </div>
-          </transition>
-        </div>
-
-        <!-- Question 2 -->
-        <div class="bg-white rounded-3xl p-8 border border-yellow-200 shadow-md">
-          <p class="text-xl text-gray-800 font-bold mb-6 leading-relaxed">
-            2. غالبًا ما تستخدم خدمات الذكاء الاصطناعي بياناتك الشخصية — ما تشاهده، تشتريه، أو تقوله. لماذا يثير هذا مخاوف بشأن الخصوصية؟
-          </p>
-          <div class="text-center" v-if="!showQ2">
-            <button @click="showQ2 = true" class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold rounded-xl transition-colors">
-              عرض الإجابة النموذجية
-            </button>
-          </div>
-          <transition name="slide-fade">
-            <div v-if="showQ2" class="bg-green-50 p-6 rounded-2xl border border-green-200 mt-4 text-green-900 text-lg">
-              لأن هذه الأنظمة تجمع كميات هائلة من البيانات التفصيلية عن حياتنا. إذا لم يتم حماية هذه البيانات، يمكن اختراقها، بيعها، أو استخدامها بشكل مسيء دون موافقتنا الصريحة.
-            </div>
-          </transition>
-        </div>
-
-        <!-- Question 3 -->
-        <div class="bg-white rounded-3xl p-8 border border-yellow-200 shadow-md">
-          <p class="text-xl text-gray-800 font-bold mb-6 leading-relaxed">
-            3. في مجال الزراعة، اذكر ميزة واحدة لإدخال الذكاء الاصطناعي ومصدر قلق واحد.
-          </p>
-          <div class="text-center" v-if="!showQ3">
-            <button @click="showQ3 = true" class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold rounded-xl transition-colors">
-              عرض الإجابة النموذجية
-            </button>
-          </div>
-          <transition name="slide-fade">
-            <div v-if="showQ3" class="bg-green-50 p-6 rounded-2xl border border-green-200 mt-4 text-green-900 text-lg">
-              <strong class="block mb-2">الميزة:</strong> مساعدة المزارعين على اكتشاف أمراض النباتات مبكرًا والتنبؤ بمواعيد الحصاد بدقة.<br>
-              <strong class="block mt-2 mb-2">مصدر القلق:</strong> الاعتماد المفرط عليه قد يؤدي لقرارات خاطئة إذا واجه النظام نوعاً جديداً من الآفات لم يتدرب عليه.
+            <div v-if="showIdea" class="bg-green-50 p-6 rounded-2xl border border-green-200 mt-6 text-green-900 text-lg flex gap-3 items-start">
+              <span class="text-2xl">💡</span>
+              <p>
+                تُجمع هذه البيانات لبناء ملف شخصي عنك، مما يثير مخاوف تسريب معلوماتك الحساسة أو استخدامها للتأثير على قراراتك. يجب أن يكون للمستخدم الحق الأساسي في الموافقة الصريحة ومعرفة من يستخدم بياناته ولأي غرض.
+              </p>
             </div>
           </transition>
         </div>
@@ -67,9 +39,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const showQ1 = ref(false);
-const showQ2 = ref(false);
-const showQ3 = ref(false);
+const showIdea = ref(false);
 </script>
 
 <style scoped>

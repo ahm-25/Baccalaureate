@@ -1,9 +1,11 @@
 <template>
   <div class="relative">
     <AiLesson03Hero />
-    <AiLesson03OpeningQuestion />
     <AiLesson03Objectives />
     <AiLesson03LessonMap />
+    
+    <!-- مقدمة الدرس (سؤال افتتاحي) -->
+    <AiLesson03StopThink />
     
     <!-- القسم الأول -->
     <AiLesson03DailyLife />
@@ -11,47 +13,41 @@
     <!-- القسم الثاني -->
     <AiLesson03Industry />
     
-    <!-- قسم: ما الذي يبرع فيه الذكاء الاصطناعي؟ -->
-    <AiLesson03Strengths />
+    <!-- الذكاء الاصطناعي والإنسان -->
+    <AiLesson03HumanAi />
     
-    <!-- قسم: متى يجب الحذر؟ -->
+    <!-- القسم الرابع: ما الذي يتطلب الحذر؟ -->
     <AiLesson03Risks />
     
-    <!-- مشكلة الصندوق الأسود -->
-    <AiLesson03BlackBox />
+    <!-- توقف وفكر - الرعاية الصحية -->
+    <AiLesson03StopThinkHealthcare />
     
-    <!-- الهلوسة -->
-    <AiLesson03Hallucination />
+    <!-- القسم الخامس: مخاطر استخدام الذكاء الاصطناعي -->
+    <AiLesson03Dangers />
     
-    <!-- توقف وفكر -->
-    <AiLesson03StopThink />
+    <!-- طبّق ما تعلمته -->
+    <AiLesson03ApplyWhatYouLearned />
     
     <!-- مثال محلول -->
     <AiLesson03SolvedExample />
     
+    <!-- سؤال امتحان -->
+    <AiLesson03ExamQuestion />
+    
     <!-- فكر كمهندس -->
     <AiLesson03ThinkEngineer />
     
+    <!-- الخلاصة -->
+    <AiLesson03Summary />
+
     <!-- الاختبار الشامل -->
     <QuizQuestionArena
       v-if="finalQuiz.length > 0"
       :questions="finalQuiz"
-      section-title="🏆 تحدي الذكاء الاصطناعي (اختبار شامل)"
+      section-title="🏆 اختبار الدرس"
       section-id="quiz"
     />
     
-    <!-- الخلاصة -->
-    <AiLesson03Summary />
-    
-    <!-- سؤال امتحان -->
-    <AiLesson03ExamQuestion />
-    
-    <!-- سؤال تحدي -->
-    <AiLesson03Challenge />
-    
-    <!-- الواجب -->
-    <AiLesson03Homework />
-
     <!-- Top Navigation for Teacher/User -->
     <div
       class="fixed top-24 left-6 z-40 bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 flex items-center p-2 gap-4"
