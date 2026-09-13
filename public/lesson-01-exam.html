@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>نموذج أسئلة - الدرس الأول: تطور تكنولوجيا المعلومات والتحول الاجتماعي</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Cairo', Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      direction: rtl;
+      font-size: 13pt;
+    }
+
+    /* ===== PRINT BUTTON (hidden when printing) ===== */
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #1e40af;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(30,64,175,0.4);
+      z-index: 999;
+      transition: all 0.2s;
+    }
+    .print-btn:hover { background: #1e3a8a; transform: scale(1.05); }
+
+    /* ===== PAGE LAYOUT ===== */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 18mm 15mm 18mm 15mm;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ===== WATERMARK ===== */
+    .watermark {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .watermark-text {
+      font-size: 62pt;
+      font-weight: 900;
+      color: rgba(30, 64, 175, 0.07);
+      transform: rotate(-35deg);
+      white-space: nowrap;
+      user-select: none;
+      letter-spacing: 2px;
+      font-family: 'Cairo', Arial, sans-serif;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #1e40af;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .header .school-name {
+      font-size: 12pt;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .header .exam-title {
+      font-size: 19pt;
+      font-weight: 900;
+      color: #1e3a8a;
+      margin-bottom: 4px;
+    }
+    .header .lesson-name {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #1e40af;
+    }
+    .header .meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 11pt;
+      color: #333;
+    }
+    .header .meta span {
+      border: 1px solid #cbd5e1;
+      padding: 3px 12px;
+      border-radius: 6px;
+      background: #f8fafc;
+    }
+
+    /* ===== INSTRUCTIONS ===== */
+    .instructions {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 10px 16px;
+      margin-bottom: 18px;
+      font-size: 11pt;
+      color: #1e40af;
+      position: relative;
+      z-index: 1;
+    }
+    .instructions strong { font-weight: 900; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      background: linear-gradient(135deg, #1e3a8a, #1e40af);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13pt;
+      font-weight: 700;
+      margin: 22px 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== QUESTION BLOCK ===== */
+    .question-block {
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+      position: relative;
+      z-index: 1;
+    }
+    .question-text {
+      font-size: 12pt;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.7;
+      color: #0f172a;
+    }
+    .question-num {
+      display: inline-block;
+      background: #1e40af;
+      color: #fff;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      text-align: center;
+      line-height: 26px;
+      font-size: 11pt;
+      font-weight: 700;
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+      padding-right: 8px;
+    }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11.5pt;
+      line-height: 1.6;
+      color: #1e293b;
+    }
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid #94a3b8;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 10pt;
+      color: #475569;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 2px dashed #cbd5e1;
+      font-size: 10pt;
+      color: #64748b;
+      position: relative;
+      z-index: 1;
+    }
+    .footer strong { color: #1e40af; }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .print-btn { display: none !important; }
+      body { margin: 0; }
+      .page { width: 100%; margin: 0; padding: 15mm 12mm; }
+      .watermark { position: fixed; }
+      @page { size: A4; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+
+<!-- WATERMARK -->
+<div class="watermark">
+  <div class="watermark-text">المهندس احمد عبد الناصر</div>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="school-name">برنامج ذكاء اصطناعي واتمتة صناعية - الصف الثاني الثانوي</div>
+    <div class="exam-title">نموذج أسئلة شاملة</div>
+    <div class="lesson-name">الدرس الأول: مراحل تطور تكنولوجيا المعلومات والتحول الاجتماعي</div>
+    <div class="meta">
+      <span>الدرجة الكلية: 50 درجة</span>
+      <span>الاسم: .......................................</span>
+      <span>التاريخ: ....................</span>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instructions">
+    <strong>تعليمات:</strong> أجب عن جميع الأسئلة — لكل سؤال إجابة صحيحة واحدة فقط. اختر الإجابة الأدق والأصح بناءً على محتوى الدرس.
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1 -->
+  <!-- ============================================================ -->
+  <div class="section-title">أولاً: تطور تكنولوجيا المعلومات عبر المراحل</div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">1</span> أي تسلسل يعكس تطور تكنولوجيا المعلومات كما ورد في الدرس؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الحواسب الشخصية ← الحواسب الأولية ← الهواتف الذكية ← الإنترنت ← السحابة</div>
+      <div class="option"><span class="option-letter">ب</span> الحواسب الأولية ← الحواسب الشخصية ← الإنترنت والويب ← الهواتف الذكية ← الحوسبة السحابية</div>
+      <div class="option"><span class="option-letter">ج</span> الإنترنت ← الحواسب الأولية ← السحابة ← الحواسب الشخصية ← الهواتف الذكية</div>
+      <div class="option"><span class="option-letter">د</span> الهواتف الذكية ← الإنترنت ← السحابة ← الحواسب الشخصية ← الحواسب الأولية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">2</span> انتقلت تقنية من مرحلة كانت فيها الحواسب تملأ غرفة إلى مرحلة أصبح فيها الحاسب متاحاً للأفراد. أي تحول تفسره هذه الحالة بصورة أدق؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> توقف تطور المعالجات</div>
+      <div class="option"><span class="option-letter">ب</span> تحول الحاسب إلى وسيلة دفع فقط</div>
+      <div class="option"><span class="option-letter">ج</span> اختفاء الحاجة إلى الحوسبة العلمية</div>
+      <div class="option"><span class="option-letter">د</span> انتقال استخدام الحاسب من الاستخدام المحدود إلى الاستخدام الشخصي الأوسع</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">3</span> ارتبط ظهور الحواسيب الإلكترونية في الأربعينيات والستينيات أساساً بـ:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> التجارة الإلكترونية</div>
+      <div class="option"><span class="option-letter">ب</span> شبكات التواصل الاجتماعي</div>
+      <div class="option"><span class="option-letter">ج</span> التعلم عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">د</span> الأغراض العسكرية والحسابات العلمية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">4</span> أي عبارة تفسر أهمية ظهور الحواسب الشخصية في السبعينيات والثمانينيات؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> بدأ الأفراد في استخدام الحاسب على نطاق أوسع</div>
+      <div class="option"><span class="option-letter">ب</span> أصبح الإنترنت تجارياً لأول مرة</div>
+      <div class="option"><span class="option-letter">ج</span> ظهرت القيادة الذاتية</div>
+      <div class="option"><span class="option-letter">د</span> بدأت الحوسبة الكمومية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">5</span> إذا كان انتشار الإنترنت في التسعينيات قد أدى إلى وصول عالمي للمعلومات والبريد الإلكتروني، فأي استنتاج أكثر دقة؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> أثر التقنية لا يقتصر على الجهاز بل يمتد إلى أنماط التواصل</div>
+      <div class="option"><span class="option-letter">ب</span> الإنترنت ألغى الحواسيب الشخصية</div>
+      <div class="option"><span class="option-letter">ج</span> الإنترنت حل محل جميع وسائل التعليم</div>
+      <div class="option"><span class="option-letter">د</span> البريد الإلكتروني لم يكن مرتبطاً بالإنترنت</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">6</span> ظهور الهواتف الذكية أدى بصورة مباشرة إلى:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> اختفاء الحوسبة السحابية</div>
+      <div class="option"><span class="option-letter">ب</span> انتشار واسع للإنترنت عبر الهواتف المحمولة</div>
+      <div class="option"><span class="option-letter">ج</span> عودة استخدام الصمامات المفرغة</div>
+      <div class="option"><span class="option-letter">د</span> توقف التجارة الإلكترونية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">7</span> أي مرحلة ارتبطت بتحليل البيانات الضخمة والذكاء الاصطناعي وتقديم موارد تكنولوجيا المعلومات كخدمات عبر الإنترنت؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الأربعينيات - الستينيات</div>
+      <div class="option"><span class="option-letter">ب</span> السبعينيات - الثمانينيات</div>
+      <div class="option"><span class="option-letter">ج</span> التسعينيات</div>
+      <div class="option"><span class="option-letter">د</span> من العقد الثاني من الألفية فصاعداً</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">8</span> إذا أردنا تحديد المرحلة التي وسعت الوصول العالمي للمعلومات والبريد الإلكتروني، فنبحث عن:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الأربعينيات</div>
+      <div class="option"><span class="option-letter">ب</span> التسعينيات</div>
+      <div class="option"><span class="option-letter">ج</span> السبعينيات</div>
+      <div class="option"><span class="option-letter">د</span> العقد الأول من الألفية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">9</span> إذا أردنا تحديد المرحلة التي ارتبطت بالانتشار السريع للإنترنت عبر الهواتف المحمولة، فنبحث عن:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> العقد الأول من الألفية</div>
+      <div class="option"><span class="option-letter">ب</span> الأربعينيات - الستينيات</div>
+      <div class="option"><span class="option-letter">ج</span> التسعينيات</div>
+      <div class="option"><span class="option-letter">د</span> السبعينيات - الثمانينيات</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">10</span> إذا أراد باحث ربط انتشار الذكاء الاصطناعي وتحليل البيانات الضخمة بتطور البنية الرقمية، فأكثر مرحلة ملاءمة هي:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> من العقد الثاني من الألفية فصاعداً</div>
+      <div class="option"><span class="option-letter">ب</span> الأربعينيات - الستينيات</div>
+      <div class="option"><span class="option-letter">ج</span> السبعينيات - الثمانينيات</div>
+      <div class="option"><span class="option-letter">د</span> التسعينيات فقط</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">11</span> أي عبارة أدق في تفسير سبب اعتبار تطور تكنولوجيا المعلومات سلسلة مراحل؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> كل مرحلة أضافت قدرات وأجهزة وخدمات غيّرت استخدام المجتمع للتقنية</div>
+      <div class="option"><span class="option-letter">ب</span> كل مرحلة ألغت كل ما قبلها تماماً</div>
+      <div class="option"><span class="option-letter">ج</span> المراحل متطابقة في تأثيرها</div>
+      <div class="option"><span class="option-letter">د</span> التطور اقتصر على تصغير الأجهزة</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2 -->
+  <!-- ============================================================ -->
+  <div class="section-title">ثانياً: قانون مور (Moore's Law)</div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">12</span> قانون مور يصف:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> اتجاهاً تاريخياً لتضاعف عدد الترانزستورات تقريباً كل عامين</div>
+      <div class="option"><span class="option-letter">ب</span> قانوناً فيزيائياً ثابتاً يضمن مضاعفة الأداء كل عامين</div>
+      <div class="option"><span class="option-letter">ج</span> زيادة عدد مستخدمي الإنترنت كل عامين</div>
+      <div class="option"><span class="option-letter">د</span> تضاعف حجم الحاسب كل عامين</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">13</span> القول بأن قانون مور «ليس قانوناً فيزيائياً ثابتاً» يعني أن:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الترانزستورات لا تتغير أبداً</div>
+      <div class="option"><span class="option-letter">ب</span> الحواسب لا تتطور</div>
+      <div class="option"><span class="option-letter">ج</span> عدد الترانزستورات يتناقص دائماً</div>
+      <div class="option"><span class="option-letter">د</span> ما يصفه هو اتجاه تاريخي وليس ضماناً حتمياً للمستقبل</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">14</span> إذا استمر اتجاه قانون مور لثلاث فترات متتالية كل منها عامان، فإن عدد الترانزستورات مقارنة بالبداية يصبح تقريباً:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> ضعفين</div>
+      <div class="option"><span class="option-letter">ب</span> 4 أضعاف</div>
+      <div class="option"><span class="option-letter">ج</span> 8 أضعاف</div>
+      <div class="option"><span class="option-letter">د</span> 16 ضعفاً</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">15</span> أحد التحديات التي قد تبطئ استمرار الاتجاه الذي وصفه قانون مور هو:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> زيادة عدد مستخدمي البريد الإلكتروني</div>
+      <div class="option"><span class="option-letter">ب</span> انتشار المتاجر الإلكترونية</div>
+      <div class="option"><span class="option-letter">ج</span> تحديات هندسية وفيزيائية مرتبطة بتصغير المكونات</div>
+      <div class="option"><span class="option-letter">د</span> زيادة استخدام شبكات التواصل</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">16</span> أي عبارة تمثل فهماً خاطئاً لقانون مور؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> هو اتجاه تاريخي</div>
+      <div class="option"><span class="option-letter">ب</span> ارتبط بزيادة قدرات الحوسبة</div>
+      <div class="option"><span class="option-letter">ج</span> استمر هذا الاتجاه عقوداً</div>
+      <div class="option"><span class="option-letter">د</span> هو قانون فيزيائي يضمن حتمياً مضاعفة عدد الترانزستورات كل عامين إلى الأبد</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3 -->
+  <!-- ============================================================ -->
+  <div class="section-title">ثالثاً: التحولات الاجتماعية</div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">17</span> طالب يستخدم منصة اجتماعية لنشر معلومة ومشاركتها بسرعة مع الآخرين. التقنية المقصودة هي:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الحوسبة الطرفية</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">ج</span> الحوسبة الكمومية</div>
+      <div class="option"><span class="option-letter">د</span> شبكات التواصل الاجتماعي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">18</span> الفرق الأساسي بين التجارة الإلكترونية والدفع غير النقدي أن:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الأولى تتعلق بالبيع والشراء عبر الإنترنت، والثاني يتعلق بطريقة السداد دون نقد</div>
+      <div class="option"><span class="option-letter">ب</span> كلاهما يعني العمل من المنزل</div>
+      <div class="option"><span class="option-letter">ج</span> الأولى تعني الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">د</span> الثاني يعني شراء السلع من متجر فعلي بالنقد</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">19</span> شركة تسمح لموظفيها بإنجاز مهامهم من المنزل باستخدام الإنترنت. هذا مثال على:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> التعلم عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">ب</span> العمل عن بُعد</div>
+      <div class="option"><span class="option-letter">ج</span> الواقع المعزز</div>
+      <div class="option"><span class="option-letter">د</span> التجارة الإلكترونية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">20</span> من أمثلة الدفع غير النقدي الواردة في الدرس:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الصمامات المفرغة</div>
+      <div class="option"><span class="option-letter">ب</span> البريد الإلكتروني فقط</div>
+      <div class="option"><span class="option-letter">ج</span> البطاقات المصرفية وتطبيقات الهاتف ورموز QR</div>
+      <div class="option"><span class="option-letter">د</span> الواقع الافتراضي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">21</span> إذا كان متجر صغير يريد الوصول إلى عملاء خارج منطقته دون فتح فروع جديدة، فأي تقنية تخدم الهدف مباشرة؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الحوسبة الطرفية</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع المعزز</div>
+      <div class="option"><span class="option-letter">ج</span> الحوسبة الكمومية</div>
+      <div class="option"><span class="option-letter">د</span> التجارة الإلكترونية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">22</span> أي موقف يجمع بين أكثر من تحول اجتماعي نتج عن تكنولوجيا المعلومات؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> طالب يتعلم عبر الإنترنت ويدفع إلكترونياً ويطلب كتاباً من متجر إلكتروني</div>
+      <div class="option"><span class="option-letter">ب</span> حاسب قديم يعمل بالصمامات المفرغة فقط</div>
+      <div class="option"><span class="option-letter">ج</span> معالج يحتوي على ترانزستورات أكثر</div>
+      <div class="option"><span class="option-letter">د</span> مركبة متوقفة دون نظام رقمي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">23</span> أي مما يلي يمثل تحولاً في «طريقة التواصل» أكثر مباشرة؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الدفع غير النقدي</div>
+      <div class="option"><span class="option-letter">ب</span> التجارة الإلكترونية</div>
+      <div class="option"><span class="option-letter">ج</span> شبكات التواصل الاجتماعي</div>
+      <div class="option"><span class="option-letter">د</span> العمل عن بُعد</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">24</span> أي مما يلي يمثل تحولاً في «طريقة التعلم»؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الدفع غير النقدي</div>
+      <div class="option"><span class="option-letter">ب</span> التجارة الإلكترونية</div>
+      <div class="option"><span class="option-letter">ج</span> التعلم عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">د</span> القيادة الذاتية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">25</span> أي مما يلي يمثل تحولاً في «طريقة العمل»؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> العمل عن بُعد</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">ج</span> الدفع غير النقدي</div>
+      <div class="option"><span class="option-letter">د</span> الويب</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">26</span> أي مما يلي يمثل تحولاً في «طريقة الدفع»؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> التعلم عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">ب</span> العمل عن بُعد</div>
+      <div class="option"><span class="option-letter">ج</span> الواقع المعزز</div>
+      <div class="option"><span class="option-letter">د</span> الدفع غير النقدي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">27</span> إذا توقفت خدمات الإنترنت في مجتمع يعتمد بشدة على التعلم الإلكتروني والتجارة الإلكترونية والعمل عن بُعد، فأي استنتاج هو الأكثر منطقية؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> ستتأثر عدة أنماط اجتماعية واقتصادية في وقت واحد</div>
+      <div class="option"><span class="option-letter">ب</span> سيتأثر التواصل فقط</div>
+      <div class="option"><span class="option-letter">ج</span> لن يتأثر أي نمط اجتماعي</div>
+      <div class="option"><span class="option-letter">د</span> ستزداد الخدمات الرقمية تلقائياً</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">28</span> قرية حصلت لأول مرة على إنترنت عالي السرعة وأصبحت خدمات الدفع غير النقدي متاحة فيها. أي توقع يتفق مع الدرس؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> قد تتغير بعض أنماط الحياة اليومية مع ظهور تحديات لمن لا يملكون بطاقة أو هاتفاً ذكياً</div>
+      <div class="option"><span class="option-letter">ب</span> ستختفي كل وسائل الدفع الأخرى فوراً</div>
+      <div class="option"><span class="option-letter">ج</span> لن يتغير أي سلوك</div>
+      <div class="option"><span class="option-letter">د</span> ستتحول القرية مباشرة إلى بيئة واقع افتراضي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">29</span> إذا كان أحد أفراد المجتمع لا يمتلك بطاقة بنكية أو هاتفاً ذكياً، فما الذي يوضح أن التحول الرقمي قد يخلق تحدياً؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> يزداد عدد الترانزستورات</div>
+      <div class="option"><span class="option-letter">ب</span> قد لا يستطيع الاستفادة من بعض خدمات الدفع غير النقدي</div>
+      <div class="option"><span class="option-letter">ج</span> سيختفي الإنترنت</div>
+      <div class="option"><span class="option-letter">د</span> سيصبح الواقع الافتراضي إلزامياً</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">30</span> أي عبارة تجمع بصورة صحيحة بين «التغير التقني» و«التغير الاجتماعي»؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> ظهور تقنية جديدة قد يغير طرق التواصل والعمل والتعلم والتجارة والدفع</div>
+      <div class="option"><span class="option-letter">ب</span> التقنية تتغير دون أن تمس المجتمع مطلقاً</div>
+      <div class="option"><span class="option-letter">ج</span> التغير الاجتماعي يسبق كل تقنية بالضرورة</div>
+      <div class="option"><span class="option-letter">د</span> كل تقنية تؤثر في جانب واحد فقط</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">31</span> أي مجموعة تتكون من أربعة تحولات اجتماعية ذُكرت في الدرس؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> شبكات التواصل، التجارة الإلكترونية، العمل عن بُعد، التعلم عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">ب</span> الصمامات، الكيوبت، ENIAC، المعالج</div>
+      <div class="option"><span class="option-letter">ج</span> الواقع المعزز، الواقع الافتراضي، الصمامات، البريد</div>
+      <div class="option"><span class="option-letter">د</span> الحوسبة الكمومية، QR، الصمامات، ENIAC</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 4 -->
+  <!-- ============================================================ -->
+  <div class="section-title">رابعاً: الحوسبة السحابية والطرفية</div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">32</span> الحوسبة السحابية تعني في الدرس:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> تقديم موارد تكنولوجيا المعلومات كخدمة عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">ب</span> تخزين البيانات داخل ذاكرة الهاتف فقط</div>
+      <div class="option"><span class="option-letter">ج</span> إلغاء مراكز البيانات</div>
+      <div class="option"><span class="option-letter">د</span> استخدام الحاسب دون اتصال</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">33</span> وصف السحابة بأنها «أجهزة حقيقية في مكان حقيقي» يساعد على فهم أن:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الخدمات السحابية تعتمد على بنية مادية فعلية رغم الوصول إليها عبر الإنترنت</div>
+      <div class="option"><span class="option-letter">ب</span> السحابة مكان افتراضي بلا أجهزة</div>
+      <div class="option"><span class="option-letter">ج</span> السحابة تعني الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">د</span> السحابة تعني الحوسبة الكمومية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">34</span> إذا كانت شركة تعتمد على خدمات سحابية لتحليل بيانات ضخمة، فأي علاقة منطقية يمكن استنتاجها؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الحوسبة السحابية تمنع تحليل البيانات</div>
+      <div class="option"><span class="option-letter">ب</span> الحوسبة السحابية تساعد في إتاحة موارد يمكن استخدامها لخدمات مثل تحليل البيانات</div>
+      <div class="option"><span class="option-letter">ج</span> البيانات الضخمة تعني عدم الحاجة للحوسبة</div>
+      <div class="option"><span class="option-letter">د</span> السحابة تستبدل الإنترنت</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">35</span> الحوسبة الطرفية تختلف عن الحوسبة السحابية في أن الحوسبة الطرفية:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> تتطلب دائماً إرسال البيانات أولاً إلى مركز بعيد</div>
+      <div class="option"><span class="option-letter">ب</span> تستخدم النقد في الدفع</div>
+      <div class="option"><span class="option-letter">ج</span> تضع المستخدم داخل عالم افتراضي</div>
+      <div class="option"><span class="option-letter">د</span> تعالج البيانات على الجهاز نفسه فوراً بدلاً من إرسالها إلى السحابة</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">36</span> في القيادة الذاتية، تكون الحوسبة الطرفية مهمة خصوصاً عندما:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> لا توجد بيانات من أي نوع</div>
+      <div class="option"><span class="option-letter">ب</span> يكون الهدف شراء منتج</div>
+      <div class="option"><span class="option-letter">ج</span> يكون المستخدم داخل درس إلكتروني</div>
+      <div class="option"><span class="option-letter">د</span> يحتاج النظام إلى قرار سريع على المركبة نفسها</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">37</span> إذا كان الهدف هو معالجة بيانات حساسة بسرعة على جهاز مركبة لاتخاذ قرار فوري، فأي تقنية أكثر ملاءمة؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الحوسبة الطرفية</div>
+      <div class="option"><span class="option-letter">ب</span> التجارة الإلكترونية</div>
+      <div class="option"><span class="option-letter">ج</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">د</span> شبكات التواصل الاجتماعي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">38</span> أي موقف يدل على فهم العلاقة بين الحوسبة الطرفية والقيادة الذاتية؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> المركبة تعالج بعض البيانات فوراً لاتخاذ قرار سريع بدلاً من انتظار إرسالها للسحابة</div>
+      <div class="option"><span class="option-letter">ب</span> المركبة ترسل كل قرار إلى متجر إلكتروني</div>
+      <div class="option"><span class="option-letter">ج</span> المركبة تستخدم الواقع الافتراضي فقط</div>
+      <div class="option"><span class="option-letter">د</span> المركبة تعتمد على الدفع غير النقدي لاتخاذ القرار</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">39</span> إذا طُلب منك اختيار التقنية التي تمثل «خدمة عبر الإنترنت» أكثر من كونها جهازاً جديداً للمستخدم، فأقرب اختيار هو:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الصمامات المفرغة</div>
+      <div class="option"><span class="option-letter">ب</span> الحاسب الشخصي</div>
+      <div class="option"><span class="option-letter">ج</span> الكيوبت</div>
+      <div class="option"><span class="option-letter">د</span> الحوسبة السحابية</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 5 -->
+  <!-- ============================================================ -->
+  <div class="section-title">خامساً: الواقع الافتراضي والمعزز والتقنيات الناشئة</div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">40</span> أي تقنية تضيف عناصر رقمية فوق صور من العالم الحقيقي؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الواقع المعزز</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">ج</span> الحوسبة الكمومية</div>
+      <div class="option"><span class="option-letter">د</span> العمل عن بُعد</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">41</span> أي تقنية تضع المستخدم داخل بيئة افتراضية مولدة حاسوبياً بالكامل؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع المعزز</div>
+      <div class="option"><span class="option-letter">ج</span> التجارة الإلكترونية</div>
+      <div class="option"><span class="option-letter">د</span> الحوسبة الطرفية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">42</span> إذا رأى الطالب معلومات رقمية تظهر فوق صورة شارع حقيقي عبر هاتفه، فالأرجح أنه يستخدم:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">ب</span> الدفع غير النقدي</div>
+      <div class="option"><span class="option-letter">ج</span> الحوسبة الكمومية</div>
+      <div class="option"><span class="option-letter">د</span> الواقع المعزز</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">43</span> إذا ارتدى المستخدم جهازاً ينقله إلى بيئة رقمية كاملة منفصلة عن العالم الحقيقي، فهذا:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الواقع المعزز</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع الافتراضي</div>
+      <div class="option"><span class="option-letter">ج</span> الحوسبة الطرفية</div>
+      <div class="option"><span class="option-letter">د</span> التجارة الإلكترونية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">44</span> أي خيار يمثل علاقة صحيحة بين تقنية ناشئة واستخدامها؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> الواقع المعزز — إضافة معلومات رقمية إلى العالم الحقيقي</div>
+      <div class="option"><span class="option-letter">ب</span> الواقع الافتراضي — زيادة سرعة المعالج بالضرورة</div>
+      <div class="option"><span class="option-letter">ج</span> الحوسبة الكمومية — تسريع كل الحسابات</div>
+      <div class="option"><span class="option-letter">د</span> القيادة الذاتية — إلغاء دور الذكاء الاصطناعي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">45</span> القيادة الذاتية تستخدم الذكاء الاصطناعي للمساعدة على قيادة المركبة، مع اختلاف مقدار:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> التدخل البشري بحسب مستوى الأتمتة</div>
+      <div class="option"><span class="option-letter">ب</span> عدد مستخدمي الإنترنت</div>
+      <div class="option"><span class="option-letter">ج</span> حجم المتجر الإلكتروني</div>
+      <div class="option"><span class="option-letter">د</span> عدد الرسائل الإلكترونية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">46</span> الحوسبة الكمومية تعتمد على:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> خصائص ميكانيكا الكم لمعالجة المعلومات</div>
+      <div class="option"><span class="option-letter">ب</span> الصمامات المفرغة فقط</div>
+      <div class="option"><span class="option-letter">ج</span> شبكات التواصل الاجتماعي</div>
+      <div class="option"><span class="option-letter">د</span> رموز QR</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">47</span> الفرق بين البت والكيوبت كما ورد في الدرس أن:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> كلاهما يحمل الحالة نفسها دائماً</div>
+      <div class="option"><span class="option-letter">ب</span> الكيوبت لا يستخدم في الحوسبة</div>
+      <div class="option"><span class="option-letter">ج</span> البت لا يمثل معلومات</div>
+      <div class="option"><span class="option-letter">د</span> البت التقليدي يحمل حالة واحدة، بينما يستخدم الكيوبت مبدأ التراكب الكمومي</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">48</span> القول إن الحوسبة الكمومية «لا تسرّع جميع أنواع الحسابات» يرفض أي تعميم من الآتي؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> أنها ستجعل كل أنواع الحسابات أسرع بالضرورة</div>
+      <div class="option"><span class="option-letter">ب</span> أنها تستخدم خصائص ميكانيكا الكم</div>
+      <div class="option"><span class="option-letter">ج</span> أنها قد توفر تفوقاً في فئات محددة</div>
+      <div class="option"><span class="option-letter">د</span> أنها تختلف عن الحوسبة التقليدية</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">49</span> إذا كان السؤال: «لماذا لا يكفي وصف التقنية دون تحليل أثرها؟» فأفضل إجابة هي:</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> لأن الدرس يربط كل مرحلة تقنية بتغير في طريقة حياة المجتمع</div>
+      <div class="option"><span class="option-letter">ب</span> لأن أسماء التقنيات أهم من آثارها</div>
+      <div class="option"><span class="option-letter">ج</span> لأن التاريخ لا علاقة له بالتقنية</div>
+      <div class="option"><span class="option-letter">د</span> لأن المجتمع لا يتغير</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text"><span class="question-num">50</span> طالب يقول: «بما أن التكنولوجيا تتطور، فكل تحول رقمي يمثل تقدماً إيجابياً لكل أفراد المجتمع.» أي رد ينسجم أكثر مع الدرس؟</div>
+    <div class="options-grid">
+      <div class="option"><span class="option-letter">أ</span> العبارة صحيحة دائماً</div>
+      <div class="option"><span class="option-letter">ب</span> التحول قد يحقق فوائد، لكنه قد يخلق تحديات لفئات لا تملك أدوات الاستفادة منه</div>
+      <div class="option"><span class="option-letter">ج</span> التحول الرقمي لا يحقق أي فوائد</div>
+      <div class="option"><span class="option-letter">د</span> المجتمع لا يتأثر بالتكنولوجيا</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>المهندس / احمد عبد الناصر</strong> &nbsp;|&nbsp; جميع الحقوق محفوظة &nbsp;|&nbsp; برنامج ذكاء اصطناعي واتمتة صناعية
+  </div>
+
+</div>
+</body>
+</html>
