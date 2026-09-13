@@ -24,18 +24,10 @@
       
       <!-- Question Card Wrapper -->
       <div class="relative z-10 min-h-[400px]">
-        <!-- Header area for Question and Badge -->
         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-8 mt-2">
           <h4 class="text-2xl md:text-3xl font-bold text-maintext leading-tight flex-1">
             {{ currentQuestion.text }}
           </h4>
-          
-          <!-- Difficulty Badge -->
-          <div class="inline-flex py-1.5 px-4 rounded-full font-bold text-sm shadow-sm items-center gap-2 border shrink-0 self-start sm:self-auto"
-               :class="difficultyBadgeClass">
-            <span class="text-xs">{{ difficultyIcon }}</span>
-            <span>{{ difficultyText }}</span>
-          </div>
         </div>
 
         <!-- Dynamic Question Component -->
