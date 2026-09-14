@@ -4,7 +4,7 @@
     <div class="bg-gradient-to-l from-indigo-700 via-blue-600 to-cyan-500 text-white py-16 px-6 shadow-lg mb-12 rounded-b-[3rem]">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="space-y-4 md:w-2/3">
-          <span class="bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/30 inline-block">تكنولوجيا المعلومات - الصف الثاني الثانوي</span>
+          <span class="bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/30 inline-block">مادة البرمجة والذكاء الاصطناعي - الصف الثاني الثانوي</span>
           <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">الدرس الأول: تطور تكنولوجيا المعلومات والتحول الاجتماعي</h1>
           <p class="text-lg md:text-xl text-blue-100 max-w-2xl">
             مراجعة تفاعلية شاملة لأسئلة الدرس. اختبر فهمك لرحلة تطور الحواسيب، قانون مور، التقنيات الناشئة وأثرها على مجتمعاتنا.
