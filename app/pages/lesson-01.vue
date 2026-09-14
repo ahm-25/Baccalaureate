@@ -9,6 +9,16 @@
           <p class="text-lg md:text-xl text-blue-100 max-w-2xl">
             مراجعة تفاعلية شاملة لأسئلة الدرس. اختبر فهمك لرحلة تطور الحواسيب، قانون مور، التقنيات الناشئة وأثرها على مجتمعاتنا.
           </p>
+
+          <a
+            href="/lesson-01-exam.html"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 bg-white text-indigo-700 hover:bg-blue-50 px-6 py-3 rounded-full font-bold shadow-lg transition-all hover:scale-105"
+          >
+            <span class="text-xl">📄</span>
+            تحميل نموذج الأسئلة (PDF)
+          </a>
         </div>
         <div class="hidden md:flex justify-center md:w-1/3">
           <div class="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border-4 border-white/20 animate-pulse-slow">
