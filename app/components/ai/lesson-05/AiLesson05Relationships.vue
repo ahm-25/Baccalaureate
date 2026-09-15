@@ -23,27 +23,49 @@
           </p>
         </div>
 
-        <!-- AI -->
-        <div class="w-full max-w-lg bg-blue-500 text-white rounded-2xl p-4 text-center font-bold text-xl shadow-md border-b-4 border-blue-600">
-          Artificial Intelligence (AI)
-        </div>
-        <div class="text-gray-400">↓</div>
-        
-        <!-- ML -->
-        <div class="w-full max-w-md bg-purple-500 text-white rounded-2xl p-4 text-center font-bold text-lg shadow-md border-b-4 border-purple-600">
-          Machine Learning (ML)
-        </div>
-        <div class="text-gray-400">↓</div>
+        <!-- AI Visual Diagram -->
+        <div class="w-full max-w-2xl mx-auto">
+          <!-- AI -->
+          <div class="bg-indigo-50/80 border-2 border-indigo-200 rounded-[2rem] p-4 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-indigo-200/50">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl shadow-inner">🌐</div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-black text-indigo-900">الذكاء الاصطناعي (AI)</h3>
+              </div>
+            </div>
+            
+            <!-- ML -->
+            <div class="bg-blue-50/90 border-2 border-blue-200 rounded-[1.5rem] p-4 sm:p-6 shadow-sm mt-4 transition-all duration-300 hover:shadow-blue-200/50">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg shadow-inner">🤖</div>
+                <div>
+                  <h4 class="text-lg sm:text-xl font-bold text-blue-900">التعلم الآلي (ML)</h4>
+                </div>
+              </div>
 
-        <!-- DL -->
-        <div class="w-full max-w-sm bg-pink-500 text-white rounded-2xl p-4 text-center font-bold shadow-md border-b-4 border-pink-600">
-          Deep Learning (DL)
-        </div>
-        <div class="text-gray-400">↓</div>
-
-        <!-- GenAI -->
-        <div class="w-full max-w-xs bg-emerald-500 text-white rounded-2xl p-4 text-center font-bold text-sm shadow-md border-b-4 border-emerald-600">
-          Generative AI (GenAI)
+              <div class="flex flex-col gap-4 mt-4">
+                <!-- DL -->
+                <div class="bg-purple-50/90 border-2 border-purple-200 rounded-2xl p-4 sm:p-6 shadow-sm transition-all duration-300 hover:shadow-purple-200/50">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-lg shadow-inner">🧠</div>
+                    <h5 class="text-base sm:text-lg font-bold text-purple-900">التعلم العميق (DL)</h5>
+                  </div>
+                  
+                  <!-- GenAI -->
+                  <div class="bg-teal-50/90 border-2 border-teal-200 rounded-xl p-4 shadow-sm relative overflow-hidden transition-all duration-300 hover:shadow-teal-200/50 hover:-translate-y-1">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-teal-200 rounded-full animate-pulse opacity-30"></div>
+                    <div class="flex items-center gap-3 mb-2 relative z-10">
+                      <div class="w-7 h-7 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center text-base shadow-inner">✨</div>
+                      <h6 class="text-sm sm:text-base font-bold text-teal-900">الذكاء التوليدي (GenAI)</h6>
+                    </div>
+                    <p class="text-teal-800/80 text-xs leading-relaxed relative z-10">
+                      يعتمد بشكل كبير على نماذج التعلم العميق لتوليد نصوص وصور وأصوات جديدة
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

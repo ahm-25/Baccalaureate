@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div v-if="$route.name === 'lesson-05'" class="relative">
     <AiLesson05Hero />
     <AiLesson05Objectives />
     <AiLesson05OpeningQuestion />
@@ -110,6 +110,7 @@
       </NuxtLink>
     </div>
   </div>
+  <NuxtPage v-else />
 </template>
 
 <script setup lang="ts">
