@@ -13,7 +13,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- 1. Healthcare -->
         <div class="bg-white rounded-3xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-300">
-          <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+          <div class="flex items-center justify-center gap-3 mb-6 border-b border-gray-100 pb-4">
              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-2xl">🏥</div>
              <h3 class="text-2xl font-bold text-blue-900">الرعاية الصحية</h3>
           </div>
@@ -24,33 +24,52 @@
             <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> دعم اكتشاف الأدوية</li>
           </ul>
 
-          <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200 text-center cursor-pointer group" @click="analyzeXray = !analyzeXray">
-            <div class="flex items-center justify-center gap-4">
-              <div class="flex flex-col items-center">
-                <span class="text-3xl mb-2 grayscale opacity-70">🩻</span>
-                <span class="text-xs text-gray-500">صورة أشعة</span>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 text-center cursor-pointer group hover:shadow-md transition-all duration-300 relative overflow-hidden" @click="analyzeXray = !analyzeXray">
+            <!-- Decorative background -->
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-transparent opacity-0 transition-opacity duration-500" :class="{ 'opacity-100': analyzeXray }"></div>
+            
+            <div class="flex items-center justify-between relative z-10">
+              <!-- Input (RTL: Right) -->
+              <div class="flex flex-col items-center w-1/3">
+                <div class="w-14 h-14 bg-white rounded-2xl border border-gray-200 shadow-sm flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                  <Scan class="w-7 h-7 text-gray-500" />
+                </div>
+                <span class="text-sm font-bold text-gray-600">صورة أشعة</span>
               </div>
               
-              <div class="text-gray-400 font-bold">
-                <span v-if="!analyzeXray">← اضغط للتحليل →</span>
-                <span v-else class="text-blue-500">AI يحلل الأنماط</span>
+              <!-- Action (Middle) -->
+              <div class="flex-1 flex flex-col items-center justify-center px-2">
+                <div class="w-full h-1 bg-gray-200 rounded-full relative mb-4">
+                  <div class="absolute right-0 top-0 h-full bg-blue-500 rounded-full transition-all duration-1000 ease-in-out"
+                       :style="{ width: analyzeXray ? '100%' : '0%' }"></div>
+                </div>
+                <div class="text-sm font-bold px-4 py-2 rounded-xl transition-all duration-300"
+                     :class="analyzeXray ? 'bg-blue-100 text-blue-700' : 'bg-white border border-gray-200 text-gray-500 shadow-sm group-hover:border-blue-300 group-hover:text-blue-500'">
+                  {{ analyzeXray ? 'تم التحليل ✨' : 'اضغط للتحليل 👈' }}
+                </div>
               </div>
               
-              <div class="flex flex-col items-center transition-all duration-500" :class="analyzeXray ? 'opacity-100 scale-110' : 'opacity-30 blur-sm'">
-                <span class="text-3xl mb-2 text-green-500">🩺</span>
-                <span class="text-xs font-bold text-green-600">نتيجة مساعدة للطبيب</span>
+              <!-- Output (RTL: Left) -->
+              <div class="flex flex-col items-center w-1/3 transition-all duration-500"
+                   :class="analyzeXray ? 'opacity-100' : 'opacity-40 grayscale blur-[1px]'">
+                <div class="w-14 h-14 bg-white rounded-2xl border transition-colors duration-500 shadow-sm flex items-center justify-center mb-3"
+                     :class="analyzeXray ? 'border-green-200 bg-green-50/50' : 'border-gray-200'">
+                  <Stethoscope class="w-7 h-7 transition-colors duration-500" :class="analyzeXray ? 'text-green-600' : 'text-gray-400'" />
+                </div>
+                <span class="text-sm font-bold transition-colors duration-500" :class="analyzeXray ? 'text-green-700' : 'text-gray-500'">نتيجة مساعدة</span>
               </div>
             </div>
             
-            <div v-if="analyzeXray" class="mt-4 p-2 bg-yellow-50 text-yellow-800 text-xs rounded border border-yellow-200 animate-fade-in">
-              <strong>تنبيه:</strong> القرار النهائي يجب أن يظل تحت إشراف الطبيب.
+            <div v-if="analyzeXray" class="mt-5 p-3 bg-yellow-50/80 text-yellow-800 text-xs rounded-xl border border-yellow-200/60 animate-fade-in flex items-center gap-2 text-right relative z-10">
+              <AlertTriangle class="w-5 h-5 text-yellow-600 flex-shrink-0" />
+              <span class="leading-relaxed text-sm"><strong>تنبيه:</strong> القرار النهائي يجب أن يظل تحت إشراف الطبيب البشري.</span>
             </div>
           </div>
         </div>
 
         <!-- 2. Agriculture -->
         <div class="bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl transition-all duration-300">
-          <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+          <div class="flex items-center justify-center gap-3 mb-6 border-b border-gray-100 pb-4">
              <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-2xl">🌾</div>
              <h3 class="text-2xl font-bold text-green-900">الزراعة</h3>
           </div>
@@ -86,7 +105,7 @@
 
         <!-- 3. Manufacturing -->
         <div class="bg-white rounded-3xl p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300">
-          <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+          <div class="flex items-center justify-center gap-3 mb-6 border-b border-gray-100 pb-4">
              <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-2xl">🏭</div>
              <h3 class="text-2xl font-bold text-orange-900">التصنيع</h3>
           </div>
@@ -112,7 +131,7 @@
 
         <!-- 4. Logistics -->
         <div class="bg-white rounded-3xl p-8 border border-teal-100 shadow-md hover:shadow-xl transition-all duration-300">
-          <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+          <div class="flex items-center justify-center gap-3 mb-6 border-b border-gray-100 pb-4">
              <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center text-2xl">🚚</div>
              <h3 class="text-2xl font-bold text-teal-900">الخدمات اللوجستية</h3>
           </div>
@@ -209,6 +228,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
+import { Scan, Stethoscope, AlertTriangle } from 'lucide-vue-next';
 
 const analyzeXray = ref(false);
 const plantState = ref<string | null>(null);

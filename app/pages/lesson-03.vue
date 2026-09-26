@@ -16,14 +16,11 @@
     <!-- الذكاء الاصطناعي والإنسان -->
     <AiLesson03HumanAi />
     
-    <!-- القسم الرابع: ما الذي يتطلب الحذر؟ -->
-    <AiLesson03Risks />
+    <!-- القسم الثالث: خصائص الذكاء الاصطناعي واحتياطات الاستخدام -->
+    <AiLesson03CharacteristicsPrecautions />
     
     <!-- توقف وفكر - الرعاية الصحية -->
     <AiLesson03StopThinkHealthcare />
-    
-    <!-- القسم الخامس: مخاطر استخدام الذكاء الاصطناعي -->
-    <AiLesson03Dangers />
     
     <!-- طبّق ما تعلمته -->
     <AiLesson03ApplyWhatYouLearned />
