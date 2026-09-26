@@ -17,6 +17,9 @@
     <!-- 2,3,4. Hierarchy (ML, DL, ANN) -->
     <AiLesson05Hierarchy />
     
+    <!-- ML Classification Example: Predicting Student Success -->
+    <AiLesson05MlExample />
+    
     <QuizQuestionArena
       v-if="machineLearningQuestions.length > 0"
       :questions="machineLearningQuestions"
