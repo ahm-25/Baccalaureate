@@ -106,7 +106,7 @@
       </button>
       <div class="w-px h-4 bg-gray-300"></div>
       <NuxtLink
-        to="/"
+        to="/lesson-06"
         class="text-gray-500 hover:text-purple-600 transition-colors text-sm font-bold flex items-center gap-1"
       >
         التالي <span>&larr;</span>
