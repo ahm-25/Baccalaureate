@@ -118,7 +118,7 @@
       <!-- أمثلة متكاملة: المتغير البديل -->
       <div class="mt-16 mb-12">
         <h3 class="text-2xl font-bold text-slate-800 mb-8 flex items-center gap-3">
-          <span class="text-3xl">🧩</span> أمثلة متكاملة: فخ "المتغير البديل"
+          <span class="text-3xl">🧩</span> أمثلة متكاملة وتطبيقات عملية
         </h3>
         
         <div class="space-y-12">
@@ -262,6 +262,131 @@
                   <li class="flex gap-3">
                     <span class="font-bold text-emerald-600">3.</span>
                     <p><strong>الخلاصة:</strong> "المشكلة بتحصل لما النظام يستخدم المتغير ده بطريقة تؤدي لتمييز غير عادل ضد فئة معينة."</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- المثال الثالث: نظام تسعير العقارات -->
+          <div>
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="bg-teal-900 text-white p-6">
+                <h4 class="font-bold text-xl mb-2 text-teal-300">المثال الثالث: نظام تسعير العقارات (مصادر التحيز الأربعة)</h4>
+                <p class="text-lg leading-relaxed">
+                  تخيل شركة عقارات صممت نظام ذكاء اصطناعي يتوقع سعر الشقة. النظام يتعلم من بيانات شقق قديمة ليتوقع سعر أي شقة جديدة.
+                </p>
+              </div>
+              
+              <div class="p-6 md:p-8 space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <!-- Source 1 -->
+                  <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+                    <h4 class="font-bold text-indigo-800 mb-2 flex items-center gap-2">
+                      <span class="text-xl">1️⃣</span> التحيز بسبب بيانات التدريب
+                    </h4>
+                    <p class="text-slate-700 text-sm mb-2">
+                      الشركة درّبت النظام على 10,000 شقة، لكن اكتشفنا أن: 9,000 شقة من مناطق راقية، و 1,000 شقة فقط من مناطق شعبية. إذن البيانات ليست ممثلة لكل المناطق بشكل كافٍ.
+                    </p>
+                    <p class="text-slate-700 text-sm font-bold bg-indigo-100 p-2 rounded-lg">
+                      المشكلة: النظام اتعلم من بيانات ناقصة أو غير متوازنة.
+                    </p>
+                  </div>
+
+                  <!-- Source 2 -->
+                  <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100">
+                    <h4 class="font-bold text-purple-800 mb-2 flex items-center gap-2">
+                      <span class="text-xl">2️⃣</span> التحيز بسبب تصميم النظام
+                    </h4>
+                    <p class="text-slate-700 text-sm mb-2">
+                      بافتراض أن البيانات ممتازة، قرر مصمم النظام أن المعلومات المستخدمة هي (المساحة + عدد الغرف + عمر المبنى) وتجاهل "موقع الشقة" رغم أهميته.
+                    </p>
+                    <p class="text-slate-700 text-sm font-bold bg-purple-100 p-2 rounded-lg">
+                      المشكلة: النموذج بيتعلم بنفسه، لكن البشر بيحددوا له هيتعلم باستخدام أنهي معلومات.
+                    </p>
+                  </div>
+
+                  <!-- Source 3 -->
+                  <div class="bg-rose-50 p-6 rounded-2xl border border-rose-100">
+                    <h4 class="font-bold text-rose-800 mb-2 flex items-center gap-2">
+                      <span class="text-xl">3️⃣</span> التحيز بسبب طريقة الاستخدام
+                    </h4>
+                    <p class="text-slate-700 text-sm mb-2">
+                      النظام توقع سعر الشقة بـ 2 مليون جنيه. المشكلة لو قال صاحب الشركة: "طالما الـ AI قال 2 مليون، يبقى السعر الحقيقي 2 مليون" واستخدمه كقرار نهائي بدون مراجعة.
+                    </p>
+                    <p class="text-slate-700 text-sm font-bold bg-rose-100 p-2 rounded-lg">
+                      المشكلة: النظام قد يكون مجرد أداة للتوقع، لكن طريقة استخدام النتيجة قد تسبب مشكلة.
+                    </p>
+                  </div>
+
+                  <!-- Source 4 -->
+                  <div class="bg-amber-50 p-6 rounded-2xl border border-amber-100">
+                    <h4 class="font-bold text-amber-800 mb-2 flex items-center gap-2">
+                      <span class="text-xl">4️⃣</span> السياق البشري والاجتماعي
+                    </h4>
+                    <p class="text-slate-700 text-sm mb-2">
+                      أسعار منطقة معينة كانت منخفضة في الماضي. لاحقاً حصل تطوير وارتفعت الأسعار، لكن النظام ما زال يتعلم من البيانات القديمة فيعطي أسعاراً أقل من الواقع.
+                    </p>
+                    <p class="text-slate-700 text-sm font-bold bg-amber-100 p-2 rounded-lg">
+                      المشكلة: المجتمع والسوق بيتغيروا، والبيانات القديمة مش دائمًا بتمثل الواقع الحالي.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Table -->
+                <div class="mt-8">
+                  <h4 class="font-bold text-slate-800 mb-4 text-center">ملخص: مصادر التحيز الأربعة في مثال العقارات</h4>
+                  <div class="overflow-hidden rounded-xl border border-slate-200">
+                    <table class="w-full text-right">
+                      <thead class="bg-slate-100">
+                        <tr>
+                          <th class="p-4 font-bold text-slate-700 border-b border-slate-200">مصدر التحيز</th>
+                          <th class="p-4 font-bold text-slate-700 border-b border-slate-200">في مثال العقارات</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-slate-100 bg-white">
+                        <tr>
+                          <td class="p-4 text-slate-700 font-medium">بيانات التدريب</td>
+                          <td class="p-4 text-slate-600">بيانات قليلة عن بعض المناطق</td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 text-slate-700 font-medium bg-slate-50">تصميم النظام</td>
+                          <td class="p-4 text-slate-600 bg-slate-50">استبعاد الموقع من المتغيرات</td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 text-slate-700 font-medium">طريقة الاستخدام</td>
+                          <td class="p-4 text-slate-600">اعتبار توقع الـAI قرارًا نهائيًا</td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 text-slate-700 font-medium bg-slate-50">السياق البشري والاجتماعي</td>
+                          <td class="p-4 text-slate-600 bg-slate-50">تغير ظروف المجتمع والسوق عن البيانات القديمة</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Teacher Note for Example 3 -->
+            <div v-if="isTeacherMode" class="mt-6 bg-teal-50 border border-teal-200 rounded-3xl p-6 relative overflow-hidden">
+              <div class="absolute -left-4 -top-4 text-teal-200/50 text-9xl">💬</div>
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold text-teal-800 mb-4 flex items-center gap-2">
+                  <span>💬</span> سيناريو الشرح للمثال الثالث
+                </h3>
+                <ul class="space-y-4 text-teal-900 text-lg">
+                  <li class="flex gap-3">
+                    <span class="font-bold text-teal-600">1.</span>
+                    <p><strong>قول للطلاب:</strong> "عندنا شركة عقارات عملت نظام ذكاء اصطناعي يتوقع سعر الشقة." واشرح لهم كيف تظهر المشكلة من كل مصدر (البيانات، التصميم، الاستخدام، والسياق).</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="font-bold text-teal-600">2.</span>
+                    <p><strong>على السبورة:</strong> ارسم الجدول الموضح أعلاه لترتيب أفكارهم ولتوضيح كيف يمكن لنفس النظام أن يعاني من مشاكل في أربعة أماكن مختلفة.</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="font-bold text-teal-600">3.</span>
+                    <p><strong>الخلاصة:</strong> "نفس نظام الذكاء الاصطناعي ممكن تظهر فيه مشكلة من أربع أماكن مختلفة: البيانات اللي اتعلم منها، أو طريقة تصميمه، أو طريقة استخدامه، أو البيئة والمجتمع اللي بيشتغل فيه."</p>
                   </li>
                 </ul>
               </div>
