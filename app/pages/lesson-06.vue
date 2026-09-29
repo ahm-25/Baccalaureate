@@ -10,6 +10,7 @@
     <AiLesson06Privacy />
     <AiLesson06Xai />
     <AiLesson06BlackBox />
+    <AiLesson06AiConceptsComparison />
     <AiLesson06Principles />
     <AiLesson06Responsibility />
     <AiLesson06CaseStudy />
