@@ -114,9 +114,9 @@
         </div>
       </div>
 
-      <!-- جملة تحفظها للطلاب -->
+      <!-- ركز -->
       <div class="bg-amber-50 border border-amber-200 rounded-3xl p-8 text-center shadow-sm">
-        <h3 class="text-xl font-bold text-amber-800 mb-6">💡 جملة تحفظها للطلاب</h3>
+        <h3 class="text-xl font-bold text-amber-800 mb-6">💡 ركز</h3>
         
         <div class="flex flex-col gap-4 max-w-2xl mx-auto mb-8">
           <div class="bg-white px-6 py-3 rounded-xl border border-amber-100 shadow-sm flex items-center justify-between text-right">

@@ -46,13 +46,14 @@ const normalizedOptions = computed<NormalizedOption[]>(() => {
 const correctOptionId = computed(() => {
   if (props.question?.correctOptionId !== undefined) return String(props.question.correctOptionId)
   if (props.question?.correctAnswerIndex !== undefined) return String(props.question.correctAnswerIndex)
+  if (props.question?.correct !== undefined) return String(props.question.correct)
   return null
 })
 
 const selectedOptionId = ref<string | null>(null)
 
-// Reset selection when the question ID changes
-watch(() => props.question.id, () => {
+// Reset selection when the question changes
+watch(() => props.question.text, () => {
   selectedOptionId.value = null
 })
 
