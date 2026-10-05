@@ -1,0 +1,31 @@
+export const lessonData = {
+  courseTitle: "تانية بكالوريا",
+  lessonTitle: "2-1 تقنيات التشفير والمصادقة",
+  sections: [
+    { id: "hero", title: "البداية" },
+    { id: "opening", title: "سؤال البداية" },
+    { id: "objectives", title: "أهداف الدرس" },
+    { id: "why-protect", title: "لماذا نحتاج لحماية الاتصال؟" },
+    { id: "what-is-https", title: "ما هو HTTPS؟" },
+    { id: "tls-handshake", title: "كيف تعمل مصافحة TLS؟" },
+    { id: "public-key", title: "التشفير بالمفتاح العام" },
+    { id: "symmetric-key", title: "التشفير المتماثل" },
+    { id: "https-protection", title: "كيف تحمي HTTPS الاتصال؟" },
+    { id: "authentication", title: "المصادقة Authentication" },
+    { id: "fa2", title: "المصادقة الثنائية FA2" },
+    { id: "auth-factors", title: "أنواع عوامل المصادقة" },
+    { id: "digital-cert", title: "الشهادة الرقمية" },
+    { id: "digital-signature", title: "التوقيع الرقمي" },
+    { id: "security-comparison", title: "الفرق بين التقنيات" },
+    { id: "practical-example", title: "مثال عملي: التسوق" },
+    { id: "stop-think", title: "توقف وفكر" },
+    { id: "solved-example", title: "مثال محلول" },
+    { id: "practice-quiz", title: "اختبر فهمك" },
+    { id: "think-engineer", title: "فكر كمهندس" },
+    { id: "apply-learned", title: "تطبيق ما تعلمته" },
+    { id: "exam-question", title: "سؤال امتحان" },
+    { id: "summary", title: "الخلاصة" },
+    { id: "next-lesson", title: "الدرس القادم" }
+  ],
+  quiz: []
+};
