@@ -16,6 +16,7 @@
       section-id="timeline" 
     />
     <ItLesson04MooresLaw />
+    <ItLesson04MooresLawFormulas />
     <QuizQuestionArena 
       :questions="mooresLawQuestions" 
       section-title="قانون مور" 

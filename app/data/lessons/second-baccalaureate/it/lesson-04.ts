@@ -8,6 +8,7 @@ export const lessonData = {
     { id: 'big-idea', title: 'الفكرة الكبرى' },
     { id: 'timeline', title: 'تاريخ تكنولوجيا المعلومات' },
     { id: 'moores-law', title: 'قانون مور' },
+    { id: 'moores-law-formulas', title: 'قوانين مور الرياضية' },
     { id: 'social-changes', title: 'التغيرات الاجتماعية' },
     { id: 'social-visual', title: 'قبل واليوم' },
     { id: 'emerging-tech', title: 'تقنيات ناشئة' },
