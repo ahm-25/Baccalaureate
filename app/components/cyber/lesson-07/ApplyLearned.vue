@@ -1,70 +1,43 @@
 <template>
-  <section id="apply-learned" class="py-20 bg-slate-50">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <div class="inline-block bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full font-bold mb-6 text-sm border border-indigo-200">
-        تطبيق عملي
-      </div>
-      <h2 class="text-3xl font-bold text-slate-800 mb-8">تطبيق ما تعلمته</h2>
-      
-      <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm max-w-3xl mx-auto mb-10 text-right">
-        <h3 class="text-xl font-bold text-slate-800 mb-4 border-b border-slate-100 pb-4">السيناريو:</h3>
-        <p class="text-lg text-slate-700 leading-relaxed mb-6 font-medium bg-slate-50 p-4 rounded-xl">
-          متجر إلكتروني صغير يريد تأمين تسجيل دخول العملاء والدفع معًا.
-        </p>
-        <div class="space-y-2 mb-8">
-          <p class="font-bold text-indigo-600">المطلوب:</p>
-          <ul class="list-decimal list-inside text-slate-700">
-            <li>سمِّ تقنيتين للأمان.</li>
-            <li>وضح أين تساعد كل تقنية.</li>
-            <li>حدد تهديدًا واحدًا قد يظل قائمًا.</li>
-          </ul>
-        </div>
-        
-        <div class="text-center">
-          <button v-if="!show" @click="show = true" class="px-8 py-4 bg-indigo-600 text-white font-bold text-lg rounded-2xl hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto">
-            اعرض نموذج الإجابة
+  <section id="apply-learned" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl overflow-hidden border border-teal-200 shadow-sm">
+        <div class="bg-teal-700 text-white px-6 py-4 font-bold text-xl flex items-center gap-2">🌍 طبّق ما تعلمته</div>
+        <div class="p-6 md:p-8 bg-white">
+          <p class="text-lg text-slate-700 font-medium leading-relaxed mb-6">
+            يريد متجر إلكتروني صغير تأمين تسجيل دخول العملاء والدفع معًا. بالاستعانة بما تعلمته،
+            سمِّ تقنيتي أمان يجب أن يستخدمهما وبيّن أين تساعد كل منهما، ثم حدّد تهديدًا واحدًا قد يظل قائمًا.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div v-for="(f, i) in fields" :key="i" class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+              <h4 class="font-bold text-slate-800 mb-2">{{ f }}</h4>
+              <textarea rows="4" class="w-full bg-white border border-slate-200 rounded-lg p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-teal-400" placeholder="اكتب إجابتك…"></textarea>
+            </div>
+          </div>
+
+          <button @click="show = !show" class="text-teal-700 font-bold bg-teal-50 hover:bg-teal-100 px-4 py-2 rounded-lg text-sm transition-colors">
+            {{ show ? 'إخفاء الإجابة المقترحة' : 'أظهر إجابة مقترحة' }}
           </button>
-        </div>
-      </div>
-      
-      <div v-if="show" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl text-right max-w-3xl mx-auto animate-fade-in-up">
-        <h4 class="font-bold text-xl text-slate-800 mb-6 flex items-center gap-2 border-b border-slate-100 pb-4">
-          <span class="text-emerald-500">✅</span> نموذج الإجابة المقترح
-        </h4>
-        
-        <div class="space-y-6">
-          <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100">
-            <strong class="text-indigo-800 text-lg block mb-2">1. التقنيات المقترحة:</strong>
-            <p class="text-slate-700">HTTPS (الذي يتضمن تشفير وشهادة رقمية) + المصادقة الثنائية (FA2).</p>
-          </div>
-          
-          <div class="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100">
-            <strong class="text-emerald-800 text-lg block mb-2">2. أين تساعد؟</strong>
-            <ul class="space-y-3 mt-3">
-              <li class="flex items-start gap-3">
-                <span class="bg-emerald-200 text-emerald-800 p-1 rounded mt-0.5">🔒</span>
-                <span><strong>HTTPS:</strong> لحماية بيانات بطاقة الائتمان من الاعتراض أثناء الدفع والتأكد من هوية المتجر (أنه ليس موقعًا مزيفًا).</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="bg-emerald-200 text-emerald-800 p-1 rounded mt-0.5">📱</span>
-                <span><strong>FA2:</strong> لحماية حسابات العملاء من الاختراق إذا تم كشف أو تخمين كلمة المرور الخاصة بهم.</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100">
-            <strong class="text-rose-800 text-lg block mb-2">3. تهديد قد يظل قائمًا:</strong>
-            <p class="text-slate-700">
-              أساليب الهندسة الاجتماعية (خداع العميل لإعطاء كود FA2)، أو اختراق قاعدة بيانات المتجر من الداخل (تسريب بيانات محفوظة). الأمان يحمي الاتصال والمصادقة، ولكنه لا يمنع الأخطاء البشرية.
-            </p>
+          <div v-if="show" class="mt-4 space-y-3">
+            <div class="p-4 rounded-xl bg-sky-50 border border-sky-200 text-slate-800">
+              <strong class="text-sky-800">1. التشفير عبر HTTPS (TLS):</strong> يحمي كلمات المرور وبيانات الدفع أثناء انتقالها، فيمنع قراءتها أو تعديلها من قبل أطراف ثالثة، والشهادة الرقمية تتيح للعميل التأكد من هوية المتجر.
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-slate-800">
+              <strong class="text-emerald-800">2. المصادقة الثنائية (2FA):</strong> عند تسجيل الدخول أو تأكيد الدفع، تقلل احتمال الدخول غير المصرح به حتى لو تسربت كلمة مرور العميل.
+            </div>
+            <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-slate-800">
+              <strong class="text-rose-800">تهديد قد يظل قائمًا:</strong> التصيّد الاحتيالي — قد يُخدع العميل بموقع مزيف أو رسالة فيعطي المحتال كلمة المرور والرمز بنفسه؛ فلا توجد تقنية تمنع الخطر منعًا مطلقًا.
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-<script setup>import { ref } from 'vue'; const show = ref(false);</script>
-<style scoped>
-.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+
+<script setup>
+import { ref } from 'vue'
+const show = ref(false)
+const fields = ['التقنية الأولى وأين تساعد', 'التقنية الثانية وأين تساعد', 'تهديد قد يظل قائمًا']
+</script>

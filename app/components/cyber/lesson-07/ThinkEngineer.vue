@@ -1,47 +1,116 @@
 <template>
-  <section id="think-engineer" class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="bg-slate-900 text-white p-10 rounded-3xl relative overflow-hidden shadow-2xl">
-        <div class="absolute top-0 left-0 w-64 h-64 bg-amber-500/20 rounded-full mix-blend-screen filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        
-        <div class="relative z-10">
-          <h2 class="text-3xl font-bold text-amber-400 mb-2 flex items-center gap-3">
-            <span class="text-4xl">⚙️</span> فكر كمهندس
-          </h2>
-          <p class="text-lg text-slate-300 mb-10 font-light border-b border-slate-700 pb-6 inline-block">"المهندس الجيد لا يحفظ التقنية فقط... لكنه يختار التقنية المناسبة للمشكلة."</p>
-          
-          <div class="bg-slate-800 p-8 rounded-3xl mb-8 border border-slate-700 shadow-inner">
-            <h3 class="font-bold text-xl mb-4 text-white">السيناريو:</h3>
-            <p class="text-slate-300 text-lg leading-relaxed mb-6">
-              مدرسة تريد إنشاء بوابة إلكترونية يستطيع الطلاب من خلالها معرفة درجاتهم، دفع المصروفات، وتسجيل الدخول لحساباتهم.
-              <br/><br/>
-              <strong class="text-rose-400 bg-rose-400/10 px-3 py-1 rounded">ملاحظة هامة:</strong> هناك طالب قد لا يملك هاتفًا ذكيًا.
-            </p>
-            <h3 class="font-bold text-lg mb-4 text-indigo-400">المطلوب: اختر طريقة تسجيل الدخول المناسبة مع التبرير</h3>
-            
-            <div class="flex flex-col gap-4">
-              <button @click="ans='A'" :class="['text-right p-5 rounded-2xl border-2 transition-all font-medium text-lg', ans==='A'?'bg-indigo-900 border-indigo-500 text-indigo-100':'border-slate-600 text-slate-300 hover:bg-slate-700']">A. كلمة مرور فقط</button>
-              <button @click="ans='B'" :class="['text-right p-5 rounded-2xl border-2 transition-all font-medium text-lg', ans==='B'?'bg-indigo-900 border-indigo-500 text-indigo-100':'border-slate-600 text-slate-300 hover:bg-slate-700']">B. كلمة مرور + عامل ثانٍ عبر تطبيق هاتف حصراً</button>
-              <button @click="ans='C'" :class="['text-right p-5 rounded-2xl border-2 transition-all font-medium text-lg', ans==='C'?'bg-emerald-900 border-emerald-500 text-emerald-100':'border-slate-600 text-slate-300 hover:bg-slate-700']">C. كلمة مرور + توفير بدائل لعامل المصادقة الثاني</button>
+  <section id="think-engineer" class="py-16 bg-emerald-50/40 border-y border-emerald-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl">⚙️</div>
+        <h2 class="text-2xl md:text-3xl font-bold text-emerald-800">فكّر كمهندس: ابحث ثم قرر</h2>
+      </div>
+
+      <p class="text-lg text-slate-700 font-medium leading-relaxed mb-8">
+        تعمل إحدى المدارس في مدينتك على إنشاء بوابة إلكترونية يتحقق من خلالها الطلاب من درجاتهم ويدفعون الرسوم.
+        عليك أن تختار طريقة تسجيل دخول الطلاب. أيهما الخيار الأفضل لهذه الخدمة؟
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <!-- Step 1: survey tally -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm md:col-span-3">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center">1</span>
+            <h3 class="text-lg font-bold text-sky-900">اجمع البيانات</h3>
+          </div>
+          <p class="text-slate-600 mb-5">
+            اسأل عشرة من زملائك في الصف عن طرق تسجيل الدخول التي يستخدمونها ويثقون بها (كلمة مرور، كلمة مرور لمرة واحدة، رسائل قصيرة، بصمة إصبع أو وجه). سجّل النتائج هنا:
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div v-for="m in methods" :key="m.name" class="rounded-xl border-2 p-3 transition-colors"
+                 :class="m.count > 0 && m.count === maxCount ? 'border-emerald-400 bg-emerald-50' : 'border-slate-200 bg-slate-50'">
+              <div class="font-bold text-slate-800 mb-2">{{ m.icon }} {{ m.name }}</div>
+              <div class="flex items-center justify-between">
+                <button @click="m.count > 0 && m.count--" class="w-8 h-8 rounded-lg bg-white border border-slate-300 font-bold text-slate-600">−</button>
+                <span class="text-2xl font-extrabold text-slate-900">{{ m.count }}</span>
+                <button @click="m.count++" class="w-8 h-8 rounded-lg bg-sky-600 text-white font-bold">+</button>
+              </div>
+              <div class="h-1.5 bg-slate-200 rounded-full mt-3 overflow-hidden">
+                <div class="h-full bg-sky-500 transition-all" :style="{ width: total ? (m.count / total * 100) + '%' : '0%' }"></div>
+              </div>
             </div>
           </div>
-          
-          <div v-if="ans" class="bg-emerald-900/40 border-2 border-emerald-500/50 p-8 rounded-3xl animate-fade-in-up">
-            <h4 class="font-bold text-emerald-400 mb-4 text-xl flex items-center gap-2">
-              <span class="text-2xl">⚖️</span> تبرير الاختيار (Trade-off):
-            </h4>
-            <p class="text-lg text-slate-200 leading-relaxed">
-              الإجابة الصحيحة هي <strong>C</strong>.<br/>
-              يجب الموازنة بين <strong>الأمان</strong> و <strong>إمكانية الوصول</strong>. إذا فرضنا استخدام تطبيق مصادقة على هاتف ذكي (B)، سنمنع الطالب الذي لا يملك هاتفًا من الوصول. كلمة المرور فقط (A) تفتقر للأمان الكافي لعمليات الدفع. الحل الأمثل هو استخدام FA2 مع توفير بدائل للعامل الثاني (مثل بطاقة ذكية أو كود عبر البريد الإلكتروني للمدرسة) لضمان الأمان دون التضحية بإمكانية الوصول.
-            </p>
+          <p v-if="total" class="mt-4 text-sm font-bold text-emerald-700">
+            الإجابة الأكثر شيوعًا: {{ methods.filter(m => m.count === maxCount).map(m => m.name).join('، ') }} ({{ total }} إجابة)
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm md:col-span-3">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">2</span>
+            <h3 class="text-lg font-bold text-rose-900">حلّل أصحاب المصلحة</h3>
+          </div>
+          <p class="text-slate-600 mb-4">لكل فئة دوّن فائدة واحدة وعيبًا واحدًا لاشتراط عامل ثانٍ.</p>
+          <div class="grid md:grid-cols-3 gap-3">
+            <div v-for="s in stakeholders" :key="s.name" class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+              <h4 class="font-bold text-slate-800 mb-2">{{ s.icon }} {{ s.name }}</h4>
+              <textarea rows="3" class="w-full bg-white border border-slate-200 rounded-lg p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-sky-400" placeholder="الفائدة… / العيب…"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm md:col-span-3">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center">3</span>
+            <h3 class="text-lg font-bold text-emerald-900">قرّر</h3>
+          </div>
+          <p class="text-slate-600 mb-4">
+            أوصِ بطريقة تسجيل دخول واحدة للبوابة، وقدّم سببين بناءً على استطلاعك وجدولك. <strong>في أزواج</strong>، قارن توصياتك واتفقا معًا على أقوى سبب واحد قبل تدوينه.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-4">
+            <button v-for="(c, i) in choices" :key="i" @click="choice = i"
+                    class="text-right p-4 rounded-xl border-2 font-bold transition-colors flex items-center gap-3"
+                    :class="choice === i ? 'bg-emerald-50 border-emerald-500 text-emerald-900' : 'bg-white border-slate-200 text-slate-700 hover:border-slate-400'">
+              <span class="w-5 h-5 rounded border-2 flex items-center justify-center text-xs" :class="choice === i ? 'border-emerald-500 bg-emerald-500 text-white' : 'border-slate-300'">{{ choice === i ? '✓' : '' }}</span>
+              {{ c }}
+            </button>
+          </div>
+          <textarea rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 resize-none focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="قدّم دليلًا على إجابتك…"></textarea>
+
+          <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-900">
+            <strong>تلميح:</strong> إذا عُرفت كلمة المرور، فكيف يساعد عامل ثانٍ مستقل – مثل تطبيق مصادقة أو مفتاح أمان – في حماية الحساب؟
+          </div>
+
+          <button @click="showModel = !showModel" class="mt-4 text-emerald-700 font-bold bg-emerald-50 hover:bg-emerald-100 px-4 py-2 rounded-lg text-sm transition-colors">
+            {{ showModel ? 'إخفاء الإجابة المقترحة' : 'أظهر إجابة مقترحة' }}
+          </button>
+          <div v-if="showModel" class="mt-3 p-4 bg-white border border-emerald-200 rounded-xl text-slate-700 leading-relaxed">
+            <strong>التوصية:</strong> كلمة مرور بالإضافة إلى كلمة مرور لمرة واحدة تُرسل إلى الهاتف.
+            <br><strong>السبب 1 (الأمان):</strong> البوابة تحتوي على درجات ومدفوعات، والعامل الثاني (الحيازة) يمنع الدخول حتى لو تسربت كلمة المرور.
+            <br><strong>السبب 2 (إمكانية الوصول):</strong> رسالة SMS تصل إلى أي هاتف ولو لم يكن ذكيًا، ويمكن إرسالها إلى هاتف ولي الأمر للطالب الذي لا يملك هاتفًا.
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-<script setup>import { ref } from 'vue'; const ans = ref(null);</script>
-<style scoped>
-.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+
+<script setup>
+import { ref, reactive, computed } from 'vue'
+
+const methods = reactive([
+  { icon: '🔑', name: 'كلمة مرور فقط', count: 0 },
+  { icon: '🔢', name: 'كلمة مرور لمرة واحدة', count: 0 },
+  { icon: '💬', name: 'رسائل قصيرة', count: 0 },
+  { icon: '👆', name: 'بصمة إصبع أو وجه', count: 0 },
+])
+const total = computed(() => methods.reduce((s, m) => s + m.count, 0))
+const maxCount = computed(() => Math.max(...methods.map(m => m.count)))
+
+const stakeholders = [
+  { icon: '🎓', name: 'طالب' },
+  { icon: '🏫', name: 'المدرسة' },
+  { icon: '📵', name: 'طالب لا يملك هاتفًا ذكيًا' },
+]
+
+const choices = ['كلمة مرور فقط', 'كلمة مرور بالإضافة إلى كلمة مرور لمرة واحدة تُرسل إلى الهاتف']
+const choice = ref(null)
+const showModel = ref(false)
+</script>

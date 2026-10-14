@@ -1,20 +1,16 @@
 <template>
-  <section id="next-lesson" class="py-24 bg-white border-t border-slate-100">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="inline-block px-5 py-2 rounded-full bg-slate-100 text-slate-600 font-bold mb-8 text-sm border border-slate-200 uppercase tracking-wider">
-        الدرس القادم
+  <section id="next-lesson" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-slate-900 rounded-3xl p-8 md:p-10 text-white flex flex-col md:flex-row items-center gap-6 shadow-lg">
+        <div class="w-16 h-16 rounded-2xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-3xl shrink-0">🛡️</div>
+        <div class="flex-1 text-center md:text-right">
+          <span class="text-sm font-bold text-amber-300">الدرس القادم 2-2</span>
+          <h3 class="text-2xl font-bold mt-1 mb-2">تصميم أمان الشبكات</h3>
+          <p class="text-slate-300 leading-relaxed">
+            أدوار جدار الحماية وVPN وDMZ وضوابط الأجهزة الطرفية، ولماذا يوفر الدفاع في العمق حماية أقوى من الاعتماد على إجراء أمني واحد.
+          </p>
+        </div>
       </div>
-      
-      <h2 class="text-5xl font-extrabold text-slate-800 mb-8 tracking-tight">تصميم أمان الشبكات</h2>
-      
-      <p class="text-2xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-        بعد ما عرفنا إزاي نحمي الاتصال والحسابات، هنشوف إزاي نصمم شبكة كاملة بطريقة آمنة.
-      </p>
-      
-      <NuxtLink to="/lesson-08" class="inline-flex items-center gap-4 px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg rounded-2xl transition-all shadow-xl shadow-slate-900/20 hover:shadow-2xl hover:-translate-y-1 group">
-        <span>الدرس القادم</span>
-        <span class="text-2xl group-hover:-translate-x-2 transition-transform">&larr;</span>
-      </NuxtLink>
     </div>
   </section>
 </template>

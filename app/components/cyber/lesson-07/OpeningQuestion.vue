@@ -1,48 +1,20 @@
 <template>
-  <section id="opening" class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="bg-indigo-50 rounded-3xl p-8 border border-indigo-100 shadow-sm">
-        <h2 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center gap-3">
-          <span class="text-3xl">🤔</span> قبل ما نبدأ...
-        </h2>
-        
-        <p class="text-lg text-slate-700 mb-8 leading-relaxed">
-          أنت داخل على موقع بنك أو بتشتري حاجة أونلاين. <br/>
-          <strong>إزاي تضمن إن البيانات اللي بتبعتها مش أي حد يقدر يقرأها؟</strong><br/>
-          <strong>وإزاي تتأكد إن الموقع اللي قدامك هو فعلًا الموقع الحقيقي؟</strong>
-        </p>
-        
-        <div class="bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-bold text-slate-800 mb-4">هل كلمة المرور وحدها كافية لحماية حسابك؟</h3>
-          
-          <div class="space-y-3">
-            <button 
-              @click="answer = 'A'" 
-              :class="['w-full text-right p-4 rounded-xl border transition-all', answer === 'A' ? 'bg-red-50 border-red-200 text-red-700' : 'hover:bg-slate-50 border-slate-200']"
-            >
-              A. نعم، دائمًا
-            </button>
-            <button 
-              @click="answer = 'B'" 
-              :class="['w-full text-right p-4 rounded-xl border transition-all', answer === 'B' ? 'bg-green-50 border-green-200 text-green-700' : 'hover:bg-slate-50 border-slate-200']"
-            >
-              B. لا، الأفضل استخدام طبقات حماية إضافية
-            </button>
-          </div>
-          
-          <div v-if="answer" class="mt-6 p-4 rounded-xl" :class="answer === 'B' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-            <strong v-if="answer === 'B'">إجابة صحيحة! 👏</strong>
-            <strong v-else>غير دقيق! 💡</strong>
-            <p class="mt-2 text-sm">
-              الأمان على الإنترنت لا يعتمد على تقنية واحدة، بل على الجمع بين التشفير والمصادقة والشهادات والتوقيعات عشان نحمي البيانات والحسابات بشكل كامل.
-            </p>
-          </div>
+  <section id="opening-question" class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+        عندما تسجل الدخول إلى تطبيق مصرفي أو تشتري عبر الإنترنت أو تفتح موقعًا يستخدم HTTPS، تعمل عدة تقنيات لحماية الاتصال:
+        يشفّر TLS البيانات أثناء انتقالها، ويتحقق المتصفح من شهادة الموقع واسم النطاق الذي يتصل به، وتتحقق الخدمة من هوية المستخدم قبل منحه حق الوصول.
+        تقلل هذه الوسائل المخاطر، <strong class="text-slate-800">لكنها لا تعني أن محتوى الموقع موثوق أو أن الحماية مطلقة.</strong>
+      </p>
+
+      <div class="bg-gradient-to-r from-sky-600 to-indigo-600 rounded-3xl p-1 shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
+        <div class="bg-white rounded-[22px] p-8 md:p-12">
+          <span class="inline-block text-sm font-bold text-sky-700 bg-sky-50 px-3 py-1 rounded-full mb-4">❓ السؤال الرئيسي</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-700 to-indigo-700 leading-relaxed">
+            "كيف تعمل تقنيات التشفير والمصادقة معًا للحفاظ على أمان الاتصال والخدمات عبر الإنترنت؟"
+          </h2>
         </div>
       </div>
     </div>
   </section>
 </template>
-<script setup>
-import { ref } from 'vue';
-const answer = ref(null);
-</script>

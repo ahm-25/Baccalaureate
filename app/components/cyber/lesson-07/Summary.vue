@@ -1,57 +1,48 @@
 <template>
-  <section id="summary" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-    <!-- Grid Pattern Background -->
-    <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 30px 30px;"></div>
-    
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <h2 class="text-4xl font-bold mb-16 text-center">الخلاصة</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 hover:border-indigo-500 transition-colors">
-          <div class="w-14 h-14 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-3xl mb-6">🔐</div>
-          <h3 class="text-xl font-bold mb-3">HTTPS</h3>
-          <p class="text-slate-400 leading-relaxed">HTTP عبر اتصال TLS مؤمّن لحماية البيانات والتحقق من الخادم.</p>
-        </div>
-        
-        <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 hover:border-cyan-500 transition-colors">
-          <div class="w-14 h-14 bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center text-3xl mb-6">🔑</div>
-          <h3 class="text-xl font-bold mb-3">المفتاح العام</h3>
-          <p class="text-slate-400 leading-relaxed">يستخدم في المصادقة والاتفاق الآمن على مفاتيح الجلسة أثناء المصافحة.</p>
-        </div>
-        
-        <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 hover:border-emerald-500 transition-colors">
-          <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mb-6">⚡</div>
-          <h3 class="text-xl font-bold mb-3">التشفير المتماثل</h3>
-          <p class="text-slate-400 leading-relaxed">يحمي بيانات الجلسة الضخمة بسرعة وكفاءة عالية.</p>
-        </div>
-        
-        <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 hover:border-amber-500 transition-colors">
-          <div class="w-14 h-14 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-3xl mb-6">📜</div>
-          <h3 class="text-xl font-bold mb-3">الشهادة الرقمية</h3>
-          <p class="text-slate-400 leading-relaxed">تساعد المتصفح على التحقق من هوية الخادم واسم النطاق الخاص به.</p>
-        </div>
-        
-        <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 hover:border-purple-500 transition-colors">
-          <div class="w-14 h-14 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl mb-6">✍️</div>
-          <h3 class="text-xl font-bold mb-3">التوقيع الرقمي</h3>
-          <p class="text-slate-400 leading-relaxed">يتحقق من سلامة البيانات وهوية الموقع ويدعم مبدأ عدم التنصل.</p>
-        </div>
-        
-        <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 hover:border-rose-500 transition-colors">
-          <div class="w-14 h-14 bg-rose-500/20 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mb-6">🛡️</div>
-          <h3 class="text-xl font-bold mb-3">المصادقة الثنائية (FA2)</h3>
-          <p class="text-slate-400 leading-relaxed">تستخدم عاملين مستقلين من فئتين مختلفتين لتقليل الدخول غير المصرح به.</p>
-        </div>
-      </div>
-      
-      <div class="text-center w-full">
-        <div class="bg-indigo-900/40 backdrop-blur-md border border-indigo-500/30 p-8 rounded-3xl inline-block w-full max-w-4xl shadow-2xl relative overflow-hidden">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50"></div>
-          <p class="text-2xl font-bold text-indigo-100 leading-relaxed">
-            "الأمان الحقيقي لا يأتي من تقنية واحدة،<br/> بل من تكديس عدة طبقات من الحماية."
-          </p>
+  <section id="summary" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-sky-50 to-indigo-50 rounded-3xl p-8 md:p-12 border-2 border-sky-100 relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 text-9xl opacity-10 pointer-events-none">⭐</div>
+
+        <h2 class="text-3xl font-extrabold text-sky-900 mb-2 flex items-center gap-3">
+          <span>⭐</span> الخلاصة
+        </h2>
+        <p class="font-bold text-sky-700 mb-8">تذكّر:</p>
+
+        <ul class="space-y-4 mb-10">
+          <li v-for="p in points" :key="p.text" class="flex items-start gap-4">
+            <span class="text-xl mt-1">{{ p.icon }}</span>
+            <p class="text-lg text-slate-800 font-medium leading-relaxed" v-html="p.text"></p>
+          </li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-sky-900 mb-4">📖 مصطلحات الدرس</h3>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div v-for="t in terms" :key="t.name" class="bg-white/80 border border-sky-100 rounded-xl p-4">
+            <strong class="text-rose-600">{{ t.name }}</strong>
+            <p class="text-slate-700 text-sm mt-1 leading-relaxed">{{ t.def }}</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+const points = [
+  { icon: '🔐', text: 'تستخدم مصافحة <strong class="text-sky-700">HTTPS</strong> آليات المفتاح العام للمصادقة والاتفاق الآمن على أسرار مشتركة تُشتق منها مفاتيح الجلسة.' },
+  { icon: '⚡', text: 'ثم تُحمى بيانات الجلسة <strong class="text-amber-700">بالتشفير المتماثل</strong> بسرعة.' },
+  { icon: '🧱', text: 'تحافظ الخدمات على أمانها من خلال <strong class="text-emerald-700">تكديس</strong> التشفير والشهادات والتوقيعات والمصادقة الثنائية (2FA).' },
+]
+
+const terms = [
+  { name: 'HTTPS', def: 'نظام لإجراء اتصالات الويب بأمان (التشفير، واكتشاف التلاعب، والتحقق من الطرف المقابل).' },
+  { name: 'التشفير', def: 'يحافظ على خصوصية المحتوى.' },
+  { name: 'التشفير بالمفتاح العام', def: 'يشارك المفتاح بأمان.' },
+  { name: 'التشفير المتماثل', def: 'يتبادل البيانات بسرعة.' },
+  { name: 'الشهادة الرقمية', def: 'تساعد المتصفح على التحقق من هوية الخادم وارتباط الشهادة باسم النطاق.' },
+  { name: 'التوقيع الرقمي', def: 'يكتشف التلاعب وانتحال الشخصية، ويوفر دليلًا يدعم عدم التنصل.' },
+  { name: 'المصادقة الثنائية (2FA)', def: 'تقلل احتمال تسجيل الدخول غير المصرح به باستخدام عاملين مستقلين من فئتين مختلفتين.' },
+  { name: 'المصادقة متعددة العوامل (MFA)', def: 'استخدام عاملين أو أكثر من فئات مختلفة مثل المعرفة والحيازة والسمات الحيوية.' },
+]
+</script>

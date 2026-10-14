@@ -1,41 +1,33 @@
 <template>
-  <div class="relative bg-slate-50 min-h-screen pb-24" dir="rtl">
+  <div class="relative bg-slate-50 min-h-screen pb-24">
     <CyberLesson07Hero />
-    <CyberLesson07OpeningQuestion />
     <CyberLesson07Objectives />
-    
-    <CyberLesson07WhyProtect />
-    <CyberLesson07WhatIsHttps />
+    <CyberLesson07LessonMap />
+    <CyberLesson07OpeningQuestion />
+    <CyberLesson07HttpsConnection />
     <CyberLesson07TlsHandshake />
-    
-    <CyberLesson07PublicKey />
-    <CyberLesson07SymmetricKey />
-    <CyberLesson07HttpsProtection />
-    
     <CyberLesson07Authentication />
-    <CyberLesson07Fa2 />
-    <CyberLesson07AuthFactors />
-    
-    <CyberLesson07DigitalCert />
-    <CyberLesson07DigitalSignature />
-    <CyberLesson07SecurityComparison />
-    
-    <CyberLesson07PracticalExample />
+    <CyberLesson07SecurityCombination />
     <CyberLesson07StopThink />
     <CyberLesson07SolvedExample />
-    
-    <!-- Practice Quiz Arena -->
-    <QuizQuestionArena
-      v-if="practiceQuiz.length > 0"
-      :questions="practiceQuiz"
-      section-title="🎯 اختبر فهمك"
-      section-id="practice-quiz"
-    />
-    
+    <CyberLesson07ExamQuestion />
+    <CyberLesson07Practice />
     <CyberLesson07ThinkEngineer />
     <CyberLesson07ApplyLearned />
-    <CyberLesson07ExamQuestion />
+    <CyberLesson07MainAnswer />
     <CyberLesson07Summary />
+    <CyberLesson07Exercises />
+
+    <section id="practice-quiz">
+      <QuizQuestionArena
+        v-if="practiceQuiz.length > 0"
+        :questions="practiceQuiz"
+        section-title="تقنيات التشفير والمصادقة"
+        section-id="practice-quiz"
+      />
+    </section>
+
+    <CyberLesson07Reflect />
     <CyberLesson07NextLesson />
 
     <!-- Navigation -->
@@ -48,7 +40,7 @@
         <span class="text-lg">🖊️</span> وضع الشرح
       </button>
       <div class="w-px h-4 bg-slate-300"></div>
-      <NuxtLink to="/lesson-08" class="text-slate-600 hover:text-indigo-600 transition-colors text-sm font-bold flex items-center gap-1">
+      <NuxtLink to="/" class="text-slate-600 hover:text-indigo-600 transition-colors text-sm font-bold flex items-center gap-1">
         التالي <span>&larr;</span>
       </NuxtLink>
     </div>
@@ -62,7 +54,7 @@ import { useQuiz } from "~/composables/useQuiz";
 import { useTeacherMode } from "~/composables/useTeacherMode";
 import { lessonData } from "~/data/lessons/second-baccalaureate/cyber/lesson-07";
 import { allQuestions } from "~/data/lessons/second-baccalaureate/cyber/lesson-07-questions";
-import type { Question } from "~/data/lessons/second-baccalaureate/cyber/lesson-07-questions";
+import type { Question } from "~/data/lessons/second-baccalaureate/it/lesson-04-questions";
 
 const { setSections, setLessonInfo, setCurrentSection, sections } = useLesson();
 const { setQuestions } = useQuiz();
@@ -91,7 +83,7 @@ onMounted(() => {
   }, { threshold: 0.3 });
 
   setTimeout(() => {
-    document.querySelectorAll("section[id]").forEach((sec) => {
+    document.querySelectorAll("section[id], header[id]").forEach((sec) => {
       if (observer) observer.observe(sec);
     });
   }, 500);
