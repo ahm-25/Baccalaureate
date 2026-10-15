@@ -16,7 +16,6 @@
             أو جهاز يملكه المستخدم؛ وعندئذ لا تكفي معرفة كلمة المرور وحدها للدخول.
           </p>
         </div>
-
         <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 space-y-4">
           <h3 class="font-bold text-sky-700">مصطلحات أساسية</h3>
           <p class="text-slate-700 leading-relaxed">
