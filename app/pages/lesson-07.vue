@@ -17,7 +17,6 @@
     <CyberLesson07MainAnswer />
     <CyberLesson07Summary />
     <CyberLesson07Exercises />
-
     <section id="practice-quiz">
       <QuizQuestionArena
         v-if="practiceQuiz.length > 0"
@@ -26,7 +25,6 @@
         section-id="practice-quiz"
       />
     </section>
-
     <CyberLesson07Reflect />
     <CyberLesson07NextLesson />
 
