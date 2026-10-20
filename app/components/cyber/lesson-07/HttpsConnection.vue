@@ -371,6 +371,13 @@
           <span class="font-bold text-slate-400 ml-2">(1)</span>
           <strong class="text-rose-600">(HTTPS)</strong>… بروتوكول HTTP منقول عبر اتصال TLS مؤمَّن. يوفر TLS سرية البيانات وسلامتها أثناء النقل،
           ويساعد المتصفح على التحقق من هوية الخادم واسم النطاق. وتسمى خطوات إنشاء الاتصال الآمن <strong class="text-rose-600">مصافحة TLS</strong>.
+          <span dir="ltr" class="mt-3 flex items-center justify-center gap-3 font-mono font-bold text-xl">
+            <span class="px-3 py-1 rounded-xl bg-slate-200 text-slate-700">HTTP</span>
+            <span class="text-slate-400">+</span>
+            <span class="px-3 py-1 rounded-xl bg-indigo-100 text-indigo-700">TL<span class="text-rose-600 underline decoration-2 underline-offset-4">S</span></span>
+            <span class="text-slate-400">=</span>
+            <span class="px-3 py-1 rounded-xl bg-rose-50 text-slate-700">HTTP<span class="text-rose-600 text-2xl underline decoration-2 underline-offset-4">S</span></span>
+          </span>
         </p>
         <p class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
           <span class="font-bold text-slate-400 ml-2">(2)</span>
@@ -386,6 +393,13 @@
           </h3>
           <span class="text-xs text-sky-600 bg-sky-50 px-3 py-1 rounded-full font-bold">تفاعلي</span>
         </div>
+
+        <p class="mb-4 bg-red-50 border border-red-200 rounded-2xl p-4 text-slate-700 leading-relaxed">
+          <span class="font-bold text-red-600">🎬 مثال:</span>
+          عندما تكتب في المتصفح عنوان موقع YouTube، يكون <strong>اسم النطاق</strong> هو
+          <strong dir="ltr" class="font-mono text-red-600 bg-white px-2 py-0.5 rounded-lg border border-red-100">www.youtube.com</strong>،
+          ويبدأ المتصفح اتصال HTTPS مع خادم YouTube عبر المراحل التالية:
+        </p>
 
         <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
           <table class="w-full text-right min-w-[640px]">
@@ -406,7 +420,12 @@
                         :class="active === i ? 'bg-sky-600 ring-2 ring-sky-300' : 'bg-slate-400'">{{ i + 1 }}</span>
                   {{ s.stage }}
                 </td>
-                <td class="p-4 text-slate-700 leading-relaxed">{{ s.what }}</td>
+                <td class="p-4 text-slate-700 leading-relaxed">
+                  {{ s.what }}
+                  <span class="mt-2 block text-sm bg-red-50 border border-red-100 text-slate-700 rounded-xl px-3 py-2">
+                    <span class="font-bold text-red-600">▶ مثال YouTube:</span> {{ s.example }}
+                  </span>
+                </td>
                 <td class="p-4">
                   <span class="inline-block text-sm font-bold px-3 py-1 rounded-full"
                         :class="s.mechanism === 'التشفير المتماثل' ? 'bg-amber-100 text-amber-800' : 'bg-indigo-100 text-indigo-800'">
@@ -1107,6 +1126,7 @@ const stages = [
   {
     stage: 'مصافحة TLS: التحقق من الشهادة',
     what: 'أثناء المصافحة يرسل الخادم شهادته الرقمية، ويتحقق المتصفح من صلاحيتها وسلسلة الثقة وملاءمتها لاسم الموقع.',
+    example: 'يرد خادم YouTube بشهادته الرقمية، فيفحص المتصفح صلاحية الشهادة وسلسلة الثقة، ويتأكد أنها صادرة فعلاً لاسم النطاق www.youtube.com.',
     mechanism: 'التشفير بالمفتاح العام',
     analogy: 'مثل ضابط الجوازات عندما يفحص جواز سفرك والختم الرسمي للتأكد من هويتك وصلاحية وثيقتك قبل السماح لك بالدخول.',
     tip: 'المتصفح يتأكد من هوية الموقع حتى لا يدخل الطالب موقعاً مزيفاً ينتحل اسم موقعه المفضل.',
@@ -1114,6 +1134,7 @@ const stages = [
   {
     stage: 'مصافحة TLS: اشتقاق مفاتيح الجلسة',
     what: 'وفي المصافحة نفسها يتفاوض الطرفان على أسرار مشتركة تُشتق منها مفاتيح الجلسة، باستخدام آليات مفتاح عام مناسبة لإصدار TLS ومجموعة التشفير.',
+    example: 'بعد نجاح الفحص، يتفق المتصفح وخادم YouTube معاً على مفاتيح الجلسة الخاصة بهذا الاتصال فقط.',
     mechanism: 'التشفير بالمفتاح العام',
     analogy: 'مثل اثنين يتفقان على كلمة سر جديدة لمكالمتهما بوضعها داخل ظرف مقفل بقفل الخادم، بحيث لا يستطيع فتحه سوى الخادم.',
     tip: 'نستخدم المفتاح العام فقط في البداية لتبادل هذه الكلمة السرية بأمان تام.',
@@ -1121,6 +1142,7 @@ const stages = [
   {
     stage: 'تبادل البيانات',
     what: 'تُحمى بيانات الجلسة بالتشفير المتماثل وآليات سلامة البيانات.',
+    example: 'يستخدم المتصفح وخادم YouTube مفاتيح الجلسة في التشفير المتماثل، فتنتقل الفيديوهات وبيانات حسابك بسرية ويُضمن عدم التلاعب بها أثناء النقل.',
     mechanism: 'التشفير المتماثل',
     analogy: 'مثل التحدث بشيفرة خاصة وسريعة جداً اتفق عليها الطرفان، فلا يضيع الوقت وتصل الرسائل فورياً.',
     tip: 'تم اختيار التشفير المتماثل هنا لأنه فائق السرعة ويستطيع نقل كميات ضخمة من صفحات الإنترنت والصور بكفاءة عالية.',
