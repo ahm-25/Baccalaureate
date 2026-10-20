@@ -38,6 +38,20 @@
           <Maximize size="18" stroke-width="2" />
           <span class="absolute -bottom-12 bg-gray-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">تكبير (F)</span>
         </button>
+        
+        <div class="w-px h-6 bg-gray-200"></div>
+        
+        <NuxtLink to="/assessments" class="h-11 px-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-primary/10 hover:border-primary/20 hover:scale-105 flex items-center justify-center gap-2 transition-all text-gray-500 hover:text-primary relative group" title="التقييمات">
+          <ClipboardCheck size="18" stroke-width="2" />
+          <span class="text-sm font-bold hidden lg:inline">التقييمات</span>
+          <span class="absolute -bottom-12 bg-gray-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl lg:hidden">التقييمات</span>
+        </NuxtLink>
+        
+        <NuxtLink to="/exams" class="h-11 px-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-accent/10 hover:border-accent/20 hover:scale-105 flex items-center justify-center gap-2 transition-all text-gray-500 hover:text-accent relative group" title="الامتحانات">
+          <FileText size="18" stroke-width="2" />
+          <span class="text-sm font-bold hidden lg:inline">الامتحانات</span>
+          <span class="absolute -bottom-12 bg-gray-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl lg:hidden">الامتحانات</span>
+        </NuxtLink>
       </div>
 
       <!-- Personal Branding -->
@@ -59,7 +73,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { BookOpen, PenTool, Users, MonitorPlay, Maximize } from 'lucide-vue-next'
+import { BookOpen, PenTool, Users, MonitorPlay, Maximize, ClipboardCheck, FileText } from 'lucide-vue-next'
 import { useWhiteboard } from '~/composables/useWhiteboard'
 import { useTeacherMode } from '~/composables/useTeacherMode'
 import { usePresentation } from '~/composables/usePresentation'
