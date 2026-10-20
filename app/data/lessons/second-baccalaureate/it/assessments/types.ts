@@ -14,4 +14,7 @@ export interface AssessmentBlock {
   title: string;
   essays: EssayQuestion[];
   mcqs: Question[];
+  // Optional overrides for the section headings (defaults live in the components)
+  essaysTitle?: string;
+  quizTitle?: string;
 }

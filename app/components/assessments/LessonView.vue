@@ -4,7 +4,7 @@
     <div class="bg-gradient-to-l from-emerald-700 via-teal-600 to-cyan-500 text-white py-16 px-6 shadow-lg mb-12 rounded-b-[3rem]">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="space-y-4 md:w-2/3">
-          <span class="bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/30 inline-block">كتاب الأداءات والتقييمات - الصف الثاني الثانوي</span>
+          <span class="bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/30 inline-block">{{ badge }}</span>
           <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">{{ title }}</h1>
           <p class="text-lg md:text-xl text-emerald-50 max-w-2xl">{{ description }}</p>
         </div>
@@ -29,17 +29,21 @@
           <h2 class="text-2xl md:text-3xl font-black text-slate-800">{{ block.title }}</h2>
         </div>
 
-        <AssessmentsEssayQuestions :essays="block.essays" />
+        <AssessmentsEssayQuestions
+          v-if="block.essays.length > 0"
+          :essays="block.essays"
+          :heading="block.essaysTitle"
+        />
 
         <QuizQuestionArena
           v-if="block.mcqs.length > 0"
           :questions="block.mcqs"
-          :section-title="`الاختيار من متعدد - ${block.period} (${block.title})`"
+          :section-title="block.quizTitle ?? `الاختيار من متعدد - ${block.period} (${block.title})`"
           :section-id="block.id + '-quiz'"
         />
       </section>
 
-      <div class="pt-8 border-t-2 border-dashed border-gray-300">
+      <div v-if="showFinalQuiz" class="pt-8 border-t-2 border-dashed border-gray-300">
         <QuizQuestionArena
           v-if="finalQuiz.length > 0"
           :questions="finalQuiz"
@@ -75,13 +79,18 @@ import { ref, computed, onMounted } from 'vue';
 import type { Question } from '~/data/lessons/second-baccalaureate/it/lesson-04-questions';
 import type { AssessmentBlock } from '~/data/lessons/second-baccalaureate/it/assessments/types';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   title: string
   description: string
   icon: string
   blocks: AssessmentBlock[]
   links: { to: string; label: string }[]
-}>();
+  badge?: string
+  showFinalQuiz?: boolean
+}>(), {
+  badge: 'كتاب الأداءات والتقييمات - الصف الثاني الثانوي',
+  showFinalQuiz: true
+});
 
 const allMcqs = computed(() => props.blocks.flatMap(block => block.mcqs));
 

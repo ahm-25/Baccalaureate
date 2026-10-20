@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-4">
     <div class="flex items-center justify-between gap-4">
-      <h4 class="text-xl font-black text-slate-800">✍️ الأسئلة المقالية</h4>
+      <h4 class="text-xl font-black text-slate-800">{{ heading }}</h4>
       <button
         type="button"
         class="text-sm font-bold text-indigo-700 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition-colors"
@@ -47,9 +47,10 @@
 import { reactive, computed } from 'vue';
 import type { EssayQuestion } from '~/data/lessons/second-baccalaureate/it/assessments/types';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   essays: EssayQuestion[]
-}>();
+  heading?: string
+}>(), { heading: '✍️ الأسئلة المقالية' });
 
 const open = reactive<Record<string, boolean>>({});
 
