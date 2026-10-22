@@ -76,7 +76,7 @@ useHead({
 })
 
 const otherUnits = [
-  { to: '/unit-01/assessments', icon: '🤖', title: 'الوحدة الأولى: الذكاء الاصطناعي' },
+  { to: '/unit-01/assessments', icon: '💡', title: 'الوحدة الأولى: تكنولوجيا المعلومات والمجتمع' },
   { to: '/unit-02/assessments', icon: '🛡️', title: 'الوحدة الثانية: الأمن السيبراني' },
   { to: '/unit-04/assessments', icon: '🎨', title: 'الوحدة الرابعة: تصميم الويب والوسائط' },
 ]
