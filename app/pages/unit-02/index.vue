@@ -26,8 +26,20 @@
       </NuxtLink>
 
       <NuxtLink
+        to="/unit-02/assessments"
+        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">📝</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-primary">كتاب الأداءات والتقييمات</h2>
+          <p class="text-sm text-mutedtext font-semibold">أسئلة تقييمات دروس الوحدة الثانية محلولة بالكامل</p>
+        </div>
+        <span class="text-primary">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
         to="/unit-03"
-        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
         <span class="text-3xl">🌐</span>
         <h2 class="flex-1 text-lg font-black text-accent">الوحدة الثالثة: تطبيقات الويب</h2>

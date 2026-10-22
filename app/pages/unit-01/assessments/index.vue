@@ -35,6 +35,23 @@
       </NuxtLink>
     </div>
 
+    <!-- Other units -->
+    <div class="max-w-5xl mx-auto mt-12">
+      <h2 class="text-xl font-black text-maintext mb-4">تقييمات باقي الوحدات</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <NuxtLink
+          v-for="unit in otherUnits"
+          :key="unit.to"
+          :to="unit.to"
+          class="group glass-panel p-5 flex items-center gap-3 border-2 border-primary/10 hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <span class="text-2xl">{{ unit.icon }}</span>
+          <span class="flex-1 font-black text-maintext group-hover:text-primary transition-colors">{{ unit.title }}</span>
+          <span class="text-primary">&larr;</span>
+        </NuxtLink>
+      </div>
+    </div>
+
     <!-- Back to Home -->
     <div class="max-w-5xl mx-auto mt-12 text-center">
       <NuxtLink to="/" class="inline-flex items-center gap-2 text-mutedtext hover:text-primary font-bold transition-colors">
@@ -52,6 +69,12 @@ useHead({
     { name: 'description', content: 'جميع أسئلة كتاب الأداءات والتقييمات محلولة بالكامل للصف الثاني البكالوريا' }
   ]
 })
+
+const otherUnits = [
+  { to: '/unit-02/assessments', icon: '🛡️', title: 'الوحدة الثانية: الأمن السيبراني' },
+  { to: '/unit-03/assessments', icon: '🌐', title: 'الوحدة الثالثة: تطبيقات الويب' },
+  { to: '/unit-04/assessments', icon: '🎨', title: 'الوحدة الرابعة: تصميم الويب والوسائط' },
+]
 
 const assessments = [
   {
