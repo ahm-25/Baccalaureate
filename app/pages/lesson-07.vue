@@ -38,7 +38,7 @@
         <span class="text-lg">🖊️</span> وضع الشرح
       </button>
       <div class="w-px h-4 bg-slate-300"></div>
-      <NuxtLink to="/" class="text-slate-600 hover:text-indigo-600 transition-colors text-sm font-bold flex items-center gap-1">
+      <NuxtLink to="/lesson-08" class="text-slate-600 hover:text-indigo-600 transition-colors text-sm font-bold flex items-center gap-1">
         التالي <span>&larr;</span>
       </NuxtLink>
     </div>
