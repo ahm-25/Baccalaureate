@@ -87,7 +87,7 @@
           </button>
 
           <NuxtLink
-            to="/lesson-05/explanation"
+            :to="`${$route.path.replace(/\/$/, '')}/explanation`"
             class="px-8 py-4 bg-white text-blue-700 font-bold rounded-2xl shadow-md border border-blue-100 hover:bg-blue-50 hover:shadow-lg transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
           >
             <span>شرح المفاهيم خطوة بخطوة</span>

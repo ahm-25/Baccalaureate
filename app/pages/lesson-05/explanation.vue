@@ -395,7 +395,7 @@
         </div>
 
         <div class="mt-12 flex justify-center">
-          <NuxtLink to="/lesson-05" class="px-8 py-4 bg-white text-gray-900 rounded-2xl shadow-xl hover:bg-gray-100 hover:scale-105 transition-all font-bold text-lg flex items-center gap-3">
+          <NuxtLink :to="$route.path.replace(/\/explanation\/?$/, '')" class="px-8 py-4 bg-white text-gray-900 rounded-2xl shadow-xl hover:bg-gray-100 hover:scale-105 transition-all font-bold text-lg flex items-center gap-3">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
