@@ -85,6 +85,17 @@ const units = [
     lessons: [
       { to: '/unit-02/lesson-01', icon: '🔐', label: 'الدرس ⁦2-1⁩', title: 'تقنيات التشفير والمصادقة' },
       { to: '/unit-02/lesson-02', icon: '🧱', label: 'الدرس ⁦2-2⁩', title: 'تصميم أمان الشبكات' },
+      { to: '/unit-02/lesson-03', icon: '🚨', label: 'الدرس ⁦2-3⁩', title: 'الاستجابة للحوادث وإدارة المخاطر' },
+    ],
+  },
+  {
+    number: '٣',
+    to: '/unit-03',
+    title: 'الوحدة الثالثة: تطبيقات الويب',
+    lessons: [
+      { to: '/unit-03/lesson-01', icon: '🧱', label: 'الدرس ⁦3-1⁩', title: 'البنية العامة لتطبيقات الويب' },
+      { to: '/unit-03/lesson-02', icon: '🔁', label: 'الدرس ⁦3-2⁩', title: 'طرق اتصال تطبيقات الويب' },
+      { to: '/unit-03/lesson-03', icon: '🎨', label: 'الدرس ⁦3-3⁩', title: 'أساسيات تقنية الواجهة الأمامية' },
     ],
   },
   {

@@ -1,11 +1,11 @@
-import { ref } from 'vue'
-
-const currentSectionIndex = ref(0)
-const sections = ref<{ id: string; title: string }[]>([])
-const courseTitle = ref('تانية بكالوريا')
-const lessonTitle = ref('البرمجة والذكاء الاصطناعي')
-
+// useState keeps one copy per request on the server and hands it to the browser,
+// so the lesson bar never shows another visitor's lesson or mismatches on hydration
 export const useLesson = () => {
+  const currentSectionIndex = useState('lesson-current-section', () => 0)
+  const sections = useState<{ id: string; title: string }[]>('lesson-sections', () => [])
+  const courseTitle = useState('lesson-course-title', () => 'تانية بكالوريا')
+  const lessonTitle = useState('lesson-title', () => 'البرمجة والذكاء الاصطناعي')
+
   const setCurrentSection = (index: number) => {
     if (index >= 0 && index < sections.value.length) {
       currentSectionIndex.value = index

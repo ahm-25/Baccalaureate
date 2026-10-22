@@ -1,0 +1,27 @@
+export const lessonData = {
+  courseTitle: "تانية بكالوريا",
+  lessonTitle: "3-3 أساسيات تقنية الواجهة الأمامية",
+  sections: [
+    { id: "hero", title: "البداية" },
+    { id: "objectives", title: "أهداف التعلم" },
+    { id: "lesson-map", title: "خريطة الدرس" },
+    { id: "opening-question", title: "السؤال الرئيسي" },
+    { id: "html-css-js", title: "أدوار HTML وCSS وJavaScript" },
+    { id: "semantic-html", title: "HTML الدلالية" },
+    { id: "responsive-design", title: "التصميم المتجاوب" },
+    { id: "frameworks", title: "أطر العمل" },
+    { id: "stop-think", title: "توقف وفكر" },
+    { id: "solved-example", title: "مثال محلول" },
+    { id: "exam-question", title: "سؤال على نمط الامتحان" },
+    { id: "practice", title: "تدرّب" },
+    { id: "think-engineer", title: "فكّر كمهندس" },
+    { id: "apply-learned", title: "طبّق ما تعلمته" },
+    { id: "main-answer", title: "إجابة السؤال الرئيسي" },
+    { id: "summary", title: "الخلاصة" },
+    { id: "exercises", title: "تمارين" },
+    { id: "practice-quiz", title: "اختبر فهمك" },
+    { id: "reflection", title: "فكّر وتحدَّ نفسك" },
+    { id: "next-lesson", title: "الدرس القادم" }
+  ],
+  quiz: []
+};

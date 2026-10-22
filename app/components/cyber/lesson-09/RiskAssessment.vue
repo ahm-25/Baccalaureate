@@ -51,9 +51,9 @@
               <div class="grid grid-cols-3 gap-1.5 mt-1 text-xs font-bold text-slate-500 text-center">
                 <span v-for="c in [0, 1, 2]" :key="c">{{ levels[c] }}</span>
               </div>
-              <p class="text-center text-xs font-bold text-slate-600 mt-1" dir="rtl">الاحتمالية ←</p>
+              <p class="text-center text-xs font-bold text-slate-600 mt-1" dir="rtl">الاحتمالية</p>
             </div>
-            <p class="text-xs font-bold text-slate-600 self-center [writing-mode:vertical-rl] rotate-180" dir="rtl">التأثير ←</p>
+            <p class="text-xs font-bold text-slate-600 self-center [writing-mode:vertical-rl] rotate-180" dir="rtl">التأثير</p>
           </div>
 
           <!-- Controls + result -->

@@ -25,17 +25,18 @@
         <span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
       </NuxtLink>
 
-      <div class="glass-panel p-5 flex items-center gap-4 opacity-60">
-        <span class="text-3xl">🚨</span>
-        <div class="flex-1 min-w-0">
-          <span class="text-sm font-black text-mutedtext">الدرس &#x2066;2-3&#x2069; — قريبًا</span>
-          <h2 class="text-lg font-black text-maintext">الاستجابة للحوادث وإدارة المخاطر</h2>
-        </div>
-      </div>
+      <NuxtLink
+        to="/unit-03"
+        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🌐</span>
+        <h2 class="flex-1 text-lg font-black text-accent">الوحدة الثالثة: تطبيقات الويب</h2>
+        <span class="text-accent">&larr;</span>
+      </NuxtLink>
 
       <NuxtLink
         to="/unit-01"
-        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
         <span class="text-accent">&rarr;</span>
         <h2 class="flex-1 text-lg font-black text-accent">الوحدة الأولى: تكنولوجيا المعلومات والمجتمع</h2>
@@ -50,6 +51,7 @@
 const lessons = [
   { to: '/unit-02/lesson-01', icon: '🔐', label: 'الدرس ⁦2-1⁩', title: 'تقنيات التشفير والمصادقة' },
   { to: '/unit-02/lesson-02', icon: '🧱', label: 'الدرس ⁦2-2⁩', title: 'تصميم أمان الشبكات' },
+  { to: '/unit-02/lesson-03', icon: '🚨', label: 'الدرس ⁦2-3⁩', title: 'الاستجابة للحوادث وإدارة المخاطر' },
 ];
 
 // The lesson bar keeps the last visited lesson's info unless this page sets its own

@@ -39,7 +39,7 @@
         <span class="text-lg">🖊️</span> وضع الشرح
       </button>
       <div class="w-px h-4 bg-slate-300"></div>
-      <NuxtLink to="/unit-02" class="text-slate-600 hover:text-indigo-600 transition-colors text-sm font-bold flex items-center gap-1">
+      <NuxtLink to="/unit-02/lesson-03" class="text-slate-600 hover:text-indigo-600 transition-colors text-sm font-bold flex items-center gap-1">
         التالي <span>&larr;</span>
       </NuxtLink>
     </div>

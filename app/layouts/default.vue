@@ -1,6 +1,9 @@
 <template>
   <div class="min-h-screen relative font-arabic transition-all duration-500 bg-background text-maintext"
        :class="{ 'text-lg': isProjectorMode, 'cursor-none': isWhiteboardOpen && currentTool === 'laser' }">
+    <!-- The page comes first so its setup sets the lesson title and sections before the
+         (fixed-position) bars below render; otherwise the server renders stale values -->
+    <slot />
     <UiFloatingNavigation />
     <UiLessonProgress />
     <UiBrandingSide />
@@ -33,7 +36,6 @@
 
     <WhiteboardDigitalWhiteboard v-if="isWhiteboardOpen" />
     <TeacherModeTeacherPanel v-if="isTeacherMode" />
-    <slot />
   </div>
 </template>
 

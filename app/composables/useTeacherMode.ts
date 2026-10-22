@@ -1,8 +1,9 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useLesson } from './useLesson'
 
 export const useTeacherMode = () => {
-  const isTeacherMode = ref(false)
+  // Shared, so the "وضع الشرح" button on a page toggles the same mode the layout shows
+  const isTeacherMode = useState('teacher-mode', () => false)
   const { currentSectionIndex } = useLesson()
 
   const toggleTeacherMode = () => {
