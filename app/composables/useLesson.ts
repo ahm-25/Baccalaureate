@@ -1,25 +1,9 @@
 import { ref } from 'vue'
 
 const currentSectionIndex = ref(0)
-const sections = ref([
-  { id: 'hero', title: 'Hero' },
-  { id: 'opening', title: 'سؤال البداية' },
-  { id: 'info', title: 'المعلومات' },
-  { id: 'verification', title: 'التحقق' },
-  { id: 'media', title: 'الوسائط' },
-  { id: 'media-types', title: 'أنواع الوسائط' },
-  { id: 'literacy', title: 'الثقافة الإعلامية' },
-  { id: 'data', title: 'البيانات' },
-  { id: 'characteristics', title: 'خصائص المعلومات' },
-  { id: 'activity', title: 'النشاط' },
-  { id: 'quiz', title: 'الاختبار' },
-  { id: 'summary', title: 'الملخص' },
-  { id: 'challenge', title: 'التحدي' },
-  { id: 'homework', title: 'الواجب' },
-  { id: 'next', title: 'الدرس القادم' }
-])
-const courseTitle = ref('الأولى بكالوريا')
-const lessonTitle = ref('الدرس الأول')
+const sections = ref<{ id: string; title: string }[]>([])
+const courseTitle = ref('تانية بكالوريا')
+const lessonTitle = ref('البرمجة والذكاء الاصطناعي')
 
 export const useLesson = () => {
   const setCurrentSection = (index: number) => {

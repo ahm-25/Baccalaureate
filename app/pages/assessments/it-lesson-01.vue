@@ -5,7 +5,7 @@
     icon="📝"
     :blocks="assessmentBlocks"
     :links="[
-      { to: '/lesson-01', label: 'أسئلة الدرس الأول' },
+      { to: '/unit-01/lesson-01-questions', label: 'أسئلة الدرس الأول' },
       { to: '/assessments/it-lesson-02', label: 'تقييمات الدرس الثاني' }
     ]"
   />
