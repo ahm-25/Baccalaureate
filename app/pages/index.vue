@@ -99,6 +99,17 @@ const units = [
     ],
   },
   {
+    number: '٤',
+    to: '/unit-04',
+    title: 'الوحدة الرابعة: تصميم الويب والوسائط',
+    lessons: [
+      { to: '/unit-04/lesson-01', icon: '📺', label: 'الدرس ⁦4-1⁩', title: 'أنواع الوسائط وخصائصها' },
+      { to: '/unit-04/lesson-02', icon: '🧭', label: 'الدرس ⁦4-2⁩', title: 'تصميم المعلومات وتجربة المستخدم' },
+      { to: '/unit-04/lesson-03', icon: '📊', label: 'الدرس ⁦4-3⁩', title: 'طرق تقييم المواقع الإلكترونية' },
+      { to: '/unit-04/lesson-04', icon: '🔄', label: 'الدرس ⁦4-4⁩', title: 'عملية التحسين التكراري للمواقع الإلكترونية' },
+    ],
+  },
+  {
     number: 'JS',
     to: '/second-baccalaureate/javascript/lesson-01',
     title: 'دروس JavaScript',
@@ -111,7 +122,7 @@ const units = [
 ]
 
 const extras = [
-  { to: '/assessments', icon: '📝', title: 'كتاب الأداءات والتقييمات', description: 'أسئلة التقييمات محلولة بالكامل' },
+  { to: '/unit-01/assessments', icon: '📝', title: 'كتاب الأداءات والتقييمات', description: 'أسئلة التقييمات محلولة بالكامل' },
   { to: '/exams', icon: '📄', title: 'امتحانات المذكرات', description: 'امتحانات كل درس والاختبارات الشاملة مع الحلول' },
 ]
 

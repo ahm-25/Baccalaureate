@@ -6,7 +6,7 @@
     :blocks="assessmentBlocks"
     :links="[
       { to: '/unit-01/lesson-01-questions', label: 'أسئلة الدرس الأول' },
-      { to: '/assessments/it-lesson-02', label: 'تقييمات الدرس الثاني' }
+      { to: '/unit-01/assessments/lesson-02', label: 'تقييمات الدرس الثاني' }
     ]"
   />
 </template>

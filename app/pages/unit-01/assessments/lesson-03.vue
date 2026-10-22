@@ -5,8 +5,8 @@
     icon="🏭"
     :blocks="assessmentBlocks"
     :links="[
-      { to: '/assessments/it-lesson-02', label: 'تقييمات الدرس الثاني' },
-      { to: '/assessments/it-lesson-04', label: 'تقييمات الدرس الرابع' }
+      { to: '/unit-01/assessments/lesson-02', label: 'تقييمات الدرس الثاني' },
+      { to: '/unit-01/assessments/lesson-04', label: 'تقييمات الدرس الرابع' }
     ]"
   />
 </template>

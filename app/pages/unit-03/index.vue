@@ -26,8 +26,17 @@
       </NuxtLink>
 
       <NuxtLink
-        to="/unit-02"
+        to="/unit-04"
         class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🎨</span>
+        <h2 class="flex-1 text-lg font-black text-accent">الوحدة الرابعة: تصميم الويب والوسائط</h2>
+        <span class="text-accent">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
+        to="/unit-02"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-accent/20 hover:border-accent/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
         <span class="text-accent">&rarr;</span>
         <h2 class="flex-1 text-lg font-black text-accent">الوحدة الثانية: الأمن السيبراني</h2>

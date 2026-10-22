@@ -41,7 +41,7 @@
         
         <div class="w-px h-6 bg-gray-200"></div>
         
-        <NuxtLink to="/assessments" class="h-11 px-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-primary/10 hover:border-primary/20 hover:scale-105 flex items-center justify-center gap-2 transition-all text-gray-500 hover:text-primary relative group" title="التقييمات">
+        <NuxtLink to="/unit-01/assessments" class="h-11 px-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-primary/10 hover:border-primary/20 hover:scale-105 flex items-center justify-center gap-2 transition-all text-gray-500 hover:text-primary relative group" title="التقييمات">
           <ClipboardCheck size="18" stroke-width="2" />
           <span class="text-sm font-bold hidden lg:inline">التقييمات</span>
           <span class="absolute -bottom-12 bg-gray-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl lg:hidden">التقييمات</span>

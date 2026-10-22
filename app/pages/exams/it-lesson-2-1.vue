@@ -7,7 +7,7 @@
     :show-final-quiz="false"
     :blocks="assessmentBlocks"
     :links="[
-      { to: '/assessments/it-lesson-04', label: 'تقييمات الدرس الرابع' },
+      { to: '/unit-01/assessments/lesson-04', label: 'تقييمات الدرس الرابع' },
       { to: '/exams/it-lesson-2-2', label: 'امتحان الدرس ⁦2-2⁩' }
     ]"
   />

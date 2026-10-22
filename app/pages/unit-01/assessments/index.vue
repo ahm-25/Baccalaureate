@@ -55,25 +55,25 @@ useHead({
 
 const assessments = [
   {
-    to: '/assessments/it-lesson-01',
+    to: '/unit-01/assessments/lesson-01',
     icon: '📖',
     title: 'الدرس الأول: تطور تكنولوجيا المعلومات والتحول الاجتماعي',
     description: 'المهام الأدائية والأداءات المنزلية والتقييمات الأسبوعية للدرس الأول'
   },
   {
-    to: '/assessments/it-lesson-02',
+    to: '/unit-01/assessments/lesson-02',
     icon: '🤖',
     title: 'الدرس الثاني: كيف يعمل الذكاء الاصطناعي',
     description: 'المهام الأدائية والأداءات المنزلية والتقييمات الأسبوعية للدرس الثاني'
   },
   {
-    to: '/assessments/it-lesson-03',
+    to: '/unit-01/assessments/lesson-03',
     icon: '🏭',
     title: 'الدرس الثالث: الذكاء الاصطناعي في الحياة اليومية والصناعة',
     description: 'المهام الأدائية والأداءات المنزلية والتقييمات الأسبوعية للدرس الثالث'
   },
   {
-    to: '/assessments/it-lesson-04',
+    to: '/unit-01/assessments/lesson-04',
     icon: '⚖️',
     title: 'الدرس الرابع: القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي',
     description: 'المهام الأدائية والأداءات المنزلية والتقييمات الأسبوعية للدرس الرابع'
