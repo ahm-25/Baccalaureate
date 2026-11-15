@@ -49,7 +49,7 @@
           <span v-if="f === 3 && i < 2" class="absolute sl-pop text-3xl" :style="{ left: `${d.x - 16}px`, top: '320px', '--d': '2s' }">✂️</span>
           <!-- device, possibly changing state during the frame -->
           <div class="absolute w-[136px] h-[92px]" :style="{ left: `${d.x - 68}px`, top: d.top ? '222px' : '418px' }">
-            <div class="dev" :class="stateOf(i).from">
+            <div class="dev" :class="[stateOf(i).from, { 'sl-out': stateOf(i).to }]" :style="{ '--d': `${stateOf(i).at ?? 0}s` }">
               <span class="text-[34px] leading-none">{{ stateOf(i).from === 'hit' ? '💀' : d.icon }}</span>
               <span class="text-[15px] font-black leading-tight">{{ d.name }}</span>
             </div>
@@ -82,7 +82,7 @@
           </template>
           <template v-else>
             <div v-for="(s, i) in statusRows" :key="i" class="relative h-[42px]">
-              <div class="status" :class="s.from.cls">{{ s.from.text }}</div>
+              <div class="status" :class="[s.from.cls, { 'sl-out': s.to }]" :style="{ '--d': `${s.at ?? 0}s` }">{{ s.from.text }}</div>
               <div v-if="s.to" class="status sl-fade" :class="s.to.cls" :style="{ '--d': `${s.at}s` }">{{ s.to.text }}</div>
             </div>
           </template>
@@ -175,7 +175,7 @@ const phases = [
   { icon: '🧯', name: 'الاحتواء', short: 'الاحتواء', hint: 'الحد من التأثير', on: 'border-amber-400 bg-amber-600/30 text-white' },
   { icon: '🧹', name: 'إزالة التهديد (الاستئصال)', short: 'الإزالة', hint: 'إزالة السبب الجذري', on: 'border-rose-400 bg-rose-600/30 text-white' },
   { icon: '♻️', name: 'الاستعادة', short: 'الاستعادة', hint: 'استعادة الأنظمة', on: 'border-emerald-400 bg-emerald-600/30 text-white' },
-  { icon: '📚', name: 'الدروس المستفادة والتحسين', short: 'الدروس المستفادة', hint: 'منع تكرار الحدث', on: 'border-indigo-400 bg-indigo-600/30 text-white' },
+  { icon: '📚', name: 'الدروس المستفادة والتحسين', short: 'الدروس', hint: 'منع تكرار الحدث', on: 'border-indigo-400 bg-indigo-600/30 text-white' },
 ]
 
 // one frame per phase — the book's correct action and the consequence of a wrong one

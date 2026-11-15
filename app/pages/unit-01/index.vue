@@ -27,8 +27,23 @@
       </NuxtLink>
 
       <NuxtLink
+        v-for="(s, i) in sliders"
+        :key="s.to"
+        :to="s.to"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        :class="{ 'mt-8': i === 0 }"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">{{ s.title }}</h2>
+          <p class="text-sm text-mutedtext font-semibold">{{ s.sub }}</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
         to="/unit-01/assessments"
-        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
         <span class="text-3xl">📝</span>
         <div class="flex-1 min-w-0">
@@ -59,6 +74,10 @@ const lessons = [
   { to: '/unit-01/lesson-02/explanation', icon: '🧭', label: 'شرح الدرس ⁦1-2⁩', title: 'شرح المفاهيم خطوة بخطوة', sub: true },
   { to: '/unit-01/lesson-03', icon: '🏭', label: 'الدرس ⁦1-3⁩', title: 'الذكاء الاصطناعي في الحياة اليومية والصناعة' },
   { to: '/unit-01/lesson-04', icon: '⚖️', label: 'الدرس ⁦1-4⁩', title: 'القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي' },
+]
+const sliders = [
+  { to: '/unit-01/slides-2', title: 'سلايدر الدرس ⁦1-2⁩: كيف يعمل الذكاء الاصطناعي', sub: 'AI · التعلم الآلي · التعلم العميق · التوليدي · الهلوسة' },
+  { to: '/unit-01/slides-3', title: 'سلايدر الدرس ⁦1-3⁩: الذكاء الاصطناعي في الحياة اليومية والصناعة', sub: 'الحياة اليومية · الصناعة · نقاط القوة ومواطن الحذر' },
 ];
 
 // The lesson bar keeps the last visited lesson's info unless this page sets its own

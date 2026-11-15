@@ -38,7 +38,7 @@
       <!-- ───── f1, f2: the matrix ───── -->
       <div v-else-if="f <= 2" :key="`matrix-${f}`" class="absolute inset-0">
         <!-- axes -->
-        <div class="absolute left-[54px] top-[310px] w-[120px] text-center -rotate-90 text-[22px] font-black text-amber-300" dir="rtl">التأثير ⟶</div>
+        <div class="absolute left-[120px] top-[128px] w-[120px] text-right text-[22px] font-black text-amber-300" dir="rtl">التأثير ↑</div>
         <div v-for="(l, r) in levels" :key="`rl-${r}`" class="absolute left-[128px] w-[110px] text-right text-[18px] font-black text-amber-100" dir="rtl"
              :style="{ top: `${GY + (2 - r) * 104 + 36}px` }">{{ l }}</div>
         <div v-for="(l, c) in levels" :key="`cl-${c}`" class="absolute w-[150px] text-center text-[18px] font-black text-sky-100" dir="rtl"
@@ -66,7 +66,7 @@
         <!-- f2: the school's risks -->
         <template v-if="f === 2">
           <div v-for="(r, i) in risks" :key="r.text" class="token sl-pop"
-               :style="{ left: `${GX + r.likelihood * 158 + 6}px`, top: `${GY + (2 - r.impact) * 104 + 6}px`, '--d': `${0.6 + i * 0.9}s` }">{{ r.icon }}</div>
+               :style="{ left: `${GX + r.likelihood * 158 + 118}px`, top: `${GY + (2 - r.impact) * 104 - 12}px`, '--d': `${0.6 + i * 0.9}s` }">{{ r.icon }}</div>
           <div class="absolute left-[780px] top-[168px] w-[465px] flex flex-col gap-2.5" dir="rtl">
             <div class="sl-in text-[22px] font-black text-white" style="--d: 4.4s">🗂️ ترتيب مخاطر المدرسة حسب الأولوية</div>
             <div v-for="(r, i) in ranked" :key="r.text" class="sl-in rounded-2xl border-2 bg-slate-900/85 px-4 py-2" :class="i === 0 ? 'border-rose-400' : 'border-white/10'"
@@ -171,7 +171,7 @@ const GY = 168
   font-size: 1.25rem; font-weight: 900; box-shadow: inset 0 0 0 2px rgba(255,255,255,.15);
 }
 .token {
-  position: absolute; width: 44px; height: 44px; border-radius: 9999px; background: rgba(15,23,42,.95); border: 2px solid #fff;
+  position: absolute; width: 42px; height: 42px; border-radius: 9999px; background: rgba(15,23,42,.95); border: 2px solid #fff;
   display: flex; align-items: center; justify-content: center; font-size: 1.5rem; z-index: 3; box-shadow: 0 0 18px rgba(255,255,255,.5);
 }
 .seg { width: 52px; height: 18px; border-radius: 6px; }

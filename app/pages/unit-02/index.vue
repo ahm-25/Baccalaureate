@@ -50,6 +50,18 @@
       </NuxtLink>
 
       <NuxtLink
+        to="/unit-02/slides-3"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">سلايدر الدرس 2-3: الاستجابة للحوادث وإدارة المخاطر</h2>
+          <p class="text-sm text-mutedtext font-semibold">الحادث الأمني · المراحل الست · تقييم المخاطر</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
         to="/unit-02/assessments"
         class="group glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
