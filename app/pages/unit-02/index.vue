@@ -31,8 +31,20 @@
       >
         <span class="text-3xl">🎬</span>
         <div class="flex-1 min-w-0">
-          <h2 class="text-lg font-black text-sky-600">سلايدر الوحدة المتحرك</h2>
+          <h2 class="text-lg font-black text-sky-600">سلايدر الدرس 2-1: تقنيات التشفير والمصادقة</h2>
           <p class="text-sm text-mutedtext font-semibold">عرض متحرك خطوة بخطوة: من HTTP إلى HTTPS</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
+        to="/unit-02/slides-2"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">سلايدر الدرس 2-2: تصميم أمان الشبكات</h2>
+          <p class="text-sm text-mutedtext font-semibold">جدار الحماية · VPN · DMZ · الدفاع في العمق · انعدام الثقة</p>
         </div>
         <span class="text-sky-600">&larr;</span>
       </NuxtLink>

@@ -582,6 +582,9 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import SlidesUnit02Keys from '~/components/slides/unit02/Keys.vue'
+import SlidesUnit02TwoFactor from '~/components/slides/unit02/TwoFactor.vue'
+import SlidesUnit02Signature from '~/components/slides/unit02/Signature.vue'
 import {
   Lock, Mail, Server, Globe, Settings, Eye, VenetianMask,
   Handshake, BadgeCheck, Award, KeyRound, ShieldAlert, ShieldCheck, ShieldX,
