@@ -62,6 +62,24 @@
           </div>
         </NuxtLink>
       </div>
+      <!-- Unit 2 extra exam models (new questions) -->
+      <h3 class="text-lg font-black text-maintext mt-8 mb-4">🆕 خمسة نماذج إضافية بأسئلة جديدة (ليست من التقييمات)</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <NuxtLink
+          v-for="item in unit2ExtraModels"
+          :key="item.to"
+          :to="item.to"
+          class="group glass-panel p-5 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🆕</span>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-base font-black text-maintext group-hover:text-primary transition-colors">{{ item.title }}</h4>
+            </div>
+            <span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
+          </div>
+        </NuxtLink>
+      </div>
     </div>
 
     <!-- Unit 3 -->
@@ -158,6 +176,11 @@ const unit2Lessons = [
 
 const unit2Models = ['الأول', 'الثاني', 'الثالث', 'الرابع', 'الخامس'].map((name, i) => ({
   to: `/exams/it-unit-2-model-${i + 1}`,
+  title: `النموذج ${name}`,
+}))
+
+const unit2ExtraModels = ['السادس', 'السابع', 'الثامن', 'التاسع', 'العاشر'].map((name, i) => ({
+  to: `/exams/it-unit-2-model-${i + 6}`,
   title: `النموذج ${name}`,
 }))
 

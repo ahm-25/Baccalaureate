@@ -8,7 +8,7 @@
     :blocks="unit2Models[4]"
     :links="[
       { to: '/exams/it-unit-2-model-4', label: 'النموذج ⁦4⁩' },
-      { to: '/exams', label: 'كل الامتحانات' }
+      { to: '/exams/it-unit-2-model-6', label: 'النموذج ⁦6⁩' }
     ]"
   />
 </template>
