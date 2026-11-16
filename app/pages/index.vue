@@ -24,21 +24,26 @@
           <span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
         </NuxtLink>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <NuxtLink
+          <div
             v-for="lesson in unit.lessons"
             :key="lesson.to"
-            :to="lesson.to"
-            class="group glass-panel p-5 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
+            class="group glass-panel p-5 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 flex items-center gap-3"
           >
-            <div class="flex items-center gap-3">
+            <NuxtLink :to="lesson.to" class="flex-1 min-w-0 flex items-center gap-3">
               <span class="text-2xl">{{ lesson.icon }}</span>
               <div class="flex-1 min-w-0">
                 <span class="text-sm font-black text-primary">{{ lesson.label }}</span>
                 <h3 class="text-base font-black text-maintext group-hover:text-primary transition-colors">{{ lesson.title }}</h3>
               </div>
-              <span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
-            </div>
-          </NuxtLink>
+            </NuxtLink>
+            <NuxtLink
+              v-if="slides[lesson.to]"
+              :to="slides[lesson.to]"
+              class="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-sky-500 text-white text-sm font-black shadow-md shadow-sky-500/30 hover:bg-sky-600 transition-colors"
+              title="العرض المتحرك للدرس"
+            >🎬 السلايدر</NuxtLink>
+            <span v-else class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
+          </div>
         </div>
       </div>
 
@@ -64,6 +69,15 @@
 
 <script setup lang="ts">
 import { useLesson } from '~/composables/useLesson'
+
+// Animated slide decks, keyed by the lesson page they belong to
+const slides: Record<string, string> = {
+  '/unit-01/lesson-02': '/unit-01/slides-2',
+  '/unit-01/lesson-03': '/unit-01/slides-3',
+  '/unit-02/lesson-01': '/unit-02/slides',
+  '/unit-02/lesson-02': '/unit-02/slides-2',
+  '/unit-02/lesson-03': '/unit-02/slides-3',
+}
 
 // ⁦…⁩ keep lesson numbers such as 1-2 from flipping to 2-1 inside Arabic text
 const units = [

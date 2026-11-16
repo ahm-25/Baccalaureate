@@ -1,5 +1,7 @@
 <template>
   <div v-if="$route.name === 'unit-01-lesson-02'" class="relative">
+    <!-- Animated slide deck for this lesson -->
+    <NuxtLink to="/unit-01/slides-2" class="fixed bottom-6 left-6 z-50 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 text-white text-base font-black shadow-xl shadow-sky-500/40 hover:bg-sky-600 hover:-translate-y-0.5 transition-all">🎬 السلايدر المتحرك</NuxtLink>
     <AiLesson05Hero />
     <AiLesson05Objectives />
     <AiLesson05OpeningQuestion />
