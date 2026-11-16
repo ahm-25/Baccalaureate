@@ -6,6 +6,8 @@ export interface EssayQuestion {
   answer: string[];
   // Nested labels, outermost first, for questions that ask for a diagram
   diagram?: string[];
+  // Marks for this question, shown next to it when set (used by exams)
+  marks?: number;
 }
 
 export interface AssessmentBlock {

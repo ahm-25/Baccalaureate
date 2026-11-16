@@ -18,6 +18,10 @@
     >
       <p class="text-lg font-bold text-slate-800 leading-relaxed">
         <span class="text-indigo-600">{{ index + 1 }}-</span> {{ essay.text }}
+        <span
+          v-if="essay.marks"
+          class="inline-block align-middle mr-2 bg-amber-100 text-amber-800 text-sm font-black px-3 py-0.5 rounded-full whitespace-nowrap"
+        >({{ marksLabel(essay.marks) }})</span>
       </p>
 
       <button
@@ -46,6 +50,7 @@
 <script setup lang="ts">
 import { reactive, computed } from 'vue';
 import type { EssayQuestion } from '~/data/lessons/second-baccalaureate/it/assessments/types';
+import { marksLabel } from '~/utils/marks';
 
 const props = withDefaults(defineProps<{
   essays: EssayQuestion[]
