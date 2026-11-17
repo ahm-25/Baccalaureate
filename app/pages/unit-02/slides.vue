@@ -215,7 +215,7 @@
               <component :is="packetIcon(p)" class="w-6 h-6 shrink-0" />
               <div class="flex flex-col leading-tight">
                 <span class="text-[13px] font-black opacity-70" dir="rtl">{{ p.label }}</span>
-                <span class="text-lg font-black font-mono" dir="ltr">{{ p.text }}</span>
+                <span class="text-lg font-black" :class="isArabic(p.text) ? '' : 'font-mono'" :dir="isArabic(p.text) ? 'rtl' : 'ltr'">{{ p.text }}</span>
               </div>
             </div>
           </div>
@@ -798,8 +798,8 @@ const packets = computed(() => [
   { id: 'hello', kind: 'hello', secure: false, label: 'بدء المصافحة: أريد اتصالًا آمنًا', text: 'Hello 👋', x: toServer('hello'), visible: at('hello') },
   { id: 'cert', kind: 'cert', secure: false, label: 'الشهادة الرقمية للخادم', text: 'school.edu ✓', x: toClient('cert-send'), visible: at('cert-send') || at('cert') },
   // key-exchange parameters cross each other on two lanes
-  { id: 'params-c', kind: 'param', secure: false, label: 'معاملات تبادل المفاتيح', text: 'KeyShare A', x: toServer('kex'), visible: at('kex') },
-  { id: 'params-s', kind: 'param', secure: false, label: 'معاملات تبادل المفاتيح', text: 'KeyShare B', top: 192, x: toClient('kex'), visible: at('kex') },
+  { id: 'params-c', kind: 'param', secure: false, label: 'معاملات تبادل المفاتيح', text: 'من المتصفح', x: toServer('kex'), visible: at('kex') },
+  { id: 'params-s', kind: 'param', secure: false, label: 'معاملات تبادل المفاتيح', text: 'من الخادم', top: 192, x: toClient('kex'), visible: at('kex') },
   // first protected data after the handshake
   { id: 'data-sym', kind: 'req', secure: true, label: 'بيانات محمية بمفتاح الجلسة', text: 'Xk!9#qP2@vL7', x: toServer('hs-done'), visible: at('hs-done') },
 ] as Packet[])
@@ -819,6 +819,8 @@ const packetClass = (p: Packet) => {
     default: return 'bg-amber-50 border-amber-400 text-amber-900'
   }
 }
+// Arabic packet text reads right-to-left and skips the monospace font
+const isArabic = (t: string) => /[؀-ۿ]/.test(t)
 const packetIcon = (p: Packet) => {
   if (p.secure) return Lock
   if (p.kind === 'cert') return Award
