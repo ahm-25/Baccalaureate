@@ -105,6 +105,11 @@
               </template>
             </div>
           </div>
+          <!-- both fingerprints feed the comparison -->
+          <div class="flex flex-col gap-5 -mx-3">
+            <span v-for="li in [0, 1]" :key="li" class="seq h-[92px] flex items-center text-3xl font-black text-slate-500"
+                  :style="{ '--d': `${3.5 + li * 0.1}s` }">←</span>
+          </div>
           <!-- compare -->
           <div class="seq compare flex flex-col items-center justify-center w-[190px] h-[230px] rounded-3xl border-4"
                :class="verify.ok ? 'border-emerald-400 bg-emerald-500/15' : 'border-rose-500 bg-rose-500/15 shake-x'" style="--d: 3.8s">
