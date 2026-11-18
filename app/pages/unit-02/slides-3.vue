@@ -8,7 +8,7 @@
           <span class="text-[86px]">🚨</span>
           <span class="ring absolute inset-0 rounded-[44px] border-4 border-rose-300"></span>
         </div>
-        <p class="text-sky-300 font-bold text-2xl tracking-wide mb-3">الوحدة الثانية · الدرس 2-3</p>
+        <p class="text-sky-300 font-bold text-2xl tracking-wide mb-3">الوحدة الثانية · الدرس <span dir="ltr" class="inline-block">2-3</span></p>
         <h1 class="text-white font-black text-7xl leading-tight mb-8">الاستجابة للحوادث وإدارة المخاطر</h1>
         <div class="flex items-center gap-3">
           <span v-for="(t, i) in topics" :key="t" class="sl-in sl-badge border-white/15 bg-white/5 text-slate-100 !text-xl"

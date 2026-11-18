@@ -9,7 +9,7 @@
                :class="c" :style="{ inset: `${i * 22}px`, '--d': `${0.2 + i * 0.25}s` }"></div>
           <div class="absolute inset-0 flex items-center justify-center text-6xl sl-pop" style="--d: 1.2s">🛡️</div>
         </div>
-        <p class="text-sky-300 font-bold text-2xl tracking-wide mb-3">الوحدة الثانية · الدرس 2-2</p>
+        <p class="text-sky-300 font-bold text-2xl tracking-wide mb-3">الوحدة الثانية · الدرس <span dir="ltr" class="inline-block">2-2</span></p>
         <h1 class="text-white font-black text-7xl leading-tight mb-8">تصميم أمان الشبكات</h1>
         <div class="flex items-center gap-3">
           <span v-for="(t, i) in topics" :key="t" class="sl-in sl-badge border-white/15 bg-white/5 text-slate-100 !text-xl"

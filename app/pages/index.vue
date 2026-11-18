@@ -74,6 +74,7 @@ import { useLesson } from '~/composables/useLesson'
 const slides: Record<string, string> = {
   '/unit-01/lesson-02': '/unit-01/slides-2',
   '/unit-01/lesson-03': '/unit-01/slides-3',
+  '/unit-01/lesson-04': '/unit-01/slides-4',
   '/unit-02/lesson-01': '/unit-02/slides',
   '/unit-02/lesson-02': '/unit-02/slides-2',
   '/unit-02/lesson-03': '/unit-02/slides-3',
