@@ -10,7 +10,8 @@ import { marksLabel } from '~/utils/marks';
 // بحيث يكون لكل درس 5 أسئلة في النموذج (4 اختيار + 1 مقالي، أو 3 اختيار + 2 مقالي).
 // الأسئلة لا تتكرر بين النماذج، والأسئلة ذات الفكرة الواحدة موزعة على نماذج مختلفة.
 //
-// توزيع الدرجات (من 100): الاختيار من متعدد 10 × 5 = 50 درجة، والمقالي 5 × 10 = 50 درجة.
+// زمن الامتحان: ساعة واحدة. توزيع الدرجات (من 50): الاختيار من متعدد 10 × 2 = 20 درجة،
+// والمقالي 5 × 6 = 30 درجة.
 
 const allBlocks = [...lesson1, ...lesson2, ...lesson3];
 const mcqById = new Map<string, Question>(allBlocks.flatMap(b => b.mcqs.map(q => [q.id, q] as const)));
@@ -24,9 +25,10 @@ function pick<T>(source: Map<string, T>, ids: string[]): T[] {
   });
 }
 
-export const TOTAL_MARKS = 100;
-const MCQ_MARKS = 5;
-const ESSAY_MARKS = 10;
+export const TOTAL_MARKS = 50;
+export const DURATION = 'ساعة واحدة';
+const MCQ_MARKS = 2;
+const ESSAY_MARKS = 6;
 
 interface ModelSpec {
   mcqs: string[];
