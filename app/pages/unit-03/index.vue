@@ -26,8 +26,44 @@
       </NuxtLink>
 
       <NuxtLink
+        to="/unit-03/slides"
+        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">سلايدر الدرس ⁦3-1⁩: البنية العامة لتطبيقات الويب</h2>
+          <p class="text-sm text-mutedtext font-semibold">الطبقات الثلاث · تدفق الطلب · تطبيقات مألوفة · فكّر كمهندس</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
+        to="/unit-03/slides-2"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">سلايدر الدرس ⁦3-2⁩: طرق اتصال تطبيقات الويب</h2>
+          <p class="text-sm text-mutedtext font-semibold">العميل والخادم · HTTP و HTTPS · GET و POST · رموز الحالة · API و JSON</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
+        to="/unit-03/slides-3"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">سلايدر الدرس ⁦3-3⁩: أساسيات تقنية الواجهة الأمامية</h2>
+          <p class="text-sm text-mutedtext font-semibold">HTML و CSS و JavaScript · HTML الدلالية · التصميم المتجاوب · أطر العمل</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
         to="/unit-03/assessments"
-        class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
         <span class="text-3xl">📝</span>
         <div class="flex-1 min-w-0">

@@ -1,5 +1,6 @@
 <template>
   <div class="relative bg-slate-50 min-h-screen pb-24">
+    <NuxtLink to="/unit-03/slides" class="fixed bottom-6 left-6 z-50 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 text-white text-base font-black shadow-xl shadow-sky-500/40 hover:bg-sky-600 hover:-translate-y-0.5 transition-all">🎬 السلايدر المتحرك</NuxtLink>
     <WebLesson10Hero />
     <WebLesson10Objectives />
     <WebLesson10LessonMap />

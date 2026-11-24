@@ -10,7 +10,6 @@
         جميع الامتحانات محلولة بالكامل — اختيار من متعدد، صح وخطأ، أكمل، وأسئلة مقالية مع الإجابات النموذجية
       </p>
     </div>
-
     <!-- Unit 2 -->
     <div class="max-w-5xl mx-auto mb-12">
       <div class="flex items-center gap-3 mb-6">
@@ -81,7 +80,6 @@
         </NuxtLink>
       </div>
     </div>
-
     <!-- Unit 3 -->
     <div class="max-w-5xl mx-auto mb-12">
       <div class="flex items-center gap-3 mb-6">
@@ -115,7 +113,6 @@
         <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
       </NuxtLink>
     </div>
-
     <!-- Unit 4 -->
     <div class="max-w-5xl mx-auto mb-12">
       <div class="flex items-center gap-3 mb-6">
@@ -149,7 +146,6 @@
         <span class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity">&larr;</span>
       </NuxtLink>
     </div>
-
     <!-- Back to Home -->
     <div class="max-w-5xl mx-auto mt-12 text-center">
       <NuxtLink to="/" class="inline-flex items-center gap-2 text-mutedtext hover:text-primary font-bold transition-colors">
@@ -159,7 +155,6 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 useHead({
   title: 'الامتحانات | مذكرة عبد الناصر في البرمجة',
@@ -173,7 +168,6 @@ const unit2Lessons = [
   { to: '/exams/it-lesson-2-2', icon: '🛡️', title: 'الدرس ⁦2-2⁩: تصميم أمان الشبكات' },
   { to: '/exams/it-lesson-2-3', icon: '🚨', title: 'الدرس ⁦2-3⁩: الاستجابة للحوادث وإدارة المخاطر' },
 ]
-
 const unit2Models = ['الأول', 'الثاني', 'الثالث', 'الرابع', 'الخامس'].map((name, i) => ({
   to: `/exams/it-unit-2-model-${i + 1}`,
   title: `النموذج ${name}`,
@@ -183,7 +177,6 @@ const unit2ExtraModels = ['السادس', 'السابع', 'الثامن', 'ال�
   to: `/exams/it-unit-2-model-${i + 6}`,
   title: `النموذج ${name}`,
 }))
-
 const unit3Lessons = [
   { to: '/exams/it-lesson-3-1', icon: '🌐', title: 'الدرس ⁦3-1⁩: البنية العامة لتطبيقات الويب' },
   { to: '/exams/it-lesson-3-2', icon: '🔗', title: 'الدرس ⁦3-2⁩: طرق اتصال تطبيقات الويب' },
