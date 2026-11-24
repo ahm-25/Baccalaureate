@@ -2,8 +2,7 @@
   <!-- API and JSON. f = 0 the front end asks a weather service for data through an API,
        1 the JSON that comes back: keys, a text value and a number value. -->
   <div class="absolute inset-0">
-    <SlidesTitle :icon="f === 0 ? '🧩' : '📦'" :title="f === 0 ? 'واجهة برمجة التطبيقات (API)' : 'صيغة JSON'"
-                 :sub="f === 0 ? 'قواعد واضحة تسمح لبرنامج بطلب بيانات أو وظائف من برنامج آخر' : 'JavaScript Object Notation'" />
+    <SlidesTitle :icon="head.icon" :title="head.title" :sub="head.sub" />
 
     <Transition name="sl-frame" mode="out-in">
       <!-- ───── f0: an API call ───── -->
@@ -47,7 +46,7 @@
       </div>
 
       <!-- ───── f1: reading JSON ───── -->
-      <div v-else key="json" class="absolute inset-0">
+      <div v-else-if="f === 1" key="json" class="absolute inset-0">
         <div class="absolute top-[148px] inset-x-0 flex justify-center">
           <div class="sl-in sl-card border-emerald-400/60 w-[1100px] px-8 py-3 text-center text-[21px] font-bold text-white leading-snug" style="--d: .3s" dir="rtl">
             <span class="sl-hl-green font-black">JSON</span>: صيغة نصية شائعة لتمثيل وتبادل البيانات المهيكلة باستخدام كائنات ومصفوفات وقيم بسيطة،
@@ -78,14 +77,74 @@
           </div>
         </div>
       </div>
+
+      <!-- ───── f2: objects and arrays ───── -->
+      <div v-else key="structs" class="absolute inset-0">
+        <!-- the response, with each structure outlined as it is explained -->
+        <div class="sl-in absolute left-[70px] top-[150px] w-[560px] h-[420px] rounded-3xl border-2 border-white/15 bg-black/60 overflow-hidden" style="--d: .2s">
+          <div class="h-[36px] bg-slate-800/80 flex items-center px-4 font-mono text-[15px] text-emerald-300">GET /api/weather?city=Cairo</div>
+          <div class="relative mx-5 mt-4 px-5 py-2 font-mono text-[24px] leading-[38px] text-slate-200" dir="ltr">
+            <!-- outer object -->
+            <div class="box sl-fade border-sky-400 bg-sky-400/5" style="--d: 1s">
+              <span class="tag sl-pop bg-sky-500 font-arabic" style="--d: 1.2s" dir="rtl">كائن { }</span>
+            </div>
+            <div class="text-sky-300 font-black">{</div>
+            <div class="pl-8"><span class="k">"city"</span>: <span class="s">"Cairo"</span>,</div>
+            <div class="pl-8"><span class="k">"temperature"</span>: <span class="n">31</span>,</div>
+            <div class="pl-8"><span class="k">"forecast"</span>: <span class="arr-hl" style="--d: 4.2s"><b class="text-pink-300">[</b><span class="n">33</span>, <span class="n">30</span>, <span class="n">29</span><b class="text-pink-300">]</b></span>,</div>
+            <!-- nested object -->
+            <div class="relative">
+              <div class="box sl-fade border-violet-400 bg-violet-400/10 !-inset-x-1" style="--d: 7s">
+                <span class="tag tag-bottom sl-pop bg-violet-500 font-arabic" style="--d: 7.2s" dir="rtl">كائن داخل كائن</span>
+              </div>
+              <div class="pl-8"><span class="k">"wind"</span>: <b class="text-violet-300">{</b></div>
+              <div class="pl-16"><span class="k">"speed"</span>: <span class="n">12</span>,</div>
+              <div class="pl-16"><span class="k">"direction"</span>: <span class="s">"N"</span></div>
+              <div class="pl-8"><b class="text-violet-300">}</b></div>
+            </div>
+            <div class="text-sky-300 font-black">}</div>
+          </div>
+        </div>
+
+        <!-- what each structure is -->
+        <div class="absolute left-[665px] top-[150px] w-[545px] flex flex-col gap-2.5" dir="rtl">
+          <div v-for="(s, i) in structs" :key="s.title" class="sl-in rounded-2xl border-2 px-5 py-2.5 flex items-center gap-4" :class="s.cls"
+               :style="{ '--d': `${s.at}s` }">
+            <span class="w-[64px] h-[52px] shrink-0 rounded-xl bg-black/50 flex items-center justify-center font-mono text-[24px] font-black" :class="s.code" dir="ltr">{{ s.sample }}</span>
+            <div>
+              <div class="text-[21px] font-black text-white">{{ s.title }}</div>
+              <p class="text-[16px] font-bold text-slate-200 leading-snug">{{ s.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import SlidesTitle from '~/components/slides/Title.vue'
 
-defineProps<{ f: number }>()
+const props = defineProps<{ f: number }>()
+
+const head = computed(() => [
+  { icon: '🧩', title: 'واجهة برمجة التطبيقات (API)', sub: 'قواعد واضحة تسمح لبرنامج بطلب بيانات أو وظائف من برنامج آخر' },
+  { icon: '📦', title: 'صيغة JSON', sub: 'JavaScript Object Notation' },
+  { icon: '🗂️', title: 'الكائنات والمصفوفات في JSON', sub: 'كائنات ومصفوفات وقيم بسيطة' },
+][props.f]!)
+
+// f2: the weather response extended with an array and a nested object
+const structs = [
+  { title: 'كائن (object)', sample: '{ }', at: 1.2, cls: 'border-sky-400/60 bg-sky-950/50', code: 'text-sky-300',
+    text: 'أزواج «مفتاح: قيمة» بين قوسين معقوصين، تفصل بينها فواصل؛ الرد كله كائن واحد.' },
+  { title: 'مصفوفة (array)', sample: '[ ]', at: 4.2, cls: 'border-pink-400/60 bg-pink-950/40', code: 'text-pink-300',
+    text: 'قائمة مرتبة من القيم بين قوسين مربعين: حرارة الأيام الثلاثة القادمة.' },
+  { title: 'كائن داخل كائن', sample: '{ }', at: 7.2, cls: 'border-violet-400/60 bg-violet-950/45', code: 'text-violet-300',
+    text: 'قيمة المفتاح "wind" كائن له مفاتيحه: السرعة والاتجاه.' },
+  { title: 'قيم بسيطة', sample: '31', at: 9.4, cls: 'border-emerald-400/60 bg-emerald-950/40', code: 'text-emerald-300',
+    text: 'نصوص بين علامتي تنصيص مثل "Cairo"، وأرقام دونها مثل 31.' },
+]
 
 const notes = [
   { icon: '🔑', title: 'المفتاح (key)', sample: '"city"', cls: 'border-sky-400/60 bg-sky-950/50', code: 'text-sky-300', text: 'اسم البيانات، ويقابله قيمة (value)' },
@@ -108,5 +167,16 @@ const notes = [
 .tok.k { color: #7dd3fc; }
 .tok.s { color: #fcd34d; }
 .tok.n { color: #6ee7b7; }
+.k { color: #7dd3fc; }
+.s { color: #fcd34d; }
+.n { color: #6ee7b7; }
+.box { position: absolute; inset: -4px -10px; border-width: 2px; border-radius: 1rem; pointer-events: none; }
+.tag {
+  position: absolute; top: -13px; right: 14px; padding: 0 .6rem; border-radius: 9999px;
+  font-size: 14px; line-height: 24px; font-weight: 900; color: white; white-space: nowrap;
+}
+.tag-bottom { top: auto; bottom: -13px; }
+.arr-hl { border-radius: .4rem; animation: arr 1.6s ease var(--d) forwards; }
+@keyframes arr { 30% { background: rgba(244,114,182,.35); box-shadow: 0 0 0 3px rgba(244,114,182,.6) } 100% { background: rgba(244,114,182,.15); box-shadow: 0 0 0 2px rgba(244,114,182,.5) } }
 @keyframes tok { 0% { background: transparent } 30% { background: rgba(255,255,255,.18); box-shadow: 0 0 0 3px rgba(255,255,255,.25) } 100% { background: rgba(255,255,255,.06) } }
 </style>

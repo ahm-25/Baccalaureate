@@ -21,7 +21,7 @@
     <L2ClientServer v-if="inRange('cs-def', 'cs-cycle')" :f="step - S['cs-def']!" />
     <L2Https v-if="inRange('http-def', 'http-think')" :f="step - S['http-def']!" />
     <L2Requests v-if="inRange('req-methods', 'req-log')" :f="step - S['req-methods']!" />
-    <L2ApiJson v-if="inRange('api-def', 'api-json')" :f="step - S['api-def']!" />
+    <L2ApiJson v-if="inRange('api-def', 'api-struct')" :f="step - S['api-def']!" />
     <L2Engineer v-if="inRange('eng-methods', 'eng-decide')" :f="step - S['eng-methods']!" />
 
     <!-- ═════════════ CARDS ═════════════ -->
@@ -133,6 +133,7 @@ const steps: SlideStep[] = [
   // ── API and JSON ──
   { id: 'api-def', caption: 'واجهة برمجة التطبيقات API: قواعد واضحة تسمح لبرنامج بطلب بيانات أو وظائف من برنامج آخر، مثل طلب الطقس من خدمة خلفية.', dur: 10000 },
   { id: 'api-json', caption: 'قد تعيد API البيانات بصيغة JSON: مفاتيح تقابلها قيم؛ القيمة النصية بين علامتي تنصيص، والرقمية دونها.', dur: 10500 },
+  { id: 'api-struct', caption: 'يمثل JSON البيانات بكائنات بين قوسين معقوصين { } فيها أزواج مفتاح وقيمة، ومصفوفات بين قوسين مربعين [ ] فيها قائمة قيم مرتبة، وقيم بسيطة.', dur: 13000 },
   // ── Think like an engineer ──
   { id: 'eng-methods', caption: 'فكّر كمهندس: GET لتحميل سجل الدرجات، وPOST لإرسال نموذج الدخول، وGET عبر API لطلب الجدول من نظام مدرسة أخرى.', dur: 11000 },
   { id: 'eng-decide', caption: 'القرار: استخدام HTTPS والأسلوب المناسب لكل إجراء؛ والإجراء الذي يجب أن يستخدم POST هو إرسال نموذج تسجيل الدخول.', dur: 11000 },
@@ -161,7 +162,7 @@ const inRange = (a: string, b: string) => step.value >= S[a]! && step.value <= S
 const glow = computed(() => {
   if (from('answer') || at('http-secure')) return 'bg-emerald-500/25'
   if (at('http-plain')) return 'bg-rose-500/20'
-  if (inRange('api-def', 'api-json')) return 'bg-violet-500/20'
+  if (inRange('api-def', 'api-struct')) return 'bg-violet-500/20'
   return 'bg-sky-500/20'
 })
 
