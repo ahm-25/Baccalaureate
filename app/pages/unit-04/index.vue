@@ -26,6 +26,21 @@
       </NuxtLink>
 
       <NuxtLink
+        v-for="(s, i) in sliders"
+        :key="s.to"
+        :to="s.to"
+        class="group glass-panel p-5 flex items-center gap-4 border-2 border-sky-300/40 hover:border-sky-400/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        :class="{ 'mt-8': i === 0 }"
+      >
+        <span class="text-3xl">🎬</span>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-black text-sky-600">{{ s.title }}</h2>
+          <p class="text-sm text-mutedtext font-semibold">{{ s.sub }}</p>
+        </div>
+        <span class="text-sky-600">&larr;</span>
+      </NuxtLink>
+
+      <NuxtLink
         to="/unit-04/assessments"
         class="group mt-8 glass-panel p-5 flex items-center gap-4 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
       >
@@ -56,6 +71,13 @@ const lessons = [
   { to: '/unit-04/lesson-02', icon: '🧭', label: 'الدرس ⁦4-2⁩', title: 'تصميم المعلومات وتجربة المستخدم للمواقع الإلكترونية' },
   { to: '/unit-04/lesson-03', icon: '📊', label: 'الدرس ⁦4-3⁩', title: 'طرق تقييم المواقع الإلكترونية' },
   { to: '/unit-04/lesson-04', icon: '🔄', label: 'الدرس ⁦4-4⁩', title: 'عملية التحسين التكراري للمواقع الإلكترونية' },
+];
+
+const sliders = [
+  { to: '/unit-04/slides-1', title: 'سلايدر الدرس ⁦4-1⁩: أنواع الوسائط وخصائصها', sub: 'عرض متحرك خطوة بخطوة لأفكار الدرس' },
+  { to: '/unit-04/slides-2', title: 'سلايدر الدرس ⁦4-2⁩: تصميم المعلومات وتجربة المستخدم', sub: 'عرض متحرك خطوة بخطوة لأفكار الدرس' },
+  { to: '/unit-04/slides-3', title: 'سلايدر الدرس ⁦4-3⁩: طرق تقييم المواقع الإلكترونية', sub: 'عرض متحرك خطوة بخطوة لأفكار الدرس' },
+  { to: '/unit-04/slides-4', title: 'سلايدر الدرس ⁦4-4⁩: عملية التحسين التكراري', sub: 'عرض متحرك خطوة بخطوة لأفكار الدرس' },
 ];
 
 // The lesson bar keeps the last visited lesson's info unless this page sets its own
